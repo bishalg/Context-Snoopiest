@@ -1,0 +1,63 @@
+---
+// Token Weight Chart Component
+---
+<div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-white/5 my-8 not-prose">
+    <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2">Weighted Token Analysis</h3>
+    <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Visualizing the time-cost multiplier for different content types.</p>
+    
+    <div class="chart-container relative h-[250px] w-full">
+        <canvas id="weightChart"></canvas>
+    </div>
+</div>
+
+<script>
+    import Chart from 'chart.js/auto';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const ctx = document.getElementById('weightChart');
+        if (ctx) {
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Dialogue', 'Description', 'Action (Fast)', 'Action (Slow)'],
+                    datasets: [{
+                        label: 'Time-Cost Multiplier',
+                        data: [1.0, 0.7, 0.5, 2.0],
+                        backgroundColor: [
+                            '#6366F1', // Indigo (Dialogue)
+                            '#0EA5E9', // Sky (Desc)
+                            '#EF4444', // Red (Fast Action)
+                            '#F59E0B'  // Amber (Slow Action)
+                        ],
+                        borderRadius: 6,
+                        borderSkipped: false,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `Multiplier: ${context.raw}x`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Time Weight (1.0 = Realtime)' },
+                            grid: { color: 'rgba(148, 163, 184, 0.1)' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>

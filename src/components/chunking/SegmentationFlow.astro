@@ -1,0 +1,69 @@
+---
+// Segmentation Logic Flowchart
+---
+<div class="bg-slate-50 dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 md:p-12 my-8 not-prose">
+    <div class="text-center mb-12">
+        <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-2">Segmentation Logic Flow</h3>
+        <p class="text-slate-500 dark:text-slate-400">Decision tree for atomic scene generation</p>
+    </div>
+
+    <div class="max-w-3xl mx-auto flex flex-col items-center">
+        <!-- Step 1: Input -->
+        <div class="mb-2">
+            <div class="flow-node w-64 text-center border-l-4 border-slate-500 bg-white dark:bg-black border dark:border-slate-700 p-5 rounded-xl shadow-md">
+                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">INPUT</div>
+                <div class="font-bold text-slate-800 dark:text-white">Raw Text Block</div>
+            </div>
+        </div>
+        <div class="arrow-down text-slate-300 dark:text-slate-600 text-lg">↓</div>
+
+        <!-- Step 2: Semantic Scan -->
+        <div class="mb-2">
+            <div class="flow-node w-64 text-center border-l-4 border-sky-500 bg-white dark:bg-black border dark:border-slate-700 p-5 rounded-xl shadow-md">
+                <div class="text-[10px] font-bold text-sky-500 uppercase tracking-wider">SCANNING</div>
+                <div class="font-bold text-slate-800 dark:text-white text-sm">Semantic Boundary Detection</div>
+                <div class="text-xs text-slate-500 mt-1 font-mono">(\n\n, ".", "!")</div>
+            </div>
+        </div>
+        <div class="arrow-down text-slate-300 dark:text-slate-600 text-lg">↓</div>
+
+        <!-- Step 3: Duration Check (Split) -->
+        <div class="grid grid-cols-2 gap-4 relative w-full max-w-lg">
+            <!-- Logic Gate Visual -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-full flex items-center justify-center font-bold text-xs z-20 shadow-sm text-slate-600 dark:text-slate-300">?</div>
+
+            <!-- Left: Keep -->
+            <div class="flow-node text-center border-t-4 border-green-500 bg-white dark:bg-black border dark:border-slate-700 p-5 rounded-xl shadow-md">
+                <div class="text-[10px] font-bold text-green-600 dark:text-green-400 uppercase tracking-wider">&lt; 8 Seconds</div>
+                <div class="font-bold text-slate-800 dark:text-white mt-1 text-sm">Append Next Unit</div>
+            </div>
+
+            <!-- Right: Split -->
+            <div class="flow-node text-center border-t-4 border-amber-500 bg-white dark:bg-black border dark:border-slate-700 p-5 rounded-xl shadow-md">
+                <div class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">&gt; 8 Seconds</div>
+                <div class="font-bold text-slate-800 dark:text-white mt-1 text-sm">Force Split</div>
+                <div class="text-[10px] text-slate-500 mt-1">at Semantic Boundary</div>
+            </div>
+        </div>
+        <div class="arrow-down text-slate-300 dark:text-slate-600 text-lg">↓</div>
+
+        <!-- Step 4: Coherence -->
+        <div class="w-full max-w-sm">
+            <div class="flow-node text-center border-b-4 border-teal-500 bg-teal-50 dark:bg-teal-900/10 border border-teal-100 dark:border-teal-900/30 p-5 rounded-xl shadow-md">
+                <div class="text-[10px] font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider">SNOOPIEST AGENT CHECK</div>
+                <div class="font-bold text-slate-800 dark:text-white text-sm">Micro-Cliffhanger Heuristic</div>
+                <p class="text-[10px] text-slate-600 dark:text-slate-400 mt-2 leading-snug">
+                    Ensures split happens on "High Entropy" tokens (rising action) to maintain engagement.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .arrow-down {
+        display: flex;
+        justify-content: center;
+        margin: 0.25rem 0;
+    }
+</style>

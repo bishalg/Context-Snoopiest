@@ -1,33 +1,19 @@
 export const SITE = {
-  title: "Astro Design System",
-  description: "Astro theme to build your design system fast.",
+  title: "Context-Snoopiest",
+  description: "AI-Driven Narrative to Video Architecture",
   defaultLanguage: "en_US",
-  twitter: "@jordienr",
-  github: "jordienr",
-  linkedin: "linkedinUsername",
-};
-
-export const OPEN_GRAPH = {
-  image: {
-    src: "",
-    alt: "",
-  },
-  twitter: "",
 };
 
 export const SIDEBAR = [
-  { text: "Core", header: true },
-  { text: "Introduction", link: "/core/introduction" },
-  { text: "Colors", link: "/core/colors" },
-  { text: "Typography", link: "/core/typography" },
-  { text: "Shadows", link: "/core/shadows" },
-
-  { text: "Components", header: true },
-  { text: "Buttons", link: "/components/buttons" },
-  { text: "Input", link: "/components/input" },
-  { text: "Status pills", link: "/components/status-pill" },
-  { text: "Table", link: "/components/table" },
-
-  { text: "Patterns", header: true },
-  { text: "Introduction", link: "/patterns/introduction" },
+  { text: "Overview", header: true },
+  { text: "Introduction", link: "/" },
+  { text: "System Architecture", link: "/architecture" },
+  { text: "Core Engine", header: true },
+  { text: "Chunking Strategy", link: "/chunking" },
+  { text: "Context Engine", link: "/context-management" },
+  { text: "Character Consistency", link: "/character-consistency" },
+  { text: "Implementation", header: true },
+  { text: "Workflows", link: "/workflows" },
+  { text: "Agentic Workflow", link: "/agentic-workflow" },
+  { text: "Roadmap", link: "/roadmap" },
 ];

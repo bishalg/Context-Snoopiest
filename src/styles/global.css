@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-main: #f8fafc;
+    --text-main: #0f172a;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --accent: #0891b2;
+  }
+
+  .dark {
+    --bg-main: #020617;
+    --text-main: #f1f5f9;
+    --glass-bg: rgba(15, 23, 42, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --accent: #22d3ee;
+  }
+
+  body {
+    @apply antialiased transition-colors duration-300;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    background-image:
+      radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.1) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border-color: var(--glass-border);
+    @apply border shadow-sm;
+  }
+
+  .glass-nav {
+    @apply sticky top-0 z-50 backdrop-blur-xl border-b;
+    background-color: var(--glass-bg);
+    border-color: var(--glass-border);
+  }
+
+  /* Improved Prose Styling */
+  .prose {
+    @apply max-w-none;
+    --tw-prose-body: var(--text-main);
+    --tw-prose-headings: var(--text-main);
+    --tw-prose-links: var(--accent);
+    --tw-prose-bold: var(--text-main);
+    --tw-prose-counters: var(--text-main);
+    --tw-prose-bullets: var(--text-main);
+    --tw-prose-hr: var(--glass-border);
+    --tw-prose-quotes: var(--text-main);
+    --tw-prose-quote-borders: var(--accent);
+    --tw-prose-captions: var(--text-main);
+    --tw-prose-code: var(--accent);
+    --tw-prose-pre-bg: var(--glass-bg);
+    --tw-prose-th-borders: var(--glass-border);
+    --tw-prose-td-borders: var(--glass-border);
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3 {
+    @apply mt-8 mb-4 tracking-tight;
+  }
+
+  .prose p {
+    @apply mt-4 mb-6 leading-relaxed;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply my-6 pl-6;
+  }
+
+  .prose li {
+    @apply mt-2 mb-2;
+  }
+
+  .prose table {
+    @apply w-full border-collapse my-8 text-sm;
+  }
+
+  .prose th,
+  .prose td {
+    @apply border p-3 text-left;
+    border-color: var(--glass-border);
+  }
+
+  .prose code {
+    @apply px-1 py-0.5 rounded bg-slate-200/50 dark:bg-slate-800/50 font-mono text-[0.9em];
+  }
+}

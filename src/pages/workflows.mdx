@@ -1,0 +1,121 @@
+---
+layout: ../layouts/DocLayout.astro
+title: Workflow Integration
+description: Data Flow and Execution Pipeline
+hero: true
+---
+import PipelineStep from '../components/workflows/PipelineStep.astro';
+
+The workflow is a linear pipeline with recursive feedback loops, designed to move from raw text to structured video directives.
+
+## Integration Flow
+
+The following steps outline the transformation of a raw text chapter into a series of production-ready video generation prompts and metadata.
+
+### Step 1: The Profiler (Pre-processing)
+
+The first stage builds the "Story Bible." An agent rips through the full text to identify every recurring entity and location.
+
+<PipelineStep 
+    step="1" 
+    title="The Profiler" 
+    phase="Pre-processing Phase"
+    input="Full Book Text"
+    action="Identify Characters & Locations"
+    output={["characters.json", "locations.json"]}
+    color="amber"
+/>
+
+### Step 2: The Chunking Engine
+
+Once assets are defined, the chunking engine segments the text into 8-10 second beats, weighting them based on narrative density.
+
+<PipelineStep 
+    step="2" 
+    title="The Chunking Engine" 
+    phase="Segmentation Phase"
+    input="Chapter_01.md"
+    action="Time-Weighted Segmentation"
+    output="Chapter_01_chunks.json"
+    color="sky"
+/>
+
+### Step 3: The Snoopiest Loop
+
+This is the core context enrichment cycle. For every chunk, the agent queries the "Backbone" to inject character details and state information.
+
+<PipelineStep 
+    step="3" 
+    title="The Snoopiest Loop" 
+    phase="Context Enrichment"
+    input="Chunk N + Context Backbone"
+    action="Enrich with visual descriptors"
+    output="Enriched Prompt N"
+    color="teal"
+/>
+
+### Step 4: The Director Agent
+
+The Director translates narrative prose into technical camera direction (Shot types, angles, lens info).
+
+<PipelineStep 
+    step="4" 
+    title="The Director Agent" 
+    phase="Technical Translation"
+    input="Enriched Prompt N"
+    action="Generate Camera Directives"
+    output="directives/Scene_01_Seg_N.json"
+    color="indigo"
+/>
+
+### Step 5: Context Update
+
+Finally, the system compresses the events of the current chunk to update the Level 1/2 summaries for future retrievals.
+
+<PipelineStep 
+    step="5" 
+    title="Context Update" 
+    phase="Closing the Loop"
+    input="Chunk N Narrative"
+    action="Recursive Summarization"
+    output="Updated Backbone"
+    color="emerald"
+/>
+
+---
+
+## Agentic Workflow Expansion: The "Production Studio" Model
+
+### 1. The Missing Link: Autonomy & Feedback
+
+Our initial architecture defined a linear pipeline—a conveyor belt. While efficient, it lacks the resilience of a true Agentic AI system. In a real-world deployment, the system must handle ambiguity, errors, and parallel tasks without human intervention. The "Missing Link" is **The Feedback Loop (The Critic)** and **Asynchronous Orchestration**.
+
+### 2. The Core Agentic Roles
+
+Instead of a single "Process," we define distinct autonomous agents functioning as a digital film crew.
+
+#### A. The Showrunner (Global Orchestrator)
+**Role**: The "Brain" of the operation.
+*   **Agentic Action**: Scans the book. Assigns "Job Tickets" to other agents.
+*   **Crucial Capability**: **Dynamic Re-prioritization**. If Chapter 3 reveals a new main character, it pauses the Scene Generators.
+
+#### B. The Art Department (Parallel Pre-Production)
+**Role**: Visual Asset Generators.
+*   **Workflow**: Casting Agent generates Reference Images; Location Scout generates Environment LoRAs.
+
+#### C. The Writers' Room (Context Swarm)
+**Role**: The "Snoopiest" Implementation.
+*   **Agentic Action**: Parallel summarization with cross-chapter reconciliation.
+
+#### D. The QA Critic (The Feedback Loop)
+**Role**: The "Editor."
+*   **Workflow**: Rejecting bad prompts and forcing retries until output matches character state.
+
+### 4. Summary of Improvements
+
+| Feature | Linear Pipeline (Old) | Agentic Swarm (New) |
+| :--- | :--- | :--- |
+| **Processing** | Sequential (Slow) | Asynchronous / Parallel (Fast) |
+| **Error Handling** | Fails at end of pipe | Self-corrects mid-stream (Critic) |
+| **Context** | Passive Retrieval | Active Reconciliation (Showrunner) |
+| **Cost** | Wasted on bad prompts | Saved by QA rejection before render |

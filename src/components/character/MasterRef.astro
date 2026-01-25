@@ -1,0 +1,35 @@
+---
+// Character Consistency - Master Reference Generation
+---
+<div class="flex justify-center my-8 not-prose">
+    <div class="node w-full max-w-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 border-t-4 border-t-amber-500 rounded-xl p-8 shadow-xl transition-transform hover:-translate-y-1">
+        <div class="flex flex-col md:flex-row gap-8 items-center">
+            <div class="flex-1">
+                <h3 class="font-bold text-slate-800 dark:text-white text-lg">1. Master Reference Generation</h3>
+                <div class="text-[10px] text-amber-600 dark:text-amber-400 font-black uppercase mb-3 tracking-widest">The "Holy Grail" Seed</div>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Before any story generation, we generate a locked set of visual references using a specific seed.
+                </p>
+            </div>
+            
+            <!-- Visual: The 3 Angles -->
+            <div class="flex gap-3">
+                {['Front', 'Side', '45°'].map(angle => (
+                    <div class="w-16 h-24 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg p-2 flex flex-col items-center">
+                        <div class="ref-frame w-full h-full bg-slate-200 dark:bg-slate-800 rounded-md relative overflow-hidden flex items-center justify-center">
+                            <div class="w-6 h-6 bg-slate-400 dark:bg-slate-600 rounded-full mb-1"></div>
+                            <div class="absolute bottom-0 w-10 h-6 bg-slate-400 dark:bg-slate-600 rounded-full translate-y-3"></div>
+                        </div>
+                        <span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 mt-2 uppercase">{angle}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .node {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+</style>

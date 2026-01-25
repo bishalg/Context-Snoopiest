@@ -1,0 +1,177 @@
+---
+// Conveyor Belt Diagram Component
+---
+<div class="conveyor-belt-container my-16 not-prose font-sans">
+    <div class="max-w-6xl mx-auto">
+        
+        <!-- Title -->
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-black text-slate-800 dark:text-white tracking-tight">THE CONVEYOR BELT</h2>
+            <p class="text-slate-500 dark:text-slate-400 mt-2">Snoopiest Context Management Metaphor</p>
+        </div>
+
+        <div class="relative py-12">
+            
+            <!-- CENTRAL COMPONENT: THE FILING CABINET (Context Backbone) -->
+            <div class="absolute left-1/2 -translate-x-1/2 -top-4 w-full max-w-[400px] z-30">
+                <div class="cabinet-container bg-white dark:bg-slate-900 border-2 border-slate-400 dark:border-white/20 rounded-lg shadow-xl overflow-hidden">
+                    <div class="bg-slate-800 dark:bg-black text-white text-center py-2 text-xs font-bold uppercase tracking-wider">
+                        Context Backbone (Shared Memory)
+                    </div>
+                    <div class="cabinet-drawer flex items-center gap-3 p-3 border-b border-slate-200 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                        <div class="cabinet-handle w-5 h-1 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
+                        <div class="text-xs font-mono text-slate-600 dark:text-slate-400">📁 assets/profiles/characters.json</div>
+                    </div>
+                    <div class="cabinet-drawer flex items-center gap-3 p-3 border-b border-slate-200 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                        <div class="cabinet-handle w-5 h-1 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
+                        <div class="text-xs font-mono text-slate-600 dark:text-slate-400">📁 assets/profiles/locations.json</div>
+                    </div>
+                    <div class="cabinet-drawer flex items-center gap-3 p-3 bg-teal-50/50 dark:bg-teal-900/20 hover:bg-teal-100/50 dark:hover:bg-teal-900/30 transition-colors">
+                        <div class="cabinet-handle w-5 h-1 bg-teal-300 dark:bg-teal-600 rounded-full"></div>
+                        <div class="text-xs font-mono text-teal-700 dark:text-teal-400 font-bold">📝 Current_Story_State.index</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- THE CONVEYOR BELT (Grid Layout for Stations) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative mt-32">
+
+                <!-- STATION A: CONTEXT INJECTOR -->
+                <div class="station station-a group bg-white dark:bg-slate-900 rounded-xl p-6 shadow-xl border-t-4 border-sky-500 relative transition-transform hover:-translate-y-2">
+                    <!-- Robot Arm -->
+                    <div class="absolute w-1 bg-slate-400 dark:bg-white/10 h-24 -top-24 left-1/2 -rotate-12 origin-bottom border-r-2 border-dashed border-sky-300 dark:border-sky-900/50"></div>
+                    
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-400 p-2 rounded-lg font-bold text-xl w-10 h-10 flex items-center justify-center">A</div>
+                        <div class="text-[10px] font-black text-sky-500 dark:text-sky-400 uppercase tracking-widest">Context Injector</div>
+                    </div>
+                    
+                    <h3 class="font-bold text-slate-800 dark:text-white mb-2">The "Stapler"</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
+                        Receives raw text chunk. Reaches into the cabinet to find matching <strong>Character Profiles</strong>.
+                    </p>
+
+                    <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
+                        <div class="text-[10px] text-slate-400 font-black uppercase mb-3 tracking-wider">Action:</div>
+                        <div class="flex items-center justify-center gap-3">
+                            <div class="w-8 h-10 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/20 rounded shadow-sm"></div>
+                            <span class="text-xl font-bold text-sky-400">+</span>
+                            <div class="w-8 h-10 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-900/30 rounded shadow-sm"></div>
+                            <span class="text-xl font-bold text-slate-400">=</span>
+                            <div class="relative">
+                                <div class="w-8 h-10 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/20 rounded shadow-sm"></div>
+                                <div class="absolute -right-2 -bottom-2 w-4 h-4 bg-amber-400 rounded-full border-2 border-white dark:border-slate-900 shadow"></div>
+                            </div>
+                        </div>
+                        <div class="text-[10px] text-sky-600 dark:text-sky-400 font-mono mt-4 text-center">-> Enriched_Chunk</div>
+                    </div>
+                </div>
+
+                <!-- STATION B: THE DIRECTOR -->
+                <div class="station station-b group bg-white dark:bg-slate-900 rounded-xl p-6 shadow-xl border-t-4 border-amber-500 relative transition-transform hover:-translate-y-2">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400 p-2 rounded-lg font-bold text-xl w-10 h-10 flex items-center justify-center">B</div>
+                        <div class="text-[10px] font-black text-amber-500 dark:text-amber-400 uppercase tracking-widest">The Director</div>
+                    </div>
+
+                    <h3 class="font-bold text-slate-800 dark:text-white mb-2">Translation Bot</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
+                        Reads the enriched chunk. Ignores narrative fluff. Writes technical <strong>Camera Directives</strong>.
+                    </p>
+
+                    <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
+                        <div class="text-[10px] text-slate-400 font-black uppercase mb-3 tracking-wider">Output:</div>
+                        <div class="font-mono text-[10px] text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded border border-indigo-100 dark:border-indigo-900/30">
+                            {'{'}<br/>
+                            &nbsp;&nbsp;"shot": "Medium",<br/>
+                            &nbsp;&nbsp;"move": "Pan Right",<br/>
+                            &nbsp;&nbsp;"focus": "Scar"<br/>
+                            {'}'}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STATION C: THE ARCHIVIST -->
+                <div class="station station-c group bg-white dark:bg-slate-900 rounded-xl p-6 shadow-xl border-t-4 border-teal-500 relative transition-transform hover:-translate-y-2">
+                    <!-- Robot Arm -->
+                    <div class="absolute w-1 bg-slate-400 dark:bg-white/10 h-24 -top-24 left-1/2 rotate-12 origin-bottom border-l-2 border-dashed border-teal-300 dark:border-teal-900/50"></div>
+
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-400 p-2 rounded-lg font-bold text-xl w-10 h-10 flex items-center justify-center">C</div>
+                        <div class="text-[10px] font-black text-teal-500 dark:text-teal-400 uppercase tracking-widest">The Archivist</div>
+                    </div>
+
+                    <h3 class="font-bold text-slate-800 dark:text-white mb-2">Memory Keeper</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
+                        Summarizes the chunk. Creates a new <strong>Index Card</strong> and files it back in the Cabinet.
+                    </p>
+
+                    <div class="bg-slate-50 dark:bg-white/5 p-4 rounded-lg border border-slate-200 dark:border-white/10">
+                        <div class="text-[10px] text-slate-400 font-black uppercase mb-3 tracking-wider">Update:</div>
+                        <div class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden mb-2">
+                            <div class="h-full bg-teal-500 w-3/4 animate-pulse"></div>
+                        </div>
+                        <div class="text-[10px] text-teal-600 dark:text-teal-400 font-mono mt-3 text-center tracking-tight">Context Window Optimized</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- The Physical Belt Track Visual -->
+            <div class="conveyor-track h-4 bg-slate-200 dark:bg-white/5 rounded-full mt-12 overflow-hidden relative border-t border-b border-slate-300 dark:border-white/10 shadow-inner">
+                 <div class="absolute inset-x-0 h-full bg-repeating-linear-gradient-conveyor animate-conveyor"></div>
+            </div>
+            
+            <!-- Flow Arrows -->
+            <div class="absolute top-[65%] left-[31%] text-slate-300 dark:text-white/10 text-3xl font-black tracking-[-0.2em]">>>></div>
+            <div class="absolute top-[65%] right-[31%] text-slate-300 dark:text-white/10 text-3xl font-black tracking-[-0.2em]">>>></div>
+
+        </div>
+
+        <!-- Legend / Key -->
+        <div class="mt-20 flex flex-wrap justify-center gap-12 text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
+            <div class="flex items-center gap-3">
+                <span class="w-3 h-3 rounded-full bg-sky-500 shadow-lg shadow-sky-500/20"></span>
+                <span>Context Retrieval</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="w-3 h-3 rounded-full bg-amber-500 shadow-lg shadow-amber-500/20"></span>
+                <span>Video Generation</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="w-3 h-3 rounded-full bg-teal-500 shadow-lg shadow-teal-500/20"></span>
+                <span>Context Update</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .bg-repeating-linear-gradient-conveyor {
+        background-image: repeating-linear-gradient(
+            90deg,
+            #d1d5db,
+            #d1d5db 10px,
+            #e5e7eb 10px,
+            #e5e7eb 20px
+        );
+    }
+    .dark .bg-repeating-linear-gradient-conveyor {
+        background-image: repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,0.05),
+            rgba(255,255,255,0.05) 10px,
+            transparent 10px,
+            transparent 20px
+        );
+    }
+    
+    @keyframes conveyor {
+        from { background-position: 0 0; }
+        to { background-position: 40px 0; }
+    }
+    .animate-conveyor {
+        animation: conveyor 2s linear infinite;
+    }
+</style>

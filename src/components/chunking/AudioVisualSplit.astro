@@ -1,0 +1,41 @@
+---
+// Audio-Visual Split Visualization
+---
+<div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-white/5 my-8 not-prose">
+    <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-4">The Audio-Visual Split</h3>
+    <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">
+        Handling "Talky" scenes where dialogue exceeds the visual constraint.
+    </p>
+
+    <!-- Visualization of Split -->
+    <div class="space-y-6">
+        <!-- Audio Stream -->
+        <div>
+            <div class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-wider">AUDIO STREAM (Continuous)</div>
+            <div class="w-full h-10 bg-slate-100 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center px-3 relative overflow-hidden">
+                <div class="absolute left-0 top-0 h-full w-[100%] bg-indigo-100 dark:bg-indigo-900/30"></div>
+                <span class="relative z-10 text-xs text-indigo-800 dark:text-indigo-300 font-mono overflow-hidden whitespace-nowrap text-ellipsis">"The wind roared, and he whispered..." (12s)</span>
+            </div>
+        </div>
+
+        <!-- Connection Lines -->
+        <div class="flex justify-center gap-24 text-slate-300 dark:text-slate-600 text-lg -my-2">
+            <span>↓</span><span>↓</span>
+        </div>
+
+        <!-- Visual Stream (Split) -->
+        <div>
+            <div class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-wider">VISUAL STREAM (Split)</div>
+            <div class="flex gap-2">
+                <div class="w-1/2 h-20 bg-sky-50 dark:bg-sky-900/10 border border-sky-200 dark:border-sky-900/30 rounded-lg p-3 flex flex-col justify-between">
+                    <span class="text-[10px] font-bold text-sky-600 dark:text-sky-400">CLIP A (6s)</span>
+                    <span class="text-[10px] text-slate-600 dark:text-slate-400 leading-tight">Man stands on cliff...</span>
+                </div>
+                <div class="w-1/2 h-20 bg-sky-50 dark:bg-sky-900/10 border border-sky-200 dark:border-sky-900/30 rounded-lg p-3 flex flex-col justify-between">
+                    <span class="text-[10px] font-bold text-sky-600 dark:text-sky-400">CLIP B (6s)</span>
+                    <span class="text-[10px] text-slate-600 dark:text-slate-400 leading-tight">Close up on lips...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

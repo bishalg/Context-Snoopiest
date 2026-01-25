@@ -1,9 +1,7 @@
 {
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "target": "es2020",
-    "module": "esnext",
-    "jsx": "preserve"
-  },
-  "moduleResolution": "node",
-  "types": ["vite/client"]
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
 }

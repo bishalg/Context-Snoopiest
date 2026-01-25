@@ -1,0 +1,45 @@
+---
+layout: ../layouts/DocLayout.astro
+title: "Context Management Architecture"
+description: "The \"Context-Snoopiest\" Engine and theoretical memory hierarchy"
+---
+import ConveyorBelt from '../components/ConveyorBelt.astro';
+import ComparisonMatrix from '../components/ComparisonMatrix.astro';
+
+## Agentic AI & Context Management Architecture
+
+This section details the core innovation of the project: the **Context-Snoopiest** architecture. This system manages the trade-off between the infinite depth of a novel and the finite constraints of the LLM context window.
+
+### The Problem: Why Standard RAG Fails for Narrative
+
+Retrieval-Augmented Generation (RAG) is designed for fact retrieval, not causal narrative logic. A novel is a chain of events where "State" (who has what, who is where) matters more than semantic similarity.
+
+<ComparisonMatrix />
+
+---
+
+## The "Snoopiest" Hierarchical Strategy
+
+To solve the narrative decay problem, we implement a recursive, tree-structured memory system that ensures the agent never loses the "thread" of the story.
+
+<ConveyorBelt />
+
+### Memory Tier Breakdown
+
+#### Level 0: The Working Window
+The raw text of the current scene (approx. 2000 tokens). This is where the high-resolution action takes place.
+
+#### Level 1: Scene Summaries
+As a scene completes, it is compressed into a dense factual summary (50-100 words), capturing state changes rather than prose.
+
+#### Level 2: Chapter Synthesis
+Once a chapter is complete, Level 1 summaries are synthesized into a mid-term memory layer that removes transient details.
+
+#### Level 3: The Narrative Backbone
+The "Long-Term Memory" layer. A continuously updated document tracking global arcs across the entire 100,000+ word novel.
+
+---
+
+### Proactive Context Management
+
+Unlike systems that simply slide a window (dropping tokens by age), Context-Snoopiest utilizes **Semantic Retention**. The agent explicitly decides *what* to keep. If a vital plot point occurs on Page 1, it is "locked" into the Level 3 backbone for the duration of the project.
