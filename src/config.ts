@@ -17,6 +17,6 @@ export const SIDEBAR = [
   { text: "Agentic Workflow", link: "/agentic-workflow" },
   { text: "Roadmap", link: "/roadmap" },
   { text: "Technology", header: true },
-  { text: "Tech Stack", link: "/tech-stack" },
-  { text: "Tech Stack (Visual)", link: "/tech-visual" },
+  { text: "Tech Stack Flow", link: "/tech-visual" },
+  { text: "Stack Implementation", link: "/tech-stack" },
 ];

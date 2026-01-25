@@ -1,43 +1,47 @@
 ---
 layout: ../layouts/DocLayout.astro
-title: "Technical Stack & Implementation"
+title: "Stack Implementation"
 description: "The 'Snoopiest' Engine: A Hybrid Monorepo Architecture"
 hero: true
 ---
 
-## The "Snoopiest" Engine
+## Stack Implementation
 
-The **Context-Snoopiest** application is architected as a **Hybrid Monorepo**, ensuring seamless state management between the web interface and the heavy processing agents. This "Best-in-Class" modular approach prevents vendor lock-in and ensures each component differs to the specialized tool best suited for the task.
+This section outlines best-in-class, open-source technologies used for each layer of the Snoopiest architecture. Each selection is optimized for performance, scalability, and compatibility with modern frameworks like Next.js 15 and React 19.
 
-### 1. Core Application Stack
-
-| Component | Technology | Rationale |
-| :--- | :--- | :--- |
-| **Frontend / UI** | **Next.js 14 (App Router)** | Server Actions allow us to trigger complex Python scripts directly from the UI without a separate API layer for simple tasks. |
-| **Styling** | **Tailwind CSS + ShadcnUI** | Provides the "Studio" dashboard feel with rapid development capabilities. |
-| **Orchestration** | **Node.js (BullMQ + Redis)** | The "Showrunner." Manages persistent job queues. Since video generation takes minutes, we cannot use simple HTTP requests. |
-| **AI Logic Backend** | **Python (FastAPI)** | The "Workers." Python is non-negotiable for PyTorch, Diffusers, and LangChain integrations. |
-| **Communication** | **Redis Pub/Sub** | The Node.js orchestrator talks to Python workers via Redis. |
-| **Database** | **Supabase (PostgreSQL)** | Stores the "World State," Character definitions (JSONB), and job history. |
-| **Vector Store** | **pgvector** | Integrated inside Supabase for RAG context retrieval. |
+| Layer | Primary Recommendation | Rationale & Key Features | Strong Alternatives |
+| :--- | :--- | :--- | :--- |
+| **Monorepo Tooling** | **NX** | Best for complex, polyglot projects. Offers a rich plugin ecosystem (including Python), advanced dependency graphing, and robust caching. | Turborepo: Lightweight, optimized for JS/TS. |
+| **Web Framework** | **Next.js** | The industry standard for building full-stack React applications. Providing optimized performance with SSR, SSG, and React Server Components. | Remix, Astro |
+| **Universal Framework** | **Expo** | Build for Web, iOS, and Android from a single TypeScript codebase. Features a powerful CLI and OTA updates. | Tamagui |
+| **API Layer** | **tRPC** | Enables end-to-end typesafe APIs with zero code generation. Unbeatable DX in a full-stack TS monorepo. | GraphQL, REST (OpenAPI) |
+| **Database** | **PostgreSQL** | Powerful, open-source relational database known for reliability and performance at scale. | MySQL, SQLite |
+| **Database ORM** | **Drizzle ORM** | Lightweight, performant, and type-safe SQL query builder with SQL-like syntax. | Prisma |
+| **Authentication** | **better-auth** | Comprehensive, framework-agnostic auth for TypeScript. Self-hostable and avoids vendor lock-in. | Supabase Auth, Clerk |
+| **AI/ML Services** | **FastAPI (Python)** | High-performance Python web framework ideal for building AI/ML APIs and leveraging Python's ML ecosystem. | Flask, Django Ninja |
+| **Headless CMS** | **PayloadCMS** | Developer-first, open-source headless CMS built with TS and React. Deep Next.js integration. | Strapi, Directus |
+| **Client Data Fetching** | **TanStack Query** | De-facto standard for managing server state in React. Provides caching and background refetching. | SWR, Apollo Client |
+| **UI Data Grids** | **TanStack Table** | Headless UI library for building powerful and fully customizable data tables and grids. | AG Grid |
+| **E2E Testing** | **Playwright** | Modern, reliable E2E testing framework with true cross-browser support and auto-waits. | Cypress |
+| **Component Testing** | **Storybook** | Essential tool for developing UI components in isolation. Serves as a living documentation. | Ladle |
 
 ---
 
-### 2. The AI Model Zoo
+### The AI Model Zoo (Execution Layer)
 
 We utilize a Best-in-Class Modular Approach rather than a single provider. This prevents vendor lock-in and allows upgrading specific components (e.g., swapping the Image Generator without breaking the Text Analyzer).
 
 | Component | Model Selected | Provider | Rationale |
 | :--- | :--- | :--- | :--- |
 | **Logic / Text** | **Claude 3.5 Sonnet** | Anthropic API | Superior reasoning capabilities and larger context window (200k) for analyzing full chapters. |
-| **Image Gen** | **Flux.1 [Dev]** | Replicate / Fal.ai | Currently beats Midjourney in prompt adherence and text rendering. Essential for consistent character faces. |
-| **Video Gen** | **Luma Dream Machine** | Luma API | High temporal coherence. We rely on Luma's "Keyframe" feature (Start + End Image) to control 8-second clips. |
-| **Audio / TTS** | **ElevenLabs (Turbo v2)** | ElevenLabs API | Low latency and highest emotional range. Supports "Speech-to-Speech" for directing tone. |
-| **Lip Sync** | **SyncLabs / SadTalker** | API / Local | Decoupled lip-syncing ensures we can perfect the audio performance before mapping it to the video. |
+| **Image Gen** | **Flux.1 [Dev]** | Replicate / Fal.ai | Currently beats Midjourney in prompt adherence and text rendering. |
+| **Video Gen** | **Luma Dream Machine** | Luma API | High temporal coherence. Relies on "Keyframe" feature for control. |
+| **Audio / TTS** | **ElevenLabs (Turbo v2)** | ElevenLabs API | Low latency and highest emotional range. |
+| **Lip Sync** | **SyncLabs / SadTalker** | API / Local | Decoupled lip-syncing ensures we can perfect audio performance before mapping to video. |
 
 ---
 
-### 3. Advanced Document Management
+### Advanced Document Management
 
 We treat the screenplay not just as text, but as **executable documentation**.
 
@@ -55,7 +59,7 @@ We treat the screenplay not just as text, but as **executable documentation**.
 
 ---
 
-### 4. Audio & Lip Sync Architecture
+### Audio & Lip Sync Architecture
 
 Professional production requires **Decoupling**. We generally avoid "all-in-one" generators to maintain granular control over performance.
 
