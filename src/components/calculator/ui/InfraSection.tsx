@@ -11,22 +11,22 @@ const ExternalLink = ({ href }: { href: string }) => (
 );
 
 const SectionTitle = ({ title, icon, color = "cyan" }: any) => (
-    <div className={`flex items-center gap-3 mb-6 mt-8 pb-3 border-b border-white/10 text-${color}-400`}>
+    <div className={`flex items-center gap-3 mb-6 mt-8 pb-3 border-b border-black/5 dark:border-white/10 text-${color}-600 dark:text-${color}-400`}>
         <div className="flex-none flex items-center justify-center w-6 h-6">{icon}</div>
         {/* Removed manual pt-0.5 to rely on pure flex centering */}
-        <h3 className="text-xl font-bold text-white tracking-wide">{title}</h3>
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-wide">{title}</h3>
     </div>
 );
 
 const ProviderSelector = ({ options, selected, onChange }: any) => (
-    <div className="flex gap-2 mb-3 bg-black/40 p-1 rounded-lg w-full">
+    <div className="flex gap-2 mb-3 bg-black/5 dark:bg-black/40 p-1 rounded-lg w-full">
         {options.map((opt: any) => (
             <button
                 key={opt.value}
                 onClick={() => onChange(opt.value)}
                 className={`flex-1 py-1.5 px-2 text-[10px] sm:text-xs font-bold uppercase rounded-md transition-all ${selected === opt.value
-                    ? 'bg-slate-700 text-white shadow-sm border border-slate-500'
-                    : 'text-slate-500 hover:text-slate-300 hover:bg-white/5'
+                    ? 'bg-white dark:bg-slate-700 text-cyan-600 dark:text-white shadow-md border border-cyan-500/20 dark:border-slate-500'
+                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-white/50 dark:hover:bg-white/5'
                     }`}
             >
                 {opt.label}
@@ -41,7 +41,7 @@ const CustomSelect = ({ value, onChange, options, suffix = "" }: any) => (
         <select
             value={value}
             onChange={onChange}
-            className="w-full bg-black/40 border border-white/10 rounded-lg py-3 pl-3 pr-10 text-slate-200 focus:border-cyan-500 outline-none appearance-none transition-colors hover:bg-black/60"
+            className="w-full bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/10 rounded-lg py-3 pl-3 pr-10 text-slate-700 dark:text-slate-200 focus:border-cyan-500 outline-none appearance-none transition-colors hover:bg-black/10 dark:hover:bg-black/60"
         >
             {options.map(([key, val]: any) => (
                 <option key={key} value={key}>
@@ -49,7 +49,7 @@ const CustomSelect = ({ value, onChange, options, suffix = "" }: any) => (
                 </option>
             ))}
         </select>
-        <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500 group-hover:text-cyan-400 transition-colors">
+        <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-400 dark:text-slate-500 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
@@ -72,9 +72,9 @@ export function InfraSection({ state, setters, helpers }: any) {
             <div className="flex flex-col gap-8">
 
                 {/* 1. Hosting Provider */}
-                <div className="relative border-l-2 border-slate-700 pl-4">
+                <div className="relative border-l-2 border-slate-200 dark:border-slate-700 pl-4">
                     <div className="flex justify-between mb-2">
-                        <label className="text-sm font-bold text-white">Compute & Hosting</label>
+                        <label className="text-sm font-bold text-slate-900 dark:text-white">Compute & Hosting</label>
                         <div className="flex items-center">
                             <ExternalLink href={PRICING.infra.hosting[hostingProvider as keyof typeof PRICING.infra.hosting].link} />
                         </div>
@@ -103,18 +103,18 @@ export function InfraSection({ state, setters, helpers }: any) {
                     />
 
                     <div className="flex justify-end mt-2 text-xs items-center gap-1">
-                        <span className="text-slate-500 mr-1">Est. Cost:</span>
-                        <span className="text-cyan-400 font-mono flex items-center">
+                        <span className="text-slate-400 dark:text-slate-500 mr-1">Est. Cost:</span>
+                        <span className="text-cyan-600 dark:text-cyan-400 font-mono flex items-center font-bold">
                             <AnimatedCurrency value={getHostingPlan().price * (getHostingPlan().perSeat ? teamSize : 1)} />
-                            <span className="text-slate-500 ml-1">/mo</span>
+                            <span className="text-slate-400 dark:text-slate-500 ml-1">/mo</span>
                         </span>
                     </div>
                 </div>
 
                 {/* 2. Source Control */}
-                <div className="relative border-l-2 border-slate-700 pl-4">
+                <div className="relative border-l-2 border-slate-200 dark:border-slate-700 pl-4">
                     <div className="flex justify-between mb-2">
-                        <label className="text-sm font-bold text-white">Source Control</label>
+                        <label className="text-sm font-bold text-slate-900 dark:text-white">Source Control</label>
                         <div className="flex items-center">
                             <ExternalLink href={PRICING.infra.source[sourceProvider as keyof typeof PRICING.infra.source].link} />
                         </div>
@@ -139,18 +139,18 @@ export function InfraSection({ state, setters, helpers }: any) {
                     />
 
                     <div className="flex justify-end mt-2 text-xs items-center gap-1">
-                        <span className="text-slate-500 mr-1">Est. Cost:</span>
-                        <span className="text-cyan-400 font-mono flex items-center">
+                        <span className="text-slate-400 dark:text-slate-500 mr-1">Est. Cost:</span>
+                        <span className="text-cyan-600 dark:text-cyan-400 font-mono flex items-center font-bold">
                             <AnimatedCurrency value={getSourcePlan().price * (getSourcePlan().perSeat ? teamSize : 1)} />
-                            <span className="text-slate-500 ml-1">/mo</span>
+                            <span className="text-slate-400 dark:text-slate-500 ml-1">/mo</span>
                         </span>
                     </div>
                 </div>
 
                 {/* 3. Auth */}
-                <div className="relative border-l-2 border-slate-700 pl-4">
+                <div className="relative border-l-2 border-slate-200 dark:border-slate-700 pl-4">
                     <div className="flex justify-between mb-2">
-                        <label className="text-sm font-bold text-white">Authentication</label>
+                        <label className="text-sm font-bold text-slate-900 dark:text-white">Authentication</label>
                         <div className="flex items-center">
                             <ExternalLink href={PRICING.infra.auth[authProvider as keyof typeof PRICING.infra.auth]?.link || '#'} />
                         </div>
@@ -164,9 +164,9 @@ export function InfraSection({ state, setters, helpers }: any) {
                     />
 
                     <div className="flex justify-end mt-2 text-xs items-center gap-1">
-                        <span className="text-cyan-400 font-mono flex items-center">
+                        <span className="text-cyan-600 dark:text-cyan-400 font-mono flex items-center font-bold">
                             <AnimatedCurrency value={PRICING.infra.auth[authProvider as keyof typeof PRICING.infra.auth]?.price || 0} />
-                            <span className="text-slate-500 ml-1">/mo</span>
+                            <span className="text-slate-400 dark:text-slate-500 ml-1">/mo</span>
                         </span>
                     </div>
                 </div>

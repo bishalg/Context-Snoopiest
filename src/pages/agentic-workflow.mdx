@@ -1,9 +1,103 @@
 ---
 layout: ../layouts/DocLayout.astro
-title: "Agentic Workflow Swarm"
-description: "The Production Studio Model: Moving beyond linear pipelines to autonomous, parallel, and self-correcting workflows."
-hero: true
+title: "Agentic Workflow Orchestration"
+description: "Moving beyond linear pipelines to autonomous, parallel, and self-correcting multi-agent swarms."
+hero: false
 ---
-import AgenticSwarm from '../components/AgenticSwarm.astro';
+import LinearVsAgentic from '../components/workflow/LinearVsAgentic.astro';
+import ArchitectureMap from '../components/workflow/ArchitectureMap.astro';
+import MetricsCharts from '../components/workflow/MetricsCharts.astro';
+import CriticLoop from '../components/workflow/CriticLoop.astro';
 
-<AgenticSwarm />
+<div className="not-prose mb-12">
+    <div className="bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent border border-indigo-500/20 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-3xl -mr-32 -mt-32"></div>
+        <div className="relative z-10">
+            <h2 className="text-2xl md:text-3xl font-black text-slate-800 dark:text-white mb-8">Why Agentic?</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-slate-600 dark:text-slate-400 leading-relaxed">
+                
+                {/* 1. Top Left: Text Description (Old Way) */}
+                <div className="order-1">
+                    <p>
+                        Traditional video production pipelines are <strong>linear</strong> and <strong>fragile</strong>. A single error in scene generation ripples through the entire chain, requiring manual intervention. We call this "Scripted Automation".
+                    </p>
+                </div>
+
+                {/* 2. Top Right: Old Linear Pipe Card */}
+                <div className="order-2 bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 opacity-80 hover:opacity-100 transition-all shadow-sm hover:shadow-md group">
+                    <h3 className="font-bold text-slate-500 dark:text-slate-400 mb-6 flex items-center gap-3 text-xl group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors">
+                        <span className="text-3xl grayscale group-hover:grayscale-0 transition-all">⛓️</span> The Old Linear Pipe
+                    </h3>
+                    <div className="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+                        <div className="flex items-center gap-3"><div className="w-2.5 h-2.5 rounded-full bg-slate-400"></div>Sequential (Slow)</div>
+                        <div className="flex items-center gap-3"><div className="w-2.5 h-2.5 rounded-full bg-slate-400"></div>No Feedback Loop</div>
+                        <div className="flex items-center gap-3"><div className="w-2.5 h-2.5 rounded-full bg-slate-400"></div>Errors flow to output</div>
+                    </div>
+                </div>
+
+                {/* 3. Bottom Left: Agentic Swarm Card (Swapped Order for Desktop) */}
+                <div className="order-3 md:order-3 bg-white dark:bg-slate-900 p-8 rounded-2xl border-2 border-sky-500/50 hover:border-sky-500 shadow-xl shadow-sky-500/10 relative overflow-hidden group transition-all">
+                    <div className="absolute top-0 right-0 bg-sky-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-bl-xl shadow-md">NEW STANDARD</div>
+                    <h3 className="font-bold text-sky-600 dark:text-sky-400 mb-6 flex items-center gap-3 text-xl">
+                        <span className="text-3xl animate-bounce-slow">🐝</span> The Agentic Swarm
+                    </h3>
+                    <div className="space-y-4 text-sm text-slate-700 dark:text-slate-300">
+                        <div className="flex items-center gap-3"><div className="w-2.5 h-2.5 rounded-full bg-teal-500 shadow-sm shadow-teal-500/50"></div><strong>Parallel</strong> Asset Gen</div>
+                        <div className="flex items-center gap-3"><div className="w-2.5 h-2.5 rounded-full bg-pink-500 shadow-sm shadow-pink-500/50"></div><strong>Active Critique</strong></div>
+                        <div className="flex items-center gap-3"><div className="w-2.5 h-2.5 rounded-full bg-sky-500 shadow-sm shadow-sky-500/50"></div><strong>Orchestrator</strong> State</div>
+                    </div>
+                </div>
+
+                {/* 4. Bottom Right: Text Description (New Way) */}
+                <div className="order-4 md:order-4">
+                    <p>
+                        In the <strong>Context-Snoopiest</strong> ecosystem, we deploy a <strong>Multi-Agent System (MAS)</strong>. If a "Director Agent" detects an issue, it triggers a recursive re-render of the specific anchor, maintaining continuity without human oversight.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+## Workflow Description: The 4-Stage Pipeline
+
+Our agentic workflow is not just a sequence of tasks; it's a dynamic negotiation between specialized AI agents. Here is the technical breakdown of how a raw narrative is transformed into cinematic reality:
+
+### 1. Ingestion & Semantic Mapping
+The **Librarian Agent** ingests the raw narrative (often exceeding 100k words) and performs high-density semantic mapping. It identifies every entity, location, and emotional beat, building the "Narrative Backbone" that serves as the single source of truth for all subsequent agents.
+
+### 2. Contextual Crystallization
+The **Archivist Agent** manages the hierarchical memory tiers. It takes long-form narratives and "crystallizes" them into Level 0-3 context windows. This ensures that even in Chapter 50, the system remembers the specific lighting and mood established in the opening scene.
+
+### 3. Visual Encoding & LoRA Integration
+The **Cinematographer Agent** translates narrative variables into visual prompts. It coordinates with the **Identity Anchors** to ensure that character likeness is immutable. It manages the injection of specific Visual LoRA embeddings to maintain a consistent cinematic style across thousands of frames.
+
+### 4. Parallel Synthesis & Assembly
+The **Director Agent** orchestrates a swarm of worker agents to generate individual clips in parallel. Unlike linear editors, this agent can re-order production based on compute availability or logical dependencies, finally assembling the clips into a cohesive cinematic experience.
+
+<ArchitectureMap />
+
+## The Integrity Loop: Automated Quality Assurance
+
+In generative AI, "hallucinations" are features, not bugs—until they break continuity. To solve this, we implemented a dedicated **Critic Layer**. This agent has no creative power but absolute veto power. It compares every generated prompt against the "Story Bible" state machine. If a prompt violates established facts (e.g., a character wearing the wrong jacket), the Critic rejects it before any expensive video rendering occurs.
+
+<CriticLoop />
+
+## Performance & Cost Optimization
+
+By parallelizing the "boring" work (metadata extraction, asset generation) and validating outputs before rendering, we achieve significant gains in both speed and cost-efficiency.
+
+<MetricsCharts />
+
+---
+
+<div className="mt-16 text-center">
+    <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-widest">
+        <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+        Production Ready Workflow
+    </div>
+</div>

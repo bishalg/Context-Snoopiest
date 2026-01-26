@@ -10,10 +10,10 @@ const ExternalLink = ({ href }: { href: string }) => (
 );
 
 const SectionTitle = ({ title, icon, color = "cyan" }: any) => (
-    <div className={`flex items-center gap-3 mb-6 mt-8 pb-3 border-b border-white/10 text-${color}-400`}>
+    <div className={`flex items-center gap-3 mb-6 mt-8 pb-3 border-b border-black/5 dark:border-white/10 text-${color}-600 dark:text-${color}-400`}>
         <div className="flex-none flex items-center justify-center w-6 h-6">{icon}</div>
         {/* Removed manual pt-0.5 */}
-        <h3 className="text-xl font-bold text-white tracking-wide">{title}</h3>
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-wide">{title}</h3>
     </div>
 );
 
@@ -23,7 +23,7 @@ const CustomSelect = ({ value, onChange, options, suffix = "" }: any) => (
         <select
             value={value}
             onChange={onChange}
-            className="w-full bg-black/40 border border-white/10 rounded-lg py-3 pl-3 pr-10 text-slate-200 focus:border-purple-500 outline-none appearance-none transition-colors hover:bg-black/60"
+            className="w-full bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/10 rounded-lg py-3 pl-3 pr-10 text-slate-700 dark:text-slate-200 focus:border-purple-500 outline-none appearance-none transition-colors hover:bg-black/10 dark:hover:bg-black/60"
         >
             {options.map(([key, val]: any) => (
                 <option key={key} value={key}>
@@ -31,7 +31,7 @@ const CustomSelect = ({ value, onChange, options, suffix = "" }: any) => (
                 </option>
             ))}
         </select>
-        <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500 group-hover:text-purple-400 transition-colors">
+        <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-400 dark:text-slate-500 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
@@ -88,13 +88,13 @@ export function AiProductionSection({ state, setters, helpers }: any) {
                         <div className="relative w-24">
                             <select
                                 value={imageCount} onChange={(e) => setImageCount(parseInt(e.target.value))}
-                                className="w-full bg-black/40 border border-white/10 rounded-lg py-3 pl-3 pr-2 text-center text-slate-200 outline-none focus:border-purple-500 appearance-none hover:bg-black/60 transition-colors"
+                                className="w-full bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/10 rounded-lg py-3 pl-3 pr-2 text-center text-slate-700 dark:text-slate-200 outline-none focus:border-purple-500 appearance-none hover:bg-black/10 dark:hover:bg-black/60 transition-colors"
                             >
                                 <option value={1}>1x</option>
                                 <option value={3}>3x</option>
                                 <option value={5}>5x</option>
                             </select>
-                            <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none text-slate-500 text-[10px] uppercase font-bold">
+                            <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none text-slate-400 dark:text-slate-500 text-[10px] uppercase font-bold">
                                 Batch
                             </div>
                         </div>

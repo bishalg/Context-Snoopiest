@@ -1,51 +1,242 @@
+
 ---
 layout: ../layouts/DocLayout.astro
-title: "Implementation Journey & Roadmap"
-description: From Architectural Blueprint to Delivered Narrative-to-Video Engine
+title: "The Delivery Journey"
+description: From foundational architecture to agentic autonomy. A retrospective on delivered milestones and a blueprint for future frontiers.
+hero: false
 ---
+
+
+import { MilestoneCard } from '../components/roadmap/MilestoneCard';
+import { TimelineMarker } from '../components/roadmap/TimelineMarker';
+import { FutureRadar } from '../components/roadmap/FutureRadar';
+import { FutureFrontierCard } from '../components/roadmap/FutureFrontierCard';
 
 ## The Delivery Journey: Milestones Achieved
 
 The development of **Context-Snoopiest** was executed as a series of high-stakes architectural sprints, each solving a fundamental bottleneck in narrative-to-video adaptation. What follows is the roadmap of the system we have successfully delivered.
 
-### Milestone 1: The Foundation of Hierarchical Memory (Delivered)
-*   **The Problem**: Novel-length context windows causing "Lost-in-the-Middle" hallucinations.
-*   **Our Solution**: Established the **Hierarchical Recursive Summarization Architecture**. We implemented Level 0 through Level 3 memory tiers, ensuring that Chapter 50 retains the "emotional debt" and physical state established in Chapter 1.
-*   **Outcome**: 100% consistency across narrative arcs exceeding 120,000 words.
+<div className="relative max-w-4xl mx-auto mt-12 mb-24">
+    {/* Left-aligned Gutter Line */}
+    <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-800 z-0"></div>
+    
+    {/* Milestone 1 */}
+    <div className="relative z-10 mb-20 group">
+        <TimelineMarker id={1} color="sky" />
+        <div className="pl-12 md:pl-16">
+            <div className="prose dark:prose-invert max-w-none">
+                <h3 className="!mt-0">Milestone 1: The Foundation of Hierarchical Memory (Delivered)</h3>
+                <ul>
+                    <li><strong>The Problem</strong>: Novel-length context windows causing "Lost-in-the-Middle" hallucinations.</li>
+                    <li><strong>Our Solution</strong>: Established the **Hierarchical Recursive Summarization Architecture**. We implemented Level 0 through Level 3 memory tiers, ensuring that Chapter 50 retains the "emotional debt" and physical state established in Chapter 1.</li>
+                    <li><strong>Outcome</strong>: 100% consistency across narrative arcs exceeding 120,000 words.</li>
+                </ul>
+            </div>
+            <div className="not-prose mt-6">
+                <MilestoneCard 
+                    id={1}
+                    title="Hierarchical Memory"
+                    subtitle="The Foundation"
+                    color="sky"
+                    description="Solved 'Lost-in-the-Middle' hallucinations using recursive summarization (Levels 0-3). Chapter 50 retains the 'emotional debt' and physical state established in Chapter 1."
+                    outcome="100% consistency across narrative arcs exceeding 120,000 words."
+                />
+            </div>
+        </div>
+    </div>
 
-### Milestone 2: Temporal-Semantic Chunking Engine (Delivered)
-*   **The Problem**: Generative video's 10-second temporal drift.
-*   **Our Solution**: Developed a weighted token algorithm that translates narrative density into visual timing. We solved the synchronization of dialogue-heavy vs. action-heavy text blocks.
-*   **Outcome**: Frame-perfect pacing for 8-10 second cinematic beats.
+    {/* Milestone 2 */}
+    <div className="relative z-10 mb-20 group">
+        <TimelineMarker id={2} color="teal" />
+        <div className="pl-12 md:pl-16">
+            <div className="prose dark:prose-invert max-w-none">
+                <h3>Milestone 2: Temporal-Semantic Chunking Engine (Delivered)</h3>
+                <ul>
+                    <li><strong>The Problem</strong>: Generative video's 10-second temporal drift.</li>
+                    <li><strong>Our Solution</strong>: Developed a weighted token algorithm that translates narrative density into visual timing. We solved the synchronization of dialogue-heavy vs. action-heavy text blocks.</li>
+                    <li><strong>Outcome</strong>: Frame-perfect pacing for 8-10 second cinematic beats.</li>
+                </ul>
+            </div>
+            <div className="not-prose mt-6">
+                <MilestoneCard 
+                    id={2}
+                    title="Chunking Engine"
+                    subtitle="Temporal Control"
+                    color="teal"
+                    description="Developed weighted token algorithms to translate text density into video timing. Solved the synchronization of dialogue-heavy vs. action-heavy text blocks."
+                    outcome="Frame-perfect pacing for 8-10 second cinematic beats."
+                />
+            </div>
+        </div>
+    </div>
 
-### Milestone 3: Character Consistency Maintenance System - CCMS (Delivered)
-*   **The Problem**: "Character Morphing" over long-form generation.
-*   **Our Solution**: Integrated **Identity Anchors** and **Visual LoRA Embeddings**. We created an "Outfit Manager" state machine that tracks wardrobe changes as narrative variables rather than textual repetitions.
-*   **Outcome**: Immutable character likeness across thousands of generated clips.
+    {/* Milestone 3 */}
+    <div className="relative z-10 mb-20 group">
+        <TimelineMarker id={3} color="amber" />
+        <div className="pl-12 md:pl-16">
+            <div className="prose dark:prose-invert max-w-none">
+                <h3>Milestone 3: Character Consistency Maintenance System - CCMS (Delivered)</h3>
+                <ul>
+                    <li><strong>The Problem</strong>: "Character Morphing" over long-form generation.</li>
+                    <li><strong>Our Solution</strong>: Integrated **Identity Anchors** and **Visual LoRA Embeddings**. We created an "Outfit Manager" state machine that tracks wardrobe changes as narrative variables rather than textual repetitions.</li>
+                    <li><strong>Outcome</strong>: Immutable character likeness across thousands of generated clips.</li>
+                </ul>
+            </div>
+            <div className="not-prose mt-6">
+                <MilestoneCard 
+                    id={3}
+                    title="CCMS Architecture"
+                    subtitle="Visual Consistency"
+                    color="amber"
+                    description="Integrated Identity Anchors and 'Outfit State Machines' to prevent character morphing. Tracks wardrobe changes as narrative variables rather than textual repetitions."
+                    outcome="Immutable character likeness across thousands of generated clips."
+                />
+            </div>
+        </div>
+    </div>
 
-### Milestone 4: Multi-Agent Orchestration (Delivered)
-*   **The Problem**: Linear generation bottlenecks.
-*   **Our Solution**: Deployed a Python-based MAS (Multi-Agent System) where "Director Agents" and "Archivist Agents" work in parallel across the Narrative Backbone.
-*   **Outcome**: Industry-leading production speeds for full-length narrative adaptation.
+    {/* Milestone 4 */}
+    <div className="relative z-10 group">
+        <TimelineMarker id={4} color="indigo" />
+        <div className="pl-12 md:pl-16">
+            <div className="prose dark:prose-invert max-w-none">
+                <h3>Milestone 4: Multi-Agent Orchestration (Delivered)</h3>
+                <ul>
+                    <li><strong>The Problem</strong>: Linear generation bottlenecks.</li>
+                    <li><strong>Our Solution</strong>: Deployed a Python-based MAS (Multi-Agent System) where "Director Agents" and "Archivist Agents" work in parallel across the Narrative Backbone.</li>
+                    <li><strong>Outcome</strong>: Industry-leading production speeds for full-length narrative adaptation.</li>
+                </ul>
+            </div>
+            <div className="not-prose mt-6">
+                <MilestoneCard 
+                    id={4}
+                    title="Multi-Agent Swarm"
+                    subtitle="Orchestration"
+                    color="indigo"
+                    description="Deployed parallel 'Director' and 'Archivist' agents for non-linear production across the Narrative Backbone."
+                    outcome="Industry-leading speed for full-length narrative adaptation."
+                />
+            </div>
+        </div>
+    </div>
+</div>
 
 ---
 
+<div className="mt-24">
 ## Future Frontiers: The Next Architectural Challenges
 
 While the core Context-Snoopiest engine is now production-ready, we are pushing the boundaries of what Agentic AI can achieve in the cinematic space.
 
-### 1. Cross-Modal Sentiment Alignment (The "Director's Heart")
-*   **Challenge**: Automatically synchronizing the *emotional subtext* of a scene with environmental variables.
-*   **Objective**: Develop an agent that adjusts lighting color temperature, camera shake, and musical key based on a real-time "Emotional Tensor" extracted from the narrative's psychological subtext.
+<div className="not-prose mb-16">
+    <div className="bg-slate-50 dark:bg-slate-900/50 rounded-3xl p-8 border border-slate-100 dark:border-white/5">
+        <h4 className="text-center text-slate-400 uppercase text-xs font-bold tracking-widest mb-8">Strategic Research Forecast</h4>
+        <FutureRadar client:only="react" />
+    </div>
+</div>
 
-### 2. Narrative Paradox & Continuity Policing
-*   **Challenge**: Detecting logical inconsistencies in non-linear or multi-POV narratives.
-*   **Objective**: A high-order "Continuity Police Agent" that builds a 4D spatial-temporal graph of the story world, flagging if a character is in two places at once or if a previously destroyed object reappears.
+<div className="relative max-w-4xl mx-auto mt-12 mb-24">
+    {/* Dashed Timeline Line for Future R&D */}
+    <div className="absolute left-0 top-0 bottom-0 w-0.5 border-l-2 border-dashed border-slate-200 dark:border-slate-800 z-0"></div>
+    
+    {/* Future Item 1 */}
+    <div className="relative z-10 mb-20 group">
+        <TimelineMarker id={1} color="violet" />
+        <div className="pl-12 md:pl-16">
+            <div className="prose dark:prose-invert max-w-none">
+                <h3 className="!mt-0">1. Cross-Modal Sentiment Alignment (The "Director's Heart")</h3>
+                <p>
+                    <strong>Challenge</strong>: Automatically synchronizing the <em>emotional subtext</em> of a scene with environmental variables.
+                </p>
+                <p>
+                    <strong>Objective</strong>: Develop an agent that adjusts lighting color temperature, camera shake, and musical key based on a real-time "Emotional Tensor" extracted from the narrative's psychological subtext.
+                </p>
+            </div>
+            <div className="not-prose mt-6 max-w-md">
+                <FutureFrontierCard 
+                    icon="❤️"
+                    title="Sentiment Alignment"
+                    subtitle="The Director's Heart"
+                    description="Adjusting lighting temp and camera shake based on real-time narrative 'Emotional Tensors'."
+                />
+            </div>
+        </div>
+    </div>
 
-### 3. Dynamic Cinematic Style Transfer
-*   **Challenge**: Real-time adaptation of visual style based on "Cinematic References."
-*   **Objective**: Allowing users to prompt "Render Chapter 5 in the style of 1940s Noir" and having the agent automatically adjust camera lenses (focal lengths), lighting ratios, and film grain across all CCMS embeddings.
+    {/* Future Item 2 */}
+    <div className="relative z-10 mb-20 group">
+        <TimelineMarker id={2} color="violet" />
+        <div className="pl-12 md:pl-16">
+            <div className="prose dark:prose-invert max-w-none">
+                <h3>2. Narrative Paradox & Continuity Policing</h3>
+                <p>
+                    <strong>Challenge</strong>: Detecting logical inconsistencies in non-linear or multi-POV narratives.
+                </p>
+                <p>
+                    <strong>Objective</strong>: A high-order "Continuity Police Agent" that builds a 4D spatial-temporal graph of the story world, flagging if a character is in two places at once or if a previously destroyed object reappears.
+                </p>
+            </div>
+            <div className="not-prose mt-6 max-w-md">
+                <FutureFrontierCard 
+                    icon="👮"
+                    title="Continuity Police"
+                    subtitle="Logic Engine"
+                    description="A 4D spatial graph agent detecting logical paradoxes and physical state errors across scenes."
+                />
+            </div>
+        </div>
+    </div>
 
-### 4. Interactive Narrative Pivots
-*   **Challenge**: Re-generating narrative forks without breaking global state.
-*   **Objective**: Enabling a "What If" engine where a user can change a single decision in Chapter 5, and the agentic system recursively ripples that change through the Level 3 Backbone to re-render all subsequent chapters with perfect causal consistency.
+    {/* Future Item 3 */}
+    <div className="relative z-10 mb-20 group">
+        <TimelineMarker id={3} color="violet" />
+        <div className="pl-12 md:pl-16">
+            <div className="prose dark:prose-invert max-w-none">
+                <h3>3. Dynamic Cinematic Style Transfer</h3>
+                <p>
+                    <strong>Challenge</strong>: Real-time adaptation of visual style based on "Cinematic References."
+                </p>
+                <p>
+                    <strong>Objective</strong>: Allowing users to prompt "Render Chapter 5 in the style of 1940s Noir" and having the agent automatically adjust camera lenses (focal lengths), lighting ratios, and film grain across all CCMS embeddings.
+                </p>
+            </div>
+            <div className="not-prose mt-6 max-w-md">
+                <FutureFrontierCard 
+                    icon="🎨"
+                    title="Style Transfer"
+                    subtitle="Dynamic Aesthetics"
+                    description="Automatic lens focal length, lighting ratios, and film grain adjustment based on cinematic refs."
+                />
+            </div>
+        </div>
+    </div>
+
+    {/* Future Item 4 */}
+    <div className="relative z-10 group">
+        <TimelineMarker id={4} color="violet" />
+        <div className="pl-12 md:pl-16">
+            <div className="prose dark:prose-invert max-w-none">
+                <h3>4. Interactive Narrative Pivots</h3>
+                <p>
+                    <strong>Challenge</strong>: Re-generating narrative forks without breaking global state.
+                </p>
+                <p>
+                    <strong>Objective</strong>: Enabling a "What If" engine where a user can change a single decision in Chapter 5, and the agentic system recursively ripples that change through the Level 3 Backbone to re-render all subsequent chapters with perfect causal consistency.
+                </p>
+            </div>
+            <div className="not-prose mt-6 max-w-md">
+                <FutureFrontierCard 
+                    icon="🔀"
+                    title="Interactive Pivots"
+                    subtitle="The What-If Engine"
+                    description="Recursive re-rendering of the causal chain when a user changes a past narrative decision."
+                />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div className="mt-16 text-center text-slate-500 dark:text-slate-400 italic text-sm border-t border-slate-100 dark:border-white/5 pt-16">
+    Current Project Velocity: <span className="text-violet-600 dark:text-violet-400 font-bold uppercase tracking-widest">R&D / ACTIVE PROTOTYPING 🚧</span>
+</div>
+</div>
