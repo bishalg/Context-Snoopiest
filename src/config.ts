@@ -7,6 +7,7 @@ export const SITE = {
 export const SIDEBAR = [
   { text: "Overview", header: true },
   { text: "Introduction", link: "/" },
+  { text: "Context Rot", link: "/context-rot" },
   { text: "System Architecture", link: "/architecture" },
   { text: "Core Engine", header: true },
   { text: "Chunking Strategy", link: "/chunking" },

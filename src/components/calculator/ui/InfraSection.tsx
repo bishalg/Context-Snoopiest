@@ -11,10 +11,11 @@ const ExternalLink = ({ href }: { href: string }) => (
 );
 
 const SectionTitle = ({ title, icon, color = "cyan" }: any) => (
-    <div className={`flex items-center gap-3 mb-6 mt-8 pb-3 border-b border-black/5 dark:border-white/10 text-${color}-600 dark:text-${color}-400`}>
-        <div className="flex-none flex items-center justify-center w-6 h-6">{icon}</div>
-        {/* Removed manual pt-0.5 to rely on pure flex centering */}
-        <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-wide">{title}</h3>
+    <div className={`mb-6 mt-8 pb-3 border-b border-black/5 dark:border-white/10 text-${color}-600 dark:text-${color}-400`}>
+        <div className="flex items-center gap-3">
+            <div className="flex-none flex items-center justify-center w-6 h-6">{icon}</div>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-wide">{title}</h3>
+        </div>
     </div>
 );
 

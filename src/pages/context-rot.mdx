@@ -1,0 +1,57 @@
+---
+layout: ../layouts/DocLayout.astro
+title: "The Problem: Context Rot"
+description: "Understanding why massive input context leads to reasoning failure."
+---
+import RotVisual from '../components/RotVisual.astro';
+
+## The Context Fallacy
+
+The industry assumption that **"More Context = Better Understanding"** is fundamentally flawed. While context windows have expanded from 8k to 10M tokens, the reliable reasoning capability of models within those windows does not scale linearly.
+
+**Context Rot** is the hidden decay of detail retrieval and logical consistency that occurs as the "haystack" grows.
+
+<RotVisual type="chart" />
+
+---
+
+## 3 Drivers of Reasoning Decay
+
+When an LLM is fed a large narrative context, three specific factors trigger performance degradation:
+
+### 1. Needle-Question Similarity
+If the specific information needed (the "needle") is semantically distinct from the query, models often fail to locate it in a long context. In short contexts, they find it; in long ones, they "lose the scent."
+
+### 2. Impact of Distractors
+Irrelevant details that "look like" the answer can hijack the model's attention. Even a single well-placed distractor in a 100k haystack can cause a 30% drop in retrieval accuracy.
+
+### 3. Structural Ambiguity
+The more complex the "Haystack" structure (nested characters, non-linear timelines), the more likely the model is to hallucinate or conflate states between characters.
+
+<RotVisual type="tokens" />
+
+---
+
+## The Reality of "Lost in the Middle"
+
+In practice, LLMs exhibit a **Recency Bias** (remembering the end) and a **Primacy Bias** (remembering the start). The middle of the context—where 80% of a novel's plot usually resides—becomes a "Gray Zone" where logic fails and characters start to "rot."
+
+This is not a limitation of total memory, but a limitation of **Effective Attention**.
+
+---
+
+## The Antidote: High-Density Context Engineering
+
+Context-Snoopiest solves for Rot not by expanding the window, but by **managing its density**. 
+
+Instead of feeding 100,000 raw words into the LLM and hoping for the best, we feed it a **2,000-token State Matrix** that has been recursively compressed from the original text.
+
+<RotVisual type="density" />
+
+### Why this works:
+1.  **Resets the Curve**: The LLM always operates in its "Green Zone" (0-5k tokens).
+2.  **Eliminates Distractors**: Non-essential narrative fluff is stripped away during the summarization phase.
+3.  **Strict State Tracking**: Physical location and character status are stored in a fixed schema, preventing semantic drift.
+
+---
+*Based on research papers from Chroma-core and DeepMind on Context Performance. [Read Original Paper](https://research.trychroma.com/context-rot)*
