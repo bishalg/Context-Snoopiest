@@ -1,0 +1,199 @@
+---
+import DocLayout from '../layouts/DocLayout.astro';
+---
+
+<DocLayout title="Differential State Management" description="Solving the 'Diff Problem' in AI Video: How to apply consistent edits without regeneration.">
+    
+    <div class="prose prose-lg dark:prose-invert max-w-none text-slate-700 dark:text-slate-300">
+        <h1>Differential State Management</h1>
+        
+        <p class="lead text-xl text-slate-600 dark:text-slate-400 mb-8">
+            In software engineering, the "Diff Problem" is that LLMs are bad at precise edits. in Novel-to-Video, this is the root cause of <strong>Video Flicker and Character Hallucination</strong>.
+        </p>
+
+        <p>
+            When you ask an AI to generate Scene 2, it doesn't "edit" Scene 1; it re-imagines it. It accidentally "refactors" your main character's face, their clothes, or the room layout because it didn't know how to execute a precise "diff."
+        </p>
+
+        <h2>The Mapping: Code vs. Narrative</h2>
+        <p>
+            We implement the Cursor/Composer "Diff Architecture" directly into Context-Snoopiest.
+        </p>
+
+        <div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
+            <!-- Code World -->
+            <div class="bg-slate-900 text-white rounded-xl overflow-hidden border border-slate-700 shadow-lg">
+                <div class="bg-black/40 px-4 py-2 border-b border-slate-700 flex items-center justify-between">
+                    <span class="font-mono text-sm text-blue-400">The "Cursor" Model (Code)</span>
+                    <div class="flex gap-1.5">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                    </div>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div>
+                        <div class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">The "Codebase"</div>
+                        <div class="font-mono text-sm text-slate-300">file.ts (1,000 lines)</div>
+                    </div>
+                    <div>
+                        <div class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">The Diff Problem</div>
+                        <div class="font-mono text-sm text-slate-300">LLM creates <span class="text-red-400">Syntax Errors</span> by deleting a closing bracket '&#125;'.</div>
+                    </div>
+                    <div>
+                        <div class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">The Goal</div>
+                        <div class="font-mono text-sm text-green-400">Apply change ONLY to the function.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video World -->
+            <div class="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl overflow-hidden border border-indigo-200 dark:border-indigo-500/30 shadow-lg">
+                <div class="bg-indigo-100 dark:bg-indigo-900/40 px-4 py-2 border-b border-indigo-200 dark:border-indigo-500/30 flex items-center justify-between">
+                    <span class="font-mono text-sm text-indigo-700 dark:text-indigo-300">The "Context-Snoopiest" Model</span>
+                    <div class="text-xl">🎬</div>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div>
+                        <div class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">The "Visual State"</div>
+                        <div class="font-sans text-sm text-slate-700 dark:text-slate-300">TOON File (Scene & Characters)</div>
+                    </div>
+                    <div>
+                        <div class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">The Hallucination</div>
+                        <div class="font-sans text-sm text-slate-700 dark:text-slate-300">LLM gives sword but <span class="text-red-600 dark:text-red-400 font-bold">changes shirt from Blue to Red</span>.</div>
+                    </div>
+                    <div>
+                        <div class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">The Goal</div>
+                        <div class="font-sans text-sm text-indigo-600 dark:text-indigo-400 font-bold">Add sword, FREEZE all other pixels.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>The Solution: "Narrative Edit Trajectories"</h2>
+        <p>
+            You can’t retrain a model easily, but you can force your Orchestrator to use <strong>State Diffs</strong> instead of State Descriptions.
+        </p>
+
+        <div class="my-10 space-y-8">
+            <!-- Bad Example -->
+            <div class="relative pl-6 border-l-4 border-red-500">
+                <h3 class="text-red-600 dark:text-red-400 text-lg font-bold m-0">The "Anti-Regeneration" Rule</h3>
+                <p class="text-sm text-slate-500 mt-1 mb-3">Standard prompting forces re-rendering of known assets.</p>
+                <div class="bg-red-50 dark:bg-red-900/10 p-4 rounded-lg text-slate-700 dark:text-red-100 font-serif italic border border-red-100 dark:border-red-900/30">
+                    "Generate Scene 2: Arjun is standing in the cave. He is wearing armor. He draws his sword."
+                </div>
+                <div class="mt-2 text-xs text-red-500 flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    Risk: Armor design changes, Cave lighting shifts.
+                </div>
+            </div>
+
+            <!-- Good Example -->
+            <div class="relative pl-6 border-l-4 border-green-500">
+                <h3 class="text-green-600 dark:text-green-400 text-lg font-bold m-0">The "Diff-Based" Protocol</h3>
+                <p class="text-sm text-slate-500 mt-1 mb-3">Orchestrator generates a PATCH, not a new file.</p>
+                
+                <div class="space-y-4">
+                    <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <div class="text-[10px] uppercase font-bold text-slate-500 mb-2">Step A: Baseline (Locked State)</div>
+                        <pre class="m-0 bg-white dark:bg-slate-900 p-3 rounded text-xs font-mono border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 overflow-x-auto"><code class="language-text">State_Frame_01:
+Arjun: [Wear: Rusty Armor], [Face: Scarred], <span class="bg-yellow-100 dark:bg-yellow-900/30 rounded px-1">[Hand: Empty]</span>
+Bg: [Cave, Wet Walls]</code></pre>
+                    </div>
+
+                    <div class="flex items-center justify-center text-slate-400">
+                        <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    </div>
+
+                    <div class="bg-green-50 dark:bg-green-900/10 p-4 rounded-lg border border-green-200 dark:border-green-900/30">
+                        <div class="text-[10px] uppercase font-bold text-green-600 dark:text-green-400 mb-2">Step B: The Diff Command</div>
+                        <pre class="m-0 bg-white dark:bg-slate-900 p-3 rounded text-xs font-mono border border-green-200 dark:border-green-900/30 text-slate-700 dark:text-slate-300 overflow-x-auto"><code>&#123;
+  "operation": <span class="text-purple-600 dark:text-purple-400">"UPDATE"</span>,
+  "target": <span class="text-blue-600 dark:text-blue-400">"Arjun.Hand"</span>,
+  "value": <span class="text-green-600 dark:text-green-400">"Iron Sword"</span>,
+  "constraint": <span class="text-red-500 dark:text-red-400">"PRESERVE_ALL_OTHER_ATTRIBUTES"</span>
+&#125;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Implementation: The "Visual Patching" Workflow</h2>
+        <p>
+            To leverage "Search and Replace" logic, we implement a specific tool in the Orchestrator that acts like <code>git apply</code>.
+        </p>
+
+        <div class="my-12">
+            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-8 shadow-sm">
+                
+                <h3 class="text-center font-bold text-slate-800 dark:text-slate-200 mb-8 uppercase tracking-widest text-sm">State Patching Algorithm</h3>
+
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 relative">
+                    
+                    <!-- Step 1: Input -->
+                    <div class="flex-1 w-full relative z-10">
+                        <div class="bg-slate-50 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg p-4 text-center h-40 flex flex-col items-center justify-center shadow-sm">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3 font-bold">1</div>
+                            <div class="font-bold text-slate-900 dark:text-white mb-1">Input Patch</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">Receive DIFF Packet<br/>(Target, New Value)</div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="hidden md:block text-slate-300 dark:text-slate-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </div>
+                    
+                    <!-- Step 2: Verify -->
+                    <div class="flex-1 w-full relative z-10">
+                        <div class="bg-yellow-50 dark:bg-yellow-900/10 border-2 border-yellow-200 dark:border-yellow-700 rounded-lg p-4 text-center h-40 flex flex-col items-center justify-center shadow-sm">
+                            <div class="w-10 h-10 rounded-full bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 flex items-center justify-center mb-3 font-bold">2</div>
+                            <div class="font-bold text-slate-900 dark:text-white mb-1">Verify State</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">Check Old Value matches<br/>Current State</div>
+                            <div class="mt-2 text-[10px] text-yellow-600 dark:text-yellow-500 font-bold bg-yellow-100 dark:bg-yellow-900/30 px-2 py-0.5 rounded-full">Safety Guard</div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="hidden md:block text-slate-300 dark:text-slate-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </div>
+
+                    <!-- Step 3: Apply -->
+                    <div class="flex-1 w-full relative z-10">
+                        <div class="bg-green-50 dark:bg-green-900/10 border-2 border-green-200 dark:border-green-700 rounded-lg p-4 text-center h-40 flex flex-col items-center justify-center shadow-sm">
+                            <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 flex items-center justify-center mb-3 font-bold">3</div>
+                            <div class="font-bold text-slate-900 dark:text-white mb-1">Apply Patch</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">Update State Buffer<br/>Freeze other pixels</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <h2>Why This Fixes Video Generation</h2>
+        <p>
+            The biggest issue in AI video is <strong>Temporal Stability</strong>.
+        </p>
+        <ul class="list-none space-y-4 pl-0">
+            <li class="flex items-start gap-3">
+                <div class="mt-1 w-6 h-6 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0 text-red-600 dark:text-red-400 font-bold text-xs">✕</div>
+                <div>
+                    <strong class="text-slate-900 dark:text-white">Without Diffs:</strong>
+                    <p class="m-0 text-sm text-slate-600 dark:text-slate-400">Frame 1 and Frame 2 are treated as two different paintings. The AI "guesses" the continuity.</p>
+                </div>
+            </li>
+            <li class="flex items-start gap-3">
+                <div class="mt-1 w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center shrink-0 text-green-600 dark:text-green-400 font-bold text-xs">✓</div>
+                <div>
+                    <strong class="text-slate-900 dark:text-white">With Diffs:</strong>
+                    <p class="m-0 text-sm text-slate-600 dark:text-slate-400">You instruct the Video AI (ControlNet): <em>"Keep 90% exactly the same. Only use diffusion to change the pixels around the hand."</em></p>
+                </div>
+            </li>
+        </ul>
+        
+    </div>
+</DocLayout>

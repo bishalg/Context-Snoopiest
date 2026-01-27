@@ -86,6 +86,40 @@ Finally, the system compresses the events of the current chunk to update the Lev
 
 ## Agentic Workflow Expansion: The "Production Studio" Model
 
+<div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+
+    <div class="bg-slate-900 text-white p-6 rounded-xl border border-slate-700 shadow-lg relative overflow-hidden group">
+        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-6xl">🧠</div>
+        <div class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2">Global Orchestrator</div>
+        <h3 class="text-xl font-bold mb-2">The Showrunner</h3>
+        <p class="text-sm text-slate-300 leading-relaxed">The "Brain" that manages priorities. Pauses production if new context (e.g., a new character) is discovered.</p>
+    </div>
+
+
+    <div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-xl border border-red-100 dark:border-red-900/30 relative overflow-hidden group">
+        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-6xl">🛑</div>
+        <div class="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-widest mb-2">Feedback Loop</div>
+        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">The QA Critic</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">The "Editor" that rejects bad prompts. Enforces strict character consistency before rendering.</p>
+    </div>
+
+
+    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-xl border border-indigo-100 dark:border-indigo-900/30 relative overflow-hidden group">
+        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-6xl">📝</div>
+        <div class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-2">Context Swarm</div>
+        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Writers' Room</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Parallel agents mining the text for "Story Bible" data. Resolves cross-chapter conflicts.</p>
+    </div>
+
+
+    <div class="bg-amber-50 dark:bg-amber-900/20 p-6 rounded-xl border border-amber-100 dark:border-amber-900/30 relative overflow-hidden group">
+        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-6xl">🎨</div>
+        <div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-widest mb-2">Visual Assets</div>
+        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Art Department</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Casting Agents & Location Scouts generating reference images and LoRAs asynchronously.</p>
+    </div>
+</div>
+
 ### 1. The Missing Link: Autonomy & Feedback
 
 Our initial architecture defined a linear pipeline—a conveyor belt. While efficient, it lacks the resilience of a true Agentic AI system. In a real-world deployment, the system must handle ambiguity, errors, and parallel tasks without human intervention. The "Missing Link" is **The Feedback Loop (The Critic)** and **Asynchronous Orchestration**.

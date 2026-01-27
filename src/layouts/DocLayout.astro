@@ -50,7 +50,7 @@ const next = currentIndex < flatSidebar.length - 1 ? flatSidebar[currentIndex + 
 	</head>
 	<body class="bg-main text-main">
 		<!-- Top Nav (Mobile) -->
-		<nav class="md:hidden glass-nav p-4 flex items-center justify-between">
+		<nav class="md:hidden glass-nav p-4 flex items-center justify-between print:hidden">
 			<a href={base} class="font-bold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-purple-500">Context-Snoopiest</a>
 			<div class="flex items-center gap-4">
 				<button id="theme-toggle-mobile" class="p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10" aria-label="Toggle theme">
@@ -65,7 +65,7 @@ const next = currentIndex < flatSidebar.length - 1 ? flatSidebar[currentIndex + 
 
 		<div class="flex max-w-[1600px] mx-auto min-h-screen relative">
 			<!-- Sidebar -->
-			<aside id="sidebar" class="fixed inset-y-0 left-0 w-72 glass-panel border-r transform -translate-x-full lg:translate-x-0 transition-all duration-300 z-40 lg:sticky lg:h-screen lg:top-0">
+			<aside id="sidebar" class="fixed inset-y-0 left-0 w-72 glass-panel border-r transform -translate-x-full lg:translate-x-0 transition-all duration-300 z-40 lg:sticky lg:h-screen lg:top-0 print:hidden">
 				<div class="flex flex-col h-full">
 					<div class="p-6 flex items-center justify-between border-b border-black/5 dark:border-white/5">
 						<a href={base} class="flex items-center gap-2 font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-purple-500 sidebar-brand">
@@ -96,6 +96,8 @@ const next = currentIndex < flatSidebar.length - 1 ? flatSidebar[currentIndex + 
 										{item.text === "Chunking Strategy" && <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>}
 										{item.text === "Context Engine" && <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>}
 										{item.text === "Character Consistency" && <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>}
+										{item.text === "Differential State" && <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>}
+										{item.text === "Orchestrator Architecture" && <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>}
 										{item.text === "Workflows" && <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path></svg>}
 										{item.text === "Agentic Workflow" && <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>}
 										{item.text === "Roadmap" && <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>}
@@ -122,20 +124,20 @@ const next = currentIndex < flatSidebar.length - 1 ? flatSidebar[currentIndex + 
 			</aside>
 
 			<!-- Mobile Overlay -->
-			<div id="overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 hidden lg:hidden"></div>
+			<div id="overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 hidden lg:hidden print:hidden"></div>
 
 			<!-- Main Content -->
 			<main class="flex-1 min-w-0 p-6 lg:p-12">
 				<div class="max-w-4xl mx-auto">
 					{frontmatter?.hero && (
-						<div class="mb-16">
-							<h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 to-slate-500 dark:from-white dark:to-slate-400">
+						<div class="mb-16 print:mb-8">
+							<h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 to-slate-500 dark:from-white dark:to-slate-400 print:text-black print:bg-none">
 								{frontmatter.title}
 							</h1>
-							<p class="text-xl text-slate-500 dark:text-slate-400 leading-relaxed max-w-3xl">
+							<p class="text-xl text-slate-500 dark:text-slate-400 leading-relaxed max-w-3xl print:text-slate-700">
 								{frontmatter.description}
 							</p>
-							<div class="h-px bg-gradient-to-r from-cyan-500/50 to-transparent w-full mt-12"></div>
+							<div class="h-px bg-gradient-to-r from-cyan-500/50 to-transparent w-full mt-12 print:hidden"></div>
 						</div>
 					)}
 					
@@ -144,7 +146,7 @@ const next = currentIndex < flatSidebar.length - 1 ? flatSidebar[currentIndex + 
 					</article>
 
 					<!-- Pagination -->
-					<div class="mt-16 pt-8 border-t border-black/5 dark:border-white/5 flex flex-col sm:flex-row gap-4 justify-between">
+					<div class="mt-16 pt-8 border-t border-black/5 dark:border-white/5 flex flex-col sm:flex-row gap-4 justify-between print:hidden">
 						{prev ? (
 							<a href={base.replace(/\/$/, '') + '/' + prev.link.replace(/^\//, '')} class="group flex flex-col gap-1 p-4 rounded-xl border border-black/5 dark:border-white/10 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all text-left">
 								<span class="text-xs font-bold text-slate-400 uppercase tracking-wider group-hover:text-cyan-500">Previous</span>
@@ -219,6 +221,26 @@ const next = currentIndex < flatSidebar.length - 1 ? flatSidebar[currentIndex + 
 		</script>
 
 		<style is:global>
+			/* Custom Scrollbar */
+			::-webkit-scrollbar {
+				width: 6px;
+				height: 6px;
+			}
+			::-webkit-scrollbar-track {
+				background: transparent; 
+			}
+			::-webkit-scrollbar-thumb {
+				background: #cbd5e1; 
+				border-radius: 3px;
+			}
+			.dark ::-webkit-scrollbar-thumb {
+				background: #475569; 
+			}
+
+			/* Sidebar Styles */
+			#sidebar {
+				scrollbar-width: thin;
+			}
 			#sidebar.w-20 .sidebar-text,
 			#sidebar.w-20 .sidebar-header,
 			#sidebar.w-20 .sidebar-brand span {
@@ -247,6 +269,24 @@ const next = currentIndex < flatSidebar.length - 1 ? flatSidebar[currentIndex + 
 			/* Show collapse always for simplicity but fix position */
 			#sidebar.w-20 .border-b {
 				padding: 1.5rem 0.5rem;
+			}
+			
+			@media print {
+				/* Force hide nav elements */
+				nav, aside, #overlay, .print\:hidden {
+					display: none !important;
+				}
+
+				/* Ensure text is readable */
+				p, span, div {
+					color: black !important;
+					text-shadow: none !important;
+				}
+
+				/* Hide Next/Prev Buttons explicitly if class check fails */
+				a[href*="previous"], a[href*="next"], .group.flex.flex-col.gap-1 {
+					display: none !important;
+				}
 			}
 		</style>
 	</body>
