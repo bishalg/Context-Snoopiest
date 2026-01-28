@@ -2,6 +2,7 @@
   "name": "context-snoopiest-docs",
   "version": "0.0.1",
   "private": true,
+  "packageManager": "bun@1.2.10",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
