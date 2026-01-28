@@ -86,9 +86,9 @@ export function FutureRadar() {
     }, []);
 
     return (
-        <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-xl border border-black/5 dark:border-white/10 h-[400px]">
+        <div className="bg-white dark:bg-slate-900 p-4 sm:p-6 rounded-2xl shadow-xl border border-black/5 dark:border-white/10 h-auto sm:h-[400px]">
             <h3 className="font-bold text-slate-800 dark:text-white mb-4 text-center">Technical Complexity Analysis</h3>
-            <div className="h-[300px]">
+            <div className="h-[250px] sm:h-[300px]">
                 <canvas ref={chartRef}></canvas>
             </div>
             <p className="text-[10px] text-center text-slate-400 dark:text-slate-500 mt-4 leading-tight italic">

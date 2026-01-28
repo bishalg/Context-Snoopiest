@@ -1,11 +1,18 @@
 ---
----
-<div class="tech-stack-container not-prose font-sans text-slate-700 dark:text-slate-200">
-    <div class="max-w-5xl mx-auto space-y-12 py-12">
 
+---
+
+<div
+    class="tech-stack-container not-prose font-sans text-slate-700 dark:text-slate-200"
+>
+    <div
+        class="max-w-5xl mx-auto space-y-8 sm:space-y-12 py-6 sm:py-12 px-4 sm:px-6 lg:px-0"
+    >
         <!-- Header -->
         <header class="text-center">
-            <h1 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">
+            <h1
+                class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white mb-3 sm:mb-4 tracking-tight"
+            >
                 THE SNOOPIEST TECH STACK
             </h1>
             <p class="text-slate-600 dark:text-slate-400 text-lg">
@@ -17,45 +24,125 @@
         <section class="relative z-10">
             <div class="flex items-center gap-4 mb-8">
                 <div class="h-px bg-slate-200 dark:bg-slate-700 flex-1"></div>
-                <h2 class="text-sky-600 dark:text-sky-400 font-bold uppercase tracking-widest text-sm">Layer 1: Interface & Control</h2>
+                <h2
+                    class="text-sky-600 dark:text-sky-400 font-bold uppercase tracking-widest text-sm"
+                >
+                    Layer 1: Interface & Control
+                </h2>
                 <div class="h-px bg-slate-200 dark:bg-slate-700 flex-1"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+            >
                 <!-- Next.js -->
-                <div class="tech-card border-t-4 border-slate-900 dark:border-white">
-                    <div class="logo-box bg-slate-900 dark:bg-white text-white dark:text-black">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                <div
+                    class="tech-card border-t-4 border-slate-900 dark:border-white"
+                >
+                    <div
+                        class="logo-box bg-slate-900 dark:bg-white text-white dark:text-black"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><path
+                                d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                            ></path><polyline points="13 2 13 9 20 9"
+                            ></polyline></svg
+                        >
                     </div>
-                    <h3 class="font-bold text-lg text-slate-900 dark:text-white">Next.js 15</h3>
-                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">App Router UI. React 19 Server Components for high-performance rendering.</p>
+                    <h3
+                        class="font-bold text-lg text-slate-900 dark:text-white"
+                    >
+                        Next.js 15
+                    </h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                        App Router UI. React 19 Server Components for
+                        high-performance rendering.
+                    </p>
                 </div>
-                
+
                 <!-- BullMQ / Redis -->
                 <div class="tech-card border-t-4 border-red-500">
                     <div class="logo-box bg-red-500 text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><path d="M12 2v20"></path><path
+                                d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                            ></path></svg
+                        >
                     </div>
-                    <h3 class="font-bold text-lg text-slate-900 dark:text-white">BullMQ / Redis</h3>
-                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Reliable job queue for managing complex video generation pipelines.</p>
+                    <h3
+                        class="font-bold text-lg text-slate-900 dark:text-white"
+                    >
+                        BullMQ / Redis
+                    </h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                        Reliable job queue for managing complex video generation
+                        pipelines.
+                    </p>
                 </div>
 
                 <!-- PostgreSQL -->
                 <a href="/context-management" class="block">
-                    <div class="tech-card border-t-4 border-sky-500 hover:cursor-pointer">
+                    <div
+                        class="tech-card border-t-4 border-sky-500 hover:cursor-pointer"
+                    >
                         <div class="logo-box bg-sky-500 text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><ellipse cx="12" cy="5" rx="9" ry="3"
+                                ></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"
+                                ></path><path d="M3 12A9 3 0 0 0 21 12"
+                                ></path></svg
+                            >
                         </div>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">PostgreSQL</h3>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Core relational DB + pgvector. Stores World State & Character JSON.</p>
-                        <div class="absolute top-2 right-2 text-sky-400 text-xs">↗</div>
+                        <h3
+                            class="font-bold text-lg text-slate-900 dark:text-white"
+                        >
+                            PostgreSQL
+                        </h3>
+                        <p
+                            class="text-xs text-slate-600 dark:text-slate-400 mt-1"
+                        >
+                            Core relational DB + pgvector. Stores World State &
+                            Character JSON.
+                        </p>
+                        <div
+                            class="absolute top-2 right-2 text-sky-400 text-xs"
+                        >
+                            ↗
+                        </div>
                     </div>
                 </a>
             </div>
         </section>
 
         <!-- CONNECTOR -->
-        <div class="h-12 relative">
+        <div class="h-8 sm:h-12 relative hidden sm:block">
             <div class="layer-connector h-full"></div>
         </div>
 
@@ -63,61 +150,186 @@
         <section class="relative z-10">
             <div class="flex items-center gap-4 mb-8">
                 <div class="h-px bg-slate-200 dark:bg-slate-700 flex-1"></div>
-                <h2 class="text-amber-600 dark:text-amber-400 font-bold uppercase tracking-widest text-sm">Layer 2: The Model Zoo (Cloud APIs)</h2>
+                <h2
+                    class="text-amber-600 dark:text-amber-400 font-bold uppercase tracking-widest text-sm"
+                >
+                    Layer 2: The Model Zoo (Cloud APIs)
+                </h2>
                 <div class="h-px bg-slate-200 dark:bg-slate-700 flex-1"></div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                
+            <div
+                class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4"
+            >
                 <!-- LLM -->
                 <a href="/workflows" class="block">
-                    <div class="tech-card bg-slate-100 dark:bg-slate-800/50 hover:cursor-pointer h-full border-none">
-                        <div class="text-xs text-amber-600 dark:text-amber-500 font-bold mb-3 flex items-center justify-between">
+                    <div
+                        class="tech-card bg-slate-100 dark:bg-slate-800/50 hover:cursor-pointer h-full border-none"
+                    >
+                        <div
+                            class="text-xs text-amber-600 dark:text-amber-500 font-bold mb-3 flex items-center justify-between"
+                        >
                             LOGIC / WRITING
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 6v6l4 2"></path></svg>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="opacity-70"
+                                ><path
+                                    d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"
+                                ></path><path d="M12 6v6l4 2"></path></svg
+                            >
                         </div>
-                        <h4 class="font-bold text-slate-900 dark:text-white">Claude 3.5 Sonnet</h4>
-                        <div class="mt-2 text-[10px] bg-white dark:bg-slate-900 p-1 rounded mono text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800">Provider: Anthropic</div>
-                        <div class="absolute top-2 right-2 text-amber-500 text-xs">↗</div>
+                        <h4 class="font-bold text-slate-900 dark:text-white">
+                            Claude 3.5 Sonnet
+                        </h4>
+                        <div
+                            class="mt-2 text-[10px] bg-white dark:bg-slate-900 p-1 rounded mono text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800"
+                        >
+                            Provider: Anthropic
+                        </div>
+                        <div
+                            class="absolute top-2 right-2 text-amber-500 text-xs"
+                        >
+                            ↗
+                        </div>
                     </div>
                 </a>
 
                 <!-- IMAGE -->
                 <a href="/character-consistency" class="block">
-                    <div class="tech-card bg-slate-100 dark:bg-slate-800/50 hover:cursor-pointer h-full border-none">
-                        <div class="text-xs text-green-600 dark:text-green-400 font-bold mb-3 flex items-center justify-between">
+                    <div
+                        class="tech-card bg-slate-100 dark:bg-slate-800/50 hover:cursor-pointer h-full border-none"
+                    >
+                        <div
+                            class="text-xs text-green-600 dark:text-green-400 font-bold mb-3 flex items-center justify-between"
+                        >
                             IMAGE GEN
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="opacity-70"
+                                ><rect
+                                    width="18"
+                                    height="18"
+                                    x="3"
+                                    y="3"
+                                    rx="2"
+                                    ry="2"></rect><circle cx="9" cy="9" r="2"
+                                ></circle><path
+                                    d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"
+                                ></path></svg
+                            >
                         </div>
-                        <h4 class="font-bold text-slate-900 dark:text-white">Flux.1 [Dev]</h4>
-                        <div class="mt-2 text-[10px] bg-white dark:bg-slate-900 p-1 rounded mono text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800">Provider: Replicate</div>
-                        <div class="absolute top-2 right-2 text-green-400 text-xs">↗</div>
+                        <h4 class="font-bold text-slate-900 dark:text-white">
+                            Flux.1 [Dev]
+                        </h4>
+                        <div
+                            class="mt-2 text-[10px] bg-white dark:bg-slate-900 p-1 rounded mono text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800"
+                        >
+                            Provider: Replicate
+                        </div>
+                        <div
+                            class="absolute top-2 right-2 text-green-400 text-xs"
+                        >
+                            ↗
+                        </div>
                     </div>
                 </a>
 
                 <!-- VIDEO -->
                 <a href="/character-consistency" class="block">
-                    <div class="tech-card bg-slate-100 dark:bg-slate-800/50 hover:cursor-pointer h-full border-none">
-                        <div class="text-xs text-purple-600 dark:text-purple-400 font-bold mb-3 flex items-center justify-between">
+                    <div
+                        class="tech-card bg-slate-100 dark:bg-slate-800/50 hover:cursor-pointer h-full border-none"
+                    >
+                        <div
+                            class="text-xs text-purple-600 dark:text-purple-400 font-bold mb-3 flex items-center justify-between"
+                        >
                             VIDEO GEN
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><path d="m22 8-6 4 6 4V8Z"></path><rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect></svg>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="opacity-70"
+                                ><path d="m22 8-6 4 6 4V8Z"></path><rect
+                                    width="14"
+                                    height="12"
+                                    x="2"
+                                    y="6"
+                                    rx="2"
+                                    ry="2"></rect></svg
+                            >
                         </div>
-                        <h4 class="font-bold text-slate-900 dark:text-white">Luma Dream Machine</h4>
-                        <div class="mt-2 text-[10px] bg-white dark:bg-slate-900 p-1 rounded mono text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800">Provider: Luma Labs</div>
-                        <div class="absolute top-2 right-2 text-purple-400 text-xs">↗</div>
+                        <h4 class="font-bold text-slate-900 dark:text-white">
+                            Luma Dream Machine
+                        </h4>
+                        <div
+                            class="mt-2 text-[10px] bg-white dark:bg-slate-900 p-1 rounded mono text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800"
+                        >
+                            Provider: Luma Labs
+                        </div>
+                        <div
+                            class="absolute top-2 right-2 text-purple-400 text-xs"
+                        >
+                            ↗
+                        </div>
                     </div>
                 </a>
 
                 <!-- AUDIO -->
-                <div class="tech-card bg-slate-100 dark:bg-slate-800/50 h-full border-none">
-                    <div class="text-xs text-blue-600 dark:text-blue-400 font-bold mb-3 flex items-center justify-between">
+                <div
+                    class="tech-card bg-slate-100 dark:bg-slate-800/50 h-full border-none"
+                >
+                    <div
+                        class="text-xs text-blue-600 dark:text-blue-400 font-bold mb-3 flex items-center justify-between"
+                    >
                         VOICE / SYNC
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="opacity-70"
+                            ><path
+                                d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"
+                            ></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"
+                            ></path><line x1="12" y1="19" x2="12" y2="22"
+                            ></line></svg
+                        >
                     </div>
-                    <h4 class="font-bold text-slate-900 dark:text-white">ElevenLabs + SyncLabs</h4>
-                    <div class="mt-2 text-[10px] bg-white dark:bg-slate-900 p-1 rounded mono text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800">Provider: 11Labs/Sync</div>
+                    <h4 class="font-bold text-slate-900 dark:text-white">
+                        ElevenLabs + SyncLabs
+                    </h4>
+                    <div
+                        class="mt-2 text-[10px] bg-white dark:bg-slate-900 p-1 rounded mono text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800"
+                    >
+                        Provider: 11Labs/Sync
+                    </div>
                 </div>
-
             </div>
         </section>
 
@@ -130,24 +342,50 @@
         <section class="relative z-10">
             <div class="flex items-center gap-4 mb-8">
                 <div class="h-px bg-slate-200 dark:bg-slate-700 flex-1"></div>
-                <h2 class="text-teal-600 dark:text-teal-400 font-bold uppercase tracking-widest text-sm">Layer 3: Infrastructure & Docs</h2>
+                <h2
+                    class="text-teal-600 dark:text-teal-400 font-bold uppercase tracking-widest text-sm"
+                >
+                    Layer 3: Infrastructure & Docs
+                </h2>
                 <div class="h-px bg-slate-200 dark:bg-slate-700 flex-1"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
                 <!-- The Quarto Pipeline -->
-                <div class="tech-card quarto-section border-teal-500/30 dark:border-teal-400/30">
+                <div
+                    class="tech-card quarto-section border-teal-500/30 dark:border-teal-400/30"
+                >
                     <div class="flex items-center gap-3 mb-3">
-                        <div class="bg-teal-500 text-white dark:text-black p-1.5 rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14.5 2 14.5 8 20 8"></polyline></svg>
+                        <div
+                            class="bg-teal-500 text-white dark:text-black p-1.5 rounded"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><path
+                                    d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+                                ></path><polyline points="14.5 2 14.5 8 20 8"
+                                ></polyline></svg
+                            >
                         </div>
-                        <h3 class="font-bold text-slate-900 dark:text-white">Quarto Executable Scripting</h3>
+                        <h3 class="font-bold text-slate-900 dark:text-white">
+                            Quarto Executable Scripting
+                        </h3>
                     </div>
                     <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                        Converts Markdown into Hybrid Documents with embedded metadata.
+                        Converts Markdown into Hybrid Documents with embedded
+                        metadata.
                     </p>
-                    <div class="bg-slate-100 dark:bg-black/50 p-3 rounded font-mono text-xs text-teal-700 dark:text-teal-300 space-y-1 border border-teal-200 dark:border-teal-900/50">
+                    <div
+                        class="bg-slate-100 dark:bg-black/50 p-3 rounded font-mono text-xs text-teal-700 dark:text-teal-300 space-y-1 border border-teal-200 dark:border-teal-900/50"
+                    >
                         <div>Input: story.md</div>
                         <div>Process: Agent injects {JSON} Metadata</div>
                         <div>Output 1: script.pdf (Human Review)</div>
@@ -156,47 +394,103 @@
                 </div>
 
                 <!-- The Asset Mirror -->
-                <div class="tech-card border border-indigo-500/20 dark:border-indigo-500/30">
+                <div
+                    class="tech-card border border-indigo-500/20 dark:border-indigo-500/30"
+                >
                     <div class="flex items-center gap-3 mb-3">
                         <div class="bg-indigo-600 text-white p-1.5 rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M16 16h5v5"></path></svg>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><path
+                                    d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"
+                                ></path><path d="M3 3v5h5"></path><path
+                                    d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"
+                                ></path><path d="M16 16h5v5"></path></svg
+                            >
                         </div>
-                        <h3 class="font-bold text-slate-900 dark:text-white">Cloud-Local Asset Mirror</h3>
+                        <h3 class="font-bold text-slate-900 dark:text-white">
+                            Cloud-Local Asset Mirror
+                        </h3>
                     </div>
-                    
-                    <div class="flex items-center justify-between gap-2 text-center text-xs">
-                        <div class="bg-slate-50 dark:bg-slate-900 p-2 rounded w-1/3 border border-slate-200 dark:border-slate-700">
-                            <div class="font-bold text-slate-900 dark:text-white underline decoration-indigo-500/50">GitHub</div>
-                            <div class="text-[10px] text-slate-500 mt-1">Version Control</div>
+
+                    <div
+                        class="flex items-center justify-between gap-2 text-center text-xs"
+                    >
+                        <div
+                            class="bg-slate-50 dark:bg-slate-900 p-2 rounded w-1/3 border border-slate-200 dark:border-slate-700"
+                        >
+                            <div
+                                class="font-bold text-slate-900 dark:text-white underline decoration-indigo-500/50"
+                            >
+                                GitHub
+                            </div>
+                            <div class="text-[10px] text-slate-500 mt-1">
+                                Version Control
+                            </div>
                         </div>
-                        <div class="text-indigo-600 dark:text-indigo-400 font-bold text-lg animate-pulse">⇄</div>
-                        <div class="bg-slate-50 dark:bg-slate-900 p-2 rounded w-1/3 border border-slate-200 dark:border-slate-700">
-                            <div class="font-bold text-slate-900 dark:text-white underline decoration-indigo-500/50">Local CLI</div>
-                            <div class="text-[10px] text-slate-500 mt-1">Orchestrator</div>
+                        <div
+                            class="text-indigo-600 dark:text-indigo-400 font-bold text-lg animate-pulse"
+                        >
+                            ⇄
                         </div>
-                        <div class="text-indigo-600 dark:text-indigo-400 font-bold text-lg animate-pulse">⇄</div>
-                        <div class="bg-slate-50 dark:bg-slate-900 p-2 rounded w-1/3 border border-slate-200 dark:border-slate-700">
-                            <div class="font-bold text-slate-900 dark:text-white underline decoration-indigo-500/50">AWS S3 / R2</div>
-                            <div class="text-[10px] text-slate-500 mt-1">Heavy Assets</div>
+                        <div
+                            class="bg-slate-50 dark:bg-slate-900 p-2 rounded w-1/3 border border-slate-200 dark:border-slate-700"
+                        >
+                            <div
+                                class="font-bold text-slate-900 dark:text-white underline decoration-indigo-500/50"
+                            >
+                                Local CLI
+                            </div>
+                            <div class="text-[10px] text-slate-500 mt-1">
+                                Orchestrator
+                            </div>
+                        </div>
+                        <div
+                            class="text-indigo-600 dark:text-indigo-400 font-bold text-lg animate-pulse"
+                        >
+                            ⇄
+                        </div>
+                        <div
+                            class="bg-slate-50 dark:bg-slate-900 p-2 rounded w-1/3 border border-slate-200 dark:border-slate-700"
+                        >
+                            <div
+                                class="font-bold text-slate-900 dark:text-white underline decoration-indigo-500/50"
+                            >
+                                AWS S3 / R2
+                            </div>
+                            <div class="text-[10px] text-slate-500 mt-1">
+                                Heavy Assets
+                            </div>
                         </div>
                     </div>
-                    
+
                     <div class="mt-3 text-center">
-                        <code class="bg-slate-900 text-indigo-300 px-3 py-1 rounded text-[10px] border border-indigo-500/20">npm run asset:sync</code>
+                        <code
+                            class="bg-slate-900 text-indigo-300 px-3 py-1 rounded text-[10px] border border-indigo-500/20"
+                            >npm run asset:sync</code
+                        >
                     </div>
                 </div>
-
             </div>
         </section>
 
         <!-- FOOTER KEY -->
-        <footer class="mt-16 text-center grid grid-cols-2 md:grid-cols-4 gap-4 text-xs text-slate-500">
+        <footer
+            class="mt-8 sm:mt-16 text-center grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 text-[10px] sm:text-xs text-slate-500"
+        >
             <div>🟦 Frontend (Next.js)</div>
             <div>🟪 Video (Luma)</div>
             <div>🟩 Database (Supabase)</div>
             <div>🟧 Writing (Claude)</div>
         </footer>
-
     </div>
 </div>
 
@@ -205,22 +499,24 @@
         --bg-color: transparent;
         --card-bg: white;
         --card-border: #e2e8f0;
-        --primary: #0ea5e9;   /* Sky 600 */
+        --primary: #0ea5e9; /* Sky 600 */
         --secondary: #0d9488; /* Teal 600 */
-        --accent: #db2777;    /* Pink 600 */
-        --code: #d97706;      /* Amber 600 */
+        --accent: #db2777; /* Pink 600 */
+        --code: #d97706; /* Amber 600 */
     }
 
     :global(.dark .tech-stack-container) {
         --card-bg: #1e293b;
         --card-border: #334155;
-        --primary: #38bdf8;   /* Sky 400 */
+        --primary: #38bdf8; /* Sky 400 */
         --secondary: #2dd4bf; /* Teal 400 */
-        --accent: #f472b6;    /* Pink 400 */
-        --code: #f59e0b;      /* Amber 400 */
+        --accent: #f472b6; /* Pink 400 */
+        --code: #f59e0b; /* Amber 400 */
     }
 
-    .mono { font-family: 'JetBrains Mono', monospace; }
+    .mono {
+        font-family: "JetBrains Mono", monospace;
+    }
 
     /* Tech Card Styling */
     .tech-card {
@@ -262,7 +558,11 @@
 
     /* Quarto Special Section */
     .quarto-section {
-        background: linear-gradient(135deg, rgba(45, 212, 191, 0.1) 0%, rgba(15, 23, 42, 0) 100%);
+        background: linear-gradient(
+            135deg,
+            rgba(45, 212, 191, 0.1) 0%,
+            rgba(15, 23, 42, 0) 100%
+        );
         border: 1px dashed var(--secondary);
     }
 </style>

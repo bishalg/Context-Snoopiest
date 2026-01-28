@@ -119,4 +119,185 @@
   .animate-bounce-slow {
     animation: bounce-slow 3s infinite ease-in-out;
   }
+
+  /* ======================================
+     RESPONSIVE UTILITIES
+     ====================================== */
+
+  /* Responsive Grid - Collapses on mobile */
+  .responsive-grid {
+    @apply grid gap-4;
+    grid-template-columns: 1fr;
+  }
+  @screen sm {
+    .responsive-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @screen lg {
+    .responsive-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Responsive Card Container */
+  .card-responsive {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
+
+  /* Responsive Chart Container */
+  .chart-container-responsive {
+    @apply w-full;
+    height: 200px;
+  }
+  @screen sm {
+    .chart-container-responsive {
+      height: 250px;
+    }
+  }
+  @screen md {
+    .chart-container-responsive {
+      height: 300px;
+    }
+  }
+
+  /* Mobile-friendly text scaling */
+  .text-responsive-sm {
+    @apply text-xs sm:text-sm;
+  }
+  .text-responsive-base {
+    @apply text-sm sm:text-base;
+  }
+  .text-responsive-lg {
+    @apply text-base sm:text-lg md:text-xl;
+  }
+  .text-responsive-xl {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+  }
+  .text-responsive-hero {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  /* Hide on mobile, show on larger screens */
+  .hide-mobile {
+    @apply hidden sm:block;
+  }
+  .show-mobile-only {
+    @apply block sm:hidden;
+  }
+
+  /* Decorative elements - hide on mobile */
+  .decorative-connector {
+    @apply hidden md:block;
+  }
+}
+
+/* ======================================
+   PRINT STYLES (A4 Optimization)
+   ====================================== */
+
+@media print {
+  /* A4 Page Setup */
+  @page {
+    size: A4 portrait;
+    margin: 15mm 12mm;
+  }
+
+  /* Reset backgrounds for print */
+  body {
+    background: white !important;
+    background-image: none !important;
+    color: black !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Hide navigation and interactive elements */
+  nav,
+  aside,
+  #sidebar,
+  #overlay,
+  .print\:hidden,
+  button,
+  .animate-bounce-slow,
+  .animate-pulse {
+    display: none !important;
+  }
+
+  /* Ensure content fills page */
+  main {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Page break utilities */
+  .page-break-before {
+    page-break-before: always;
+  }
+  .page-break-after {
+    page-break-after: always;
+  }
+  .avoid-break {
+    page-break-inside: avoid;
+  }
+
+  /* Ensure cards don't break across pages */
+  .tech-card,
+  .agent-card,
+  .info-card,
+  section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Charts - ensure visible and sized for print */
+  canvas {
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 200px !important;
+  }
+
+  /* Links - show URL after text */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #666;
+  }
+  a[href^="/"]::after {
+    content: none;
+  }
+
+  /* Headers - ensure readable */
+  h1, h2, h3, h4, h5, h6 {
+    color: black !important;
+    page-break-after: avoid;
+  }
+
+  /* Code blocks */
+  pre, code {
+    background: #f5f5f5 !important;
+    border: 1px solid #ddd !important;
+    color: black !important;
+    font-size: 9pt !important;
+  }
+
+  /* Grid layouts - single column for print */
+  .grid {
+    display: block !important;
+  }
+  .grid > * {
+    margin-bottom: 1rem;
+  }
+
+  /* Prose adjustments */
+  .prose {
+    max-width: 100% !important;
+    font-size: 11pt !important;
+  }
+  .prose p {
+    orphans: 3;
+    widows: 3;
+  }
 }

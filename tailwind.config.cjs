@@ -4,6 +4,11 @@ module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      screens: {
+        'xs': '360px',
+        'a4': '595px',
+        'print': { 'raw': 'print' },
+      },
       colors: {
         glass: {
           100: 'rgba(255, 255, 255, 0.1)',
