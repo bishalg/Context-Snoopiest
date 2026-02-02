@@ -26,6 +26,15 @@ jobs:
         run: bun install
       - name: Build
         run: bun run build
+      - name: Generate PDFs
+        continue-on-error: true
+        run: |
+          bun run preview &
+          sleep 10
+          bun run pdf
+          # Copy generated PDFs to dist so they are deployed
+          mkdir -p dist/pdf
+          cp -r public/pdf/* dist/pdf/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

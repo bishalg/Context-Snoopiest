@@ -107,6 +107,7 @@
   }
 
   @keyframes bounce-slow {
+
     0%,
     100% {
       transform: translateY(-5%);
@@ -132,11 +133,13 @@
     @apply grid gap-4;
     grid-template-columns: 1fr;
   }
+
   @screen sm {
     .responsive-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
+
   @screen lg {
     .responsive-grid {
       grid-template-columns: repeat(3, 1fr);
@@ -153,11 +156,13 @@
     @apply w-full;
     height: 200px;
   }
+
   @screen sm {
     .chart-container-responsive {
       height: 250px;
     }
   }
+
   @screen md {
     .chart-container-responsive {
       height: 300px;
@@ -168,15 +173,19 @@
   .text-responsive-sm {
     @apply text-xs sm:text-sm;
   }
+
   .text-responsive-base {
     @apply text-sm sm:text-base;
   }
+
   .text-responsive-lg {
     @apply text-base sm:text-lg md:text-xl;
   }
+
   .text-responsive-xl {
     @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
   }
+
   .text-responsive-hero {
     @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
   }
@@ -185,6 +194,7 @@
   .hide-mobile {
     @apply hidden sm:block;
   }
+
   .show-mobile-only {
     @apply block sm:hidden;
   }
@@ -200,21 +210,75 @@
    ====================================== */
 
 @media print {
+
   /* A4 Page Setup */
   @page {
     size: A4 portrait;
     margin: 15mm 12mm;
   }
 
+  /* First page - no top margin for cleaner chapter starts */
+  @page :first {
+    margin-top: 10mm;
+  }
+
   /* Reset backgrounds for print */
+  html,
   body {
     background: white !important;
     background-image: none !important;
     color: black !important;
     font-size: 11pt !important;
-    line-height: 1.4 !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    line-height: 1.5 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Aggressive contrast reset - Force PURE BLACK on everything */
+  *,
+  p,
+  span,
+  li,
+  div,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  td,
+  th,
+  strong,
+  em,
+  b,
+  i,
+  a,
+  blockquote {
+    color: black !important;
+    text-shadow: none !important;
+    -webkit-text-fill-color: black !important;
+  }
+
+  /* Remove all gradients and dark backgrounds */
+  [class*="bg-gradient"],
+  .dark\:bg-slate-900,
+  .dark\:bg-slate-800,
+  .bg-slate-900,
+  .bg-slate-800 {
+    background: white !important;
+    background-image: none !important;
+    border: 1px solid #ddd !important;
+    /* Adding border to retain structure */
+  }
+
+  /* Disable all animations and transitions */
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    animation-duration: 0s !important;
+    transition: none !important;
+    transition-duration: 0s !important;
   }
 
   /* Hide navigation and interactive elements */
@@ -225,8 +289,36 @@
   .print\:hidden,
   button,
   .animate-bounce-slow,
-  .animate-pulse {
+  .animate-pulse,
+  [data-interactive],
+  .pagination,
+  .nav-links {
     display: none !important;
+  }
+
+  /* Remove all shadows for clean print */
+  *,
+  *::before,
+  *::after {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  /* Optimization for large diagrams (Conveyor Belt etc) */
+  .conveyor-belt-container,
+  .comparison-matrix-container {
+    zoom: 0.8 !important;
+    /* Scale down to fit */
+    margin: 1rem 0 !important;
+  }
+
+  /* Reduce excessive spacing in diagrams */
+  .conveyor-belt-container .mt-32 {
+    margin-top: 4rem !important;
+  }
+
+  .conveyor-belt-container .mb-16 {
+    margin-bottom: 2rem !important;
   }
 
   /* Ensure content fills page */
@@ -237,42 +329,128 @@
     margin: 0 !important;
   }
 
-  /* Page break utilities */
+  /* ======================================
+     PAGE BREAK CONTROL
+     ====================================== */
+
+  /* Utility classes for explicit control */
   .page-break-before {
-    page-break-before: always;
-  }
-  .page-break-after {
-    page-break-after: always;
-  }
-  .avoid-break {
-    page-break-inside: avoid;
+    page-break-before: always !important;
+    break-before: page !important;
   }
 
-  /* Ensure cards don't break across pages */
+  .page-break-after {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Keep content blocks together - NEVER break inside */
+  section,
+  article,
   .tech-card,
   .agent-card,
   .info-card,
-  section {
-    page-break-inside: avoid;
-    break-inside: avoid;
+  .glass-panel,
+  figure,
+  blockquote,
+  pre,
+  table,
+  .card,
+  .panel,
+  [class*="card"],
+  [class*="panel"],
+  [class*="box"],
+  .mermaid,
+  .chart-container,
+  .diagram {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
+
+  /* Headers MUST stay with following content */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: black !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Prevent orphaned headers - keep with at least 3 lines after */
+  h1+*,
+  h2+*,
+  h3+*,
+  h4+* {
+    page-break-before: avoid !important;
+    break-before: avoid !important;
+  }
+
+  /* Paragraph orphan/widow control */
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Lists - avoid breaking list items */
+  li {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Table rows should stay together when possible */
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* ======================================
+     VISUAL OPTIMIZATIONS
+     ====================================== */
 
   /* Charts - ensure visible and sized for print */
   canvas {
     max-width: 100% !important;
     height: auto !important;
-    max-height: 200px !important;
+    max-height: 250px !important;
   }
 
-  /* Links - show URL after text */
+  /* Images - prevent overflow and keep with caption */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Links - show URL after text for external links */
   a[href^="http"]::after {
     content: " (" attr(href) ")";
-    font-size: 9pt;
+    font-size: 8pt;
     color: #666;
+    word-break: break-all;
   }
-  a[href^="/"]::after {
+
+  /* Don't show URL for internal links */
+  a[href^="/"]::after,
+  a[href^="#"]::after {
     content: none;
   }
+
+  <<<<<<< HEAD
 
   /* Headers - ensure readable */
   h1,
@@ -286,19 +464,33 @@
   }
 
   /* Code blocks */
-  pre,
+  =======
+
+  /* Code blocks - ensure readable */
+  >>>>>>>210d157 (feat(pdf): implement modular PDF generation system and automated workflow) pre,
   code {
     background: #f5f5f5 !important;
     border: 1px solid #ddd !important;
     color: black !important;
     font-size: 9pt !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+  }
+
+  pre {
+    padding: 12px !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    max-height: none !important;
+    overflow: visible !important;
   }
 
   /* Grid layouts - allow grid for print */
   /* .grid {
     display: block !important;
   }
-  .grid > * {
+
+  .grid>* {
     margin-bottom: 1rem;
   } */
 
@@ -307,13 +499,64 @@
     max-width: 100% !important;
     font-size: 11pt !important;
   }
+
   .prose p {
     orphans: 3;
     widows: 3;
+    margin-bottom: 0.75em;
+  }
+
+  .prose h1 {
+    font-size: 20pt !important;
+    margin-top: 0;
+  }
+
+  .prose h2 {
+    font-size: 16pt !important;
+  }
+
+  .prose h3 {
+    font-size: 13pt !important;
+  }
+
+  .prose h4 {
+    font-size: 11pt !important;
+  }
+
+  /* Ensure gradient text is visible */
+  .bg-clip-text {
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    color: black !important;
+    background: none !important;
+  }
+
+  /* Tables - print-friendly */
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    font-size: 9pt !important;
+  }
+
+  th,
+  td {
+    border: 1px solid #333 !important;
+    padding: 6px 8px !important;
+    text-align: left !important;
+  }
+
+  th {
+    background: #f0f0f0 !important;
+    font-weight: bold !important;
   }
 
   /* Remove drop shadows for cleaner print */
-  *, .shadow-lg, .shadow-xl, .shadow-md, .shadow-sm, .shadow {
+  *,
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-md,
+  .shadow-sm,
+  .shadow {
     box-shadow: none !important;
   }
 }

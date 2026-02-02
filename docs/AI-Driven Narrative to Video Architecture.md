@@ -185,6 +185,10 @@ To understand the unique value proposition of Context-Snoopiest, we must contras
 
 **Key Insight**: Cursor is designed for *random access* (jumping between files), whereas Snoopiest is designed for *sequential consistency* (ensuring Chapter 10 aligns with Chapter 1). Cursor's RAG approach would fail to capture the *emotional accumulation* of a story, which is why Snoopiest requires the hierarchical backbone.
 
+### **4.6 DeepAgent State Architecture**
+
+"DeepAgent State Architecture: Following the principles of [Context Management for DeepAgents](https://www.blog.langchain.com/context-management-for-deepagents/), Context-Snoopiest abandons the traditional 'Sliding Window' memory model. Instead, we treat the Narrative-to-Video pipeline as a long-horizon state machine. We utilize TOON to maintain a persistent, structured 'World State' that survives across hundreds of generation steps, ensuring that the 100th minute of video is as consistent as the 1st."
+
 ## **5. Narrative Semantic Compression: The "RepoMix" Pattern**
 
 Current LLMs suffer from "Context Rot" in long-form generation. To solve this, we are adopting the architectural pattern used by **RepoMix**, a tool designed to pack entire code repositories into AI-friendly context windows.

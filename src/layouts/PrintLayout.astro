@@ -1,0 +1,95 @@
+---
+import "../styles/global.css";
+import { SITE } from "../config";
+
+const { frontmatter } = Astro.props;
+const title = frontmatter?.title || SITE.title;
+const sectionNumber = frontmatter?.sectionNumber || "";
+---
+
+<!doctype html>
+<html lang="en" class="light">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<title>{title} | {SITE.title}</title>
+		<style is:global>
+			/* Force light mode for PDF */
+			html, body {
+				background: white !important;
+				color: black !important;
+			}
+			
+			/* Hide all navigation */
+			nav, aside, #sidebar, #overlay, button, .print\:hidden {
+				display: none !important;
+			}
+			
+			/* Disable all animations */
+			*, *::before, *::after {
+				animation: none !important;
+				transition: none !important;
+			}
+			
+			/* Full width content */
+			main {
+				width: 100% !important;
+				max-width: 100% !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+			
+			/* Ensure gradient text is visible */
+			.bg-clip-text,
+			[class*="bg-gradient"],
+			.text-transparent {
+				-webkit-background-clip: unset !important;
+				background-clip: unset !important;
+				color: black !important;
+				background: none !important;
+			}
+			
+			/* Glass panels - solid for print */
+			.glass-panel {
+				background: white !important;
+				backdrop-filter: none !important;
+				border-color: #e5e7eb !important;
+			}
+		</style>
+	</head>
+	<body class="bg-white text-black">
+		<main class="p-8 max-w-4xl mx-auto">
+			<!-- Section Header -->
+			{sectionNumber && (
+				<div class="text-sm text-gray-500 font-mono mb-2">
+					Section {sectionNumber}
+				</div>
+			)}
+			
+			<!-- Page Title -->
+			{frontmatter?.title && (
+				<header class="mb-8 pb-6 border-b border-gray-200">
+					<h1 class="text-3xl font-bold text-black leading-tight">
+						{frontmatter.title}
+					</h1>
+					{frontmatter?.description && (
+						<p class="text-lg text-gray-600 mt-3 leading-relaxed">
+							{frontmatter.description}
+						</p>
+					)}
+				</header>
+			)}
+			
+			<!-- Content -->
+			<article class="prose max-w-none">
+				<slot />
+			</article>
+		</main>
+	</body>
+</html>
