@@ -1,68 +1,130 @@
 ---
 // Character Consistency - Injection and Generation
 ---
+
 <div class="relative z-10 my-16 not-prose">
-    <!-- The Split Inputs -->
-    <div class="flex justify-center gap-12 items-end mb-8 px-4">
-        <!-- Left: Identity -->
-        <div class="text-center w-36">
-            <div class="text-[10px] font-black text-teal-600 dark:text-teal-400 uppercase mb-3 tracking-widest">Identity</div>
-            <div class="h-20 border-2 border-teal-400 dark:border-teal-900 border-dashed rounded-2xl bg-teal-50 dark:bg-teal-900/10 flex items-center justify-center shadow-lg shadow-teal-500/10">
-                <span class="text-3xl">🧬</span>
-            </div>
-            <div class="w-0.5 h-8 bg-teal-400 dark:bg-teal-900/50 mx-auto mt-2"></div>
-        </div>
-
-        <!-- Right: Action -->
-        <div class="text-center w-40">
-            <div class="text-[10px] font-black text-sky-600 dark:text-sky-400 uppercase mb-3 tracking-widest">Narrative</div>
-            <div class="h-20 border-2 border-sky-400 dark:border-sky-900 rounded-2xl bg-white dark:bg-slate-900 p-3 text-[10px] text-left leading-snug text-slate-600 dark:text-slate-400 shadow-lg shadow-sky-500/10">
-                "Character runs through rain, looking back in fear..."
-            </div>
-            <div class="w-0.5 h-8 bg-sky-400 dark:bg-sky-900/50 mx-auto mt-2"></div>
-        </div>
+  <!-- The Split Inputs -->
+  <div class="flex justify-center gap-12 items-end mb-8 px-4">
+    <!-- Left: Identity -->
+    <div class="text-center w-36">
+      <div
+        class="text-[10px] font-black text-teal-600 dark:text-teal-400 uppercase mb-3 tracking-widest"
+      >
+        Identity
+      </div>
+      <div
+        class="h-20 border-2 border-teal-400 dark:border-teal-900 border-dashed rounded-2xl bg-teal-50 dark:bg-teal-900/10 flex items-center justify-center shadow-lg shadow-teal-500/10"
+      >
+        <span class="text-3xl">🧬</span>
+      </div>
+      <div class="w-0.5 h-8 bg-teal-400 dark:bg-teal-900/50 mx-auto mt-2"></div>
     </div>
 
-    <!-- The Model Processing -->
-    <div class="flex justify-center relative">
-        <!-- Merge Circle -->
-        <div class="absolute -top-6 w-12 h-12 bg-white dark:bg-slate-900 border-2 border-sky-500 dark:border-sky-400 rounded-full flex items-center justify-center font-black text-sky-500 dark:text-sky-400 z-20 shadow-xl shadow-sky-500/20 text-xl">+</div>
-        
-        <div class="node w-full max-w-2xl bg-slate-900 dark:bg-black text-white shadow-2xl border-none pt-16 pb-8 px-8 text-center rounded-3xl relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-sky-500/5 pointer-events-none"></div>
-            <h3 class="font-bold text-xl mb-2 relative z-10">Video Generation Model</h3>
-            <p class="text-[10px] text-slate-400 mb-8 font-mono relative z-10 uppercase tracking-widest">Conditioning: [Prompt_Embeds + Identity_Embeds]</p>
-            
-            <div class="w-full h-1.5 bg-slate-800 rounded-full mb-8 relative z-10 group overflow-hidden">
-                <div class="h-full bg-gradient-to-r from-teal-500 via-sky-500 to-indigo-500 rounded-full w-full animate-pulse-slow"></div>
-            </div>
-            
-            <div class="flex justify-center gap-6 relative z-10">
-                <div class="bg-white/5 dark:bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center gap-3">
-                    <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center text-green-400 font-bold">✔</div>
-                    <div class="text-left">
-                        <div class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Identity</div>
-                        <div class="text-xs font-bold text-white">Preserved</div>
-                    </div>
-                </div>
-                <div class="bg-white/5 dark:bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center gap-3">
-                    <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center text-green-400 font-bold">✔</div>
-                    <div class="text-left">
-                        <div class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Narrative</div>
-                        <div class="text-xs font-bold text-white">Executed</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Right: Action -->
+    <div class="text-center w-40">
+      <div
+        class="text-[10px] font-black text-sky-600 dark:text-sky-400 uppercase mb-3 tracking-widest"
+      >
+        Narrative
+      </div>
+      <div
+        class="h-20 border-2 border-sky-400 dark:border-sky-900 rounded-2xl bg-white dark:bg-slate-900 p-3 text-[10px] text-left leading-snug text-slate-600 dark:text-slate-400 shadow-lg shadow-sky-500/10"
+      >
+        "Character runs through rain, looking back in fear..."
+      </div>
+      <div class="w-0.5 h-8 bg-sky-400 dark:bg-sky-900/50 mx-auto mt-2"></div>
     </div>
+  </div>
+
+  <!-- The Model Processing -->
+  <div class="flex justify-center relative">
+    <!-- Merge Circle -->
+    <div
+      class="absolute -top-6 w-12 h-12 bg-white dark:bg-slate-900 border-2 border-sky-500 dark:border-sky-400 rounded-full flex items-center justify-center font-black text-sky-500 dark:text-sky-400 z-20 shadow-xl shadow-sky-500/20 text-xl"
+    >
+      +
+    </div>
+
+    <div
+      class="node w-full max-w-2xl bg-white dark:bg-black text-slate-800 dark:text-white shadow-2xl border border-slate-200 dark:border-none pt-16 pb-8 px-8 text-center rounded-3xl relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-sky-500/5 pointer-events-none"
+      >
+      </div>
+      <h3 class="font-bold text-xl mb-2 relative z-10">
+        Video Generation Model
+      </h3>
+      <p
+        class="text-[10px] text-slate-500 dark:text-slate-400 mb-8 font-mono relative z-10 uppercase tracking-widest"
+      >
+        Conditioning: [Prompt_Embeds + Identity_Embeds]
+      </p>
+
+      <div
+        class="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full mb-8 relative z-10 group overflow-hidden"
+      >
+        <div
+          class="h-full bg-gradient-to-r from-teal-500 via-sky-500 to-indigo-500 rounded-full w-full animate-pulse-slow"
+        >
+        </div>
+      </div>
+
+      <div class="flex justify-center gap-6 relative z-10">
+        <div
+          class="bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-4 flex items-center gap-3"
+        >
+          <div
+            class="w-10 h-10 bg-green-500/10 dark:bg-green-500/20 rounded-full flex items-center justify-center text-green-600 dark:text-green-400 font-bold"
+          >
+            ✔
+          </div>
+          <div class="text-left">
+            <div
+              class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest"
+            >
+              Identity
+            </div>
+            <div class="text-xs font-bold text-slate-800 dark:text-white">
+              Preserved
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-4 flex items-center gap-3"
+        >
+          <div
+            class="w-10 h-10 bg-green-500/10 dark:bg-green-500/20 rounded-full flex items-center justify-center text-green-600 dark:text-green-400 font-bold"
+          >
+            ✔
+          </div>
+          <div class="text-left">
+            <div
+              class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest"
+            >
+              Narrative
+            </div>
+            <div class="text-xs font-bold text-slate-800 dark:text-white">
+              Executed
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>
-    @keyframes pulse-slow {
-        0%, 100% { opacity: 0.5; }
-        50% { opacity: 0.8; }
+  @keyframes pulse-slow {
+    0%,
+    100% {
+      opacity: 0.5;
     }
-    .animate-pulse-slow {
-        animation: pulse-slow 3s ease-in-out infinite;
+    50% {
+      opacity: 0.8;
     }
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
 </style>

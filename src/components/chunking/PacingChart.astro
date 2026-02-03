@@ -1,61 +1,134 @@
 ---
 // Dynamic Pacing Control Chart
 ---
-<div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-white/5 my-8 not-prose">
-    <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">Dynamic Pacing Control</h3>
-    <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">
-        Chunk length adapts to narrative sentiment. High Tension = Short Cuts.
-    </p>
-    <div class="chart-container relative h-[250px] w-full">
-        <canvas id="pacingChart"></canvas>
-    </div>
+
+<div
+  class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-white/5 my-8 not-prose"
+>
+  <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">
+    Dynamic Pacing Control
+  </h3>
+  <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">
+    Chunk length adapts to narrative sentiment. High Tension = Short Cuts.
+  </p>
+  <div class="chart-container relative h-[250px] w-full">
+    <canvas id="pacingChart"></canvas>
+  </div>
 </div>
 
 <script>
-    import Chart from 'chart.js/auto';
+  import Chart from "chart.js/auto";
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const ctx = document.getElementById('pacingChart');
-        if (ctx) {
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Start', 'Build', 'Fight!', 'Climax', 'Rest', 'End'],
-                    datasets: [
-                        {
-                            label: 'Chunk Duration (Seconds)',
-                            data: [8, 6, 2.5, 3, 7, 8], // The Curve
-                            borderColor: '#0F766E', // Teal
-                            backgroundColor: 'rgba(15, 118, 110, 0.1)',
-                            fill: true,
-                            tension: 0.4,
-                            borderWidth: 3,
-                            pointBackgroundColor: '#fff',
-                            pointBorderColor: '#0F766E',
-                            pointRadius: 4,
-                            pointHoverRadius: 6
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            min: 0,
-                            max: 10,
-                            title: { display: true, text: 'Duration (Seconds)' },
-                            grid: { color: 'rgba(148, 163, 184, 0.1)' }
-                        },
-                        x: {
-                            grid: { display: false }
-                        }
-                    },
-                    plugins: {
-                        legend: { display: false }
-                    }
-                }
-            });
-        }
+  const initPacingChart = () => {
+    const ctx = document.getElementById("pacingChart") as HTMLCanvasElement;
+    if (ctx && ctx.parentElement) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              createPacingChart(ctx);
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.2 },
+      );
+      observer.observe(ctx.parentElement);
+    }
+  };
+
+  const createPacingChart = (ctx: HTMLCanvasElement) => {
+    // Destroy existing
+    const existingChart = Chart.getChart(ctx);
+    if (existingChart) existingChart.destroy();
+
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: ["Start", "Build", "Fight!", "Climax", "Rest", "End"],
+        datasets: [
+          {
+            label: "Chunk Duration (Seconds)",
+            data: [8, 6, 2.5, 3, 7, 8],
+            borderColor: "#0F766E", // Teal
+            backgroundColor: "rgba(15, 118, 110, 0.15)",
+            fill: true,
+            tension: 0.4,
+            borderWidth: 4,
+            pointBackgroundColor: "#fff",
+            pointBorderColor: "#0F766E",
+            pointBorderWidth: 2,
+            pointRadius: 6,
+            pointHoverRadius: 9,
+            pointHoverBackgroundColor: "#0F766E",
+            pointHoverBorderColor: "#fff",
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          mode: "index",
+          intersect: false,
+        },
+        scales: {
+          y: {
+            min: 0,
+            max: 10,
+            title: { display: true, text: "Duration (Seconds)" },
+            grid: { color: "rgba(148, 163, 184, 0.1)" },
+          },
+          x: {
+            grid: { display: false },
+          },
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: "rgba(15, 23, 42, 0.95)",
+            padding: 12,
+            cornerRadius: 8,
+            titleFont: { size: 14 },
+            bodyFont: { size: 13, weight: "bold" },
+            callbacks: {
+              label: (ctx) => `${ctx.raw}s Chunk Duration`,
+            },
+          },
+        },
+        animation: {
+          x: {
+            type: "number",
+            easing: "linear",
+            duration: 200, // delay between points
+            from: NaN, // the point is initially skipped
+            delay(ctx) {
+              if (ctx.type !== "data" || ctx.xStarted) {
+                return 0;
+              }
+              ctx.xStarted = true;
+              return ctx.index * 300; // Progressive draw
+            },
+          },
+          y: {
+            type: "number",
+            easing: "linear",
+            duration: 200,
+            from: 8, // animate from baseline
+            delay(ctx) {
+              if (ctx.type !== "data" || ctx.yStarted) {
+                return 0;
+              }
+              ctx.yStarted = true;
+              return ctx.index * 300;
+            },
+          },
+        } as any,
+      },
     });
+  };
+
+  // Run on both DOMContentLoaded and astro:page-load
+  document.addEventListener("DOMContentLoaded", initPacingChart);
+  document.addEventListener("astro:page-load", initPacingChart);
 </script>

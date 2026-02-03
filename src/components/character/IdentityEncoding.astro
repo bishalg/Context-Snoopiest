@@ -1,27 +1,57 @@
 ---
 // Character Consistency - Identity Vector Encoding
 ---
+
 <div class="flex justify-center my-8 not-prose">
-    <div class="node w-full max-w-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 border-t-4 border-t-teal-500 rounded-xl p-8 shadow-xl text-center transition-transform hover:-translate-y-1">
-        <h3 class="font-bold text-slate-800 dark:text-white text-lg">2. Identity Vector Encoding</h3>
-        <div class="text-[10px] text-teal-600 dark:text-teal-400 font-black uppercase mb-6 tracking-widest">IP-Adapter / ControlNet</div>
-        
-        <div class="bg-slate-900 dark:bg-black rounded-xl p-6 mx-auto max-w-xs shadow-inner border border-white/5">
-            <div class="text-[10px] text-slate-500 mb-3 font-mono text-left tracking-tight">output_embedding.tensor</div>
-            <div class="vector-strip h-2 bg-gradient-to-r from-teal-500 via-sky-500 to-amber-500 rounded-full mb-2 opacity-80"></div>
-            <div class="vector-strip h-2 bg-gradient-to-r from-teal-500 via-sky-500 to-amber-500 rounded-full mb-2 opacity-40 w-3/4"></div>
-            <div class="vector-strip h-2 bg-gradient-to-r from-teal-500 via-sky-500 to-amber-500 rounded-full opacity-20 w-1/2"></div>
-            <div class="text-[9px] text-teal-400 font-mono mt-4 text-right">Size: 1024x1 (Float32)</div>
-        </div>
-        
-        <p class="text-xs text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">
-            Visual features are compressed into a mathematical embedding, separating <span class="text-teal-500 dark:text-teal-400 font-bold">Identity</span> from narrative context.
-        </p>
+  <div
+    class="node w-full max-w-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 border-t-4 border-t-teal-500 rounded-xl p-8 shadow-xl text-center transition-transform hover:-translate-y-1"
+  >
+    <h3 class="font-bold text-slate-800 dark:text-white text-lg">
+      2. Identity Vector Encoding
+    </h3>
+    <div
+      class="text-[10px] text-teal-600 dark:text-teal-400 font-black uppercase mb-6 tracking-widest"
+    >
+      IP-Adapter / ControlNet
     </div>
+
+    <div
+      class="bg-slate-50 dark:bg-black rounded-xl p-6 mx-auto max-w-xs shadow-inner border border-slate-200 dark:border-white/5"
+    >
+      <div
+        class="text-[10px] text-slate-400 dark:text-slate-500 mb-3 font-mono text-left tracking-tight"
+      >
+        output_embedding.tensor
+      </div>
+      <div
+        class="vector-strip h-2 bg-gradient-to-r from-teal-500 via-sky-500 to-amber-500 rounded-full mb-2 opacity-80"
+      >
+      </div>
+      <div
+        class="vector-strip h-2 bg-gradient-to-r from-teal-500 via-sky-500 to-amber-500 rounded-full mb-2 opacity-60 dark:opacity-40 w-3/4"
+      >
+      </div>
+      <div
+        class="vector-strip h-2 bg-gradient-to-r from-teal-500 via-sky-500 to-amber-500 rounded-full opacity-30 dark:opacity-20 w-1/2"
+      >
+      </div>
+      <div
+        class="text-[9px] text-teal-600 dark:text-teal-400 font-mono mt-4 text-right"
+      >
+        Size: 1024x1 (Float32)
+      </div>
+    </div>
+
+    <p class="text-xs text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">
+      Visual features are compressed into a mathematical embedding, separating <span
+        class="text-teal-500 dark:text-teal-400 font-bold">Identity</span
+      > from narrative context.
+    </p>
+  </div>
 </div>
 
 <style>
-    .node {
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
+  .node {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
 </style>

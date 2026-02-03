@@ -1,41 +1,236 @@
----
-// Audio-Visual Split Visualization
----
-<div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-white/5 my-8 not-prose">
-    <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-4">The Audio-Visual Split</h3>
-    <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">
-        Handling "Talky" scenes where dialogue exceeds the visual constraint.
-    </p>
+<div
+  class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-white/5 my-8 not-prose"
+>
+  <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-4">
+    The Audio-Visual Split
+  </h3>
+  <p class="text-xs text-slate-500 dark:text-slate-400 mb-8">
+    Handling "Talky" scenes where dialogue exceeds the visual constraint.
+  </p>
 
-    <!-- Visualization of Split -->
-    <div class="space-y-6">
-        <!-- Audio Stream -->
-        <div>
-            <div class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-wider">AUDIO STREAM (Continuous)</div>
-            <div class="w-full h-10 bg-slate-100 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center px-3 relative overflow-hidden">
-                <div class="absolute left-0 top-0 h-full w-[100%] bg-indigo-100 dark:bg-indigo-900/30"></div>
-                <span class="relative z-10 text-xs text-indigo-800 dark:text-indigo-300 font-mono overflow-hidden whitespace-nowrap text-ellipsis">"The wind roared, and he whispered..." (12s)</span>
-            </div>
+  <!-- Visualization of Split -->
+  <div class="space-y-8 relative">
+    <!-- Audio Stream -->
+    <div class="relative group">
+      <div
+        class="flex justify-between text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-wider"
+      >
+        <span>AUDIO STREAM (Continuous)</span>
+        <span class="text-indigo-500 animate-pulse">Playing...</span>
+      </div>
+
+      <div
+        class="w-full h-12 bg-slate-100 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center px-4 relative overflow-hidden"
+      >
+        <!-- Audio Waveform Simulation -->
+        <div
+          class="absolute inset-0 flex items-center justify-around opacity-20"
+        >
+          {
+            Array.from({ length: 40 }).map((_, i) => (
+              <div
+                class="w-1 bg-indigo-500 rounded-full animate-wave"
+                style={`height: ${Math.random() * 80 + 20}%; animation-delay: -${Math.random()}s`}
+              />
+            ))
+          }
         </div>
 
-        <!-- Connection Lines -->
-        <div class="flex justify-center gap-24 text-slate-300 dark:text-slate-600 text-lg -my-2">
-            <span>↓</span><span>↓</span>
+        <!-- Progress Bar -->
+        <div
+          class="absolute left-0 top-0 h-full bg-indigo-500/10 dark:bg-indigo-500/20 animate-progress w-full origin-left"
+        >
         </div>
 
-        <!-- Visual Stream (Split) -->
-        <div>
-            <div class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-wider">VISUAL STREAM (Split)</div>
-            <div class="flex gap-2">
-                <div class="w-1/2 h-20 bg-sky-50 dark:bg-sky-900/10 border border-sky-200 dark:border-sky-900/30 rounded-lg p-3 flex flex-col justify-between">
-                    <span class="text-[10px] font-bold text-sky-600 dark:text-sky-400">CLIP A (6s)</span>
-                    <span class="text-[10px] text-slate-600 dark:text-slate-400 leading-tight">Man stands on cliff...</span>
-                </div>
-                <div class="w-1/2 h-20 bg-sky-50 dark:bg-sky-900/10 border border-sky-200 dark:border-sky-900/30 rounded-lg p-3 flex flex-col justify-between">
-                    <span class="text-[10px] font-bold text-sky-600 dark:text-sky-400">CLIP B (6s)</span>
-                    <span class="text-[10px] text-slate-600 dark:text-slate-400 leading-tight">Close up on lips...</span>
-                </div>
-            </div>
-        </div>
+        <!-- Text Content -->
+        <span
+          class="relative z-10 text-xs text-indigo-800 dark:text-indigo-300 font-mono font-medium drop-shadow-sm"
+        >
+          "The wind roared, and he whispered to the void..." (12s)
+        </span>
+      </div>
     </div>
+
+    <!-- Connection Lines -->
+    <div class="flex justify-center gap-24 relative h-8">
+      <div
+        class="absolute left-1/2 -translate-x-1/2 h-full border-l-2 border-dashed border-slate-300 dark:border-slate-700"
+      >
+      </div>
+      <div class="animate-flow-down flex gap-32 text-slate-400">
+        <span>↓</span><span>↓</span>
+      </div>
+    </div>
+
+    <!-- Visual Stream (Split) -->
+    <div>
+      <div
+        class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-wider"
+      >
+        VISUAL STREAM (Split)
+      </div>
+
+      <!-- Split Container -->
+      <div class="flex gap-4 relative">
+        <!-- Clip A -->
+        <div
+          class="clip-a w-1/2 h-24 bg-sky-50 dark:bg-sky-900/10 border border-sky-200 dark:border-sky-900/30 rounded-xl p-4 flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300 shadow-sm hover:shadow-md cursor-help"
+        >
+          <div class="flex justify-between items-start">
+            <span
+              class="text-[10px] font-bold bg-sky-100 dark:bg-sky-900 text-sky-600 dark:text-sky-300 px-2 py-1 rounded"
+              >CLIP A (0-6s)</span
+            >
+            <svg
+              class="w-4 h-4 text-sky-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              ></path></svg
+            >
+          </div>
+          <span
+            class="text-xs text-slate-600 dark:text-slate-300 leading-tight font-medium"
+            >Man stands on cliff edge looking out...</span
+          >
+        </div>
+
+        <!-- Split Icon Animation -->
+        <div
+          class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-white dark:bg-slate-900 rounded-full p-1 border border-slate-200 dark:border-slate-700 shadow-sm animate-pop-in"
+        >
+          <svg
+            class="w-4 h-4 text-slate-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"
+            ></path></svg
+          >
+        </div>
+
+        <!-- Clip B -->
+        <div
+          class="clip-b w-1/2 h-24 bg-sky-50 dark:bg-sky-900/10 border border-sky-200 dark:border-sky-900/30 rounded-xl p-4 flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300 shadow-sm hover:shadow-md cursor-help delay-75"
+        >
+          <div class="flex justify-between items-start">
+            <span
+              class="text-[10px] font-bold bg-sky-100 dark:bg-sky-900 text-sky-600 dark:text-sky-300 px-2 py-1 rounded"
+              >CLIP B (6-12s)</span
+            >
+            <svg
+              class="w-4 h-4 text-sky-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              ></path></svg
+            >
+          </div>
+          <span
+            class="text-xs text-slate-600 dark:text-slate-300 leading-tight font-medium"
+            >Extreme close-up on eye twitch...</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<style>
+  @keyframes progress {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes wave {
+    0%,
+    100% {
+      transform: scaleY(0.5);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+
+  @keyframes pop-in {
+    0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+    }
+    80% {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Trigger animations when in viewport - can be handled by a global Observer script or assume scroll */
+  .animate-progress {
+    animation: progress 12s linear infinite;
+  }
+
+  .animate-wave {
+    animation: wave 1s ease-in-out infinite;
+  }
+
+  .animate-pop-in {
+    animation: pop-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: 1s;
+    opacity: 0;
+    /* Ideally controlled by JS observer class toggle for single trigger */
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+  /* Simulating Loop for visual interest */
+  .clip-a,
+  .clip-b {
+    animation: fade-in-up 0.8s ease-out forwards;
+    opacity: 0;
+  }
+  .clip-a {
+    animation-delay: 0.5s;
+  }
+  .clip-b {
+    animation-delay: 0.8s;
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

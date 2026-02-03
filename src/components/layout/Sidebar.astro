@@ -1,0 +1,214 @@
+---
+import { SIDEBAR } from "../../config";
+
+interface SidebarItem {
+  text: string;
+  link?: string;
+  header?: boolean;
+}
+
+interface Props {
+  base: string;
+  currentPathNormalized: string;
+}
+
+const { base, currentPathNormalized } = Astro.props;
+
+const normalize = (p: string) => {
+  return p
+    .replace(/\/$/, "")
+    .replace(/^\//, "")
+    .replace(/\/index\.html$/, "");
+};
+
+const isLinkActive = (link: string | undefined) => {
+  if (!link) return false;
+  const itemPath = base.replace(/\/$/, "") + "/" + link.replace(/^\//, "");
+  return normalize(itemPath) === currentPathNormalized;
+};
+
+import {
+  LayersIcon,
+  ChevronLeftIcon,
+  HomeIcon,
+  WarningIcon,
+  ServerIcon,
+  CubeIcon,
+  LinesIcon,
+  LightbulbIcon,
+  UserIcon,
+  ArrowsIcon,
+  BeakerIcon,
+  ChartIcon,
+  BoltIcon,
+  MapIcon,
+  ActivityIcon,
+  StackIcon,
+  DollarIcon,
+  SunIcon,
+  MoonIcon,
+} from "../icons";
+
+const iconMap: Record<string, any> = {
+  Introduction: HomeIcon,
+  "Context Rot": WarningIcon,
+  "System Architecture": ServerIcon,
+  "Narrative Compression": CubeIcon,
+  "Chunking Strategy": LinesIcon,
+  "Context Engine": LightbulbIcon,
+  "Character Consistency": UserIcon,
+  "Differential State": ArrowsIcon,
+  "Orchestrator Architecture": BeakerIcon,
+  Workflows: ChartIcon,
+  "Agentic Workflow": BoltIcon,
+  Roadmap: MapIcon,
+  "Tech Stack Flow": ActivityIcon,
+  "Stack Implementation": StackIcon,
+  "Cost Estimator": DollarIcon,
+};
+---
+
+<aside
+  id="sidebar"
+  class="fixed inset-y-0 left-0 w-72 glass-panel border-r transform -translate-x-full lg:translate-x-0 transition-all duration-300 z-40 lg:sticky lg:h-screen lg:top-0 print:hidden"
+>
+  <div class="flex flex-col h-full">
+    <div
+      class="p-6 flex items-center justify-between border-b border-black/5 dark:border-white/5"
+    >
+      <a
+        href={base}
+        class="flex items-center gap-2 font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-purple-500 sidebar-brand"
+      >
+        <LayersIcon class="w-6 h-6 text-cyan-500" />
+        <span>Snoopiest</span>
+      </a>
+      <button
+        id="sidebar-collapse"
+        class="hidden lg:block p-1.5 rounded-md hover:bg-black/5 dark:hover:bg-white/10 text-slate-400"
+      >
+        <ChevronLeftIcon class="w-5 h-5" />
+      </button>
+    </div>
+
+    <nav class="flex-1 overflow-y-auto p-4 space-y-4">
+      {
+        (SIDEBAR as SidebarItem[]).map((item) => {
+          if (item.header) {
+            return (
+              <h3 class="sidebar-header text-xs font-bold text-slate-500 uppercase tracking-[0.2em] mt-6 mb-2 px-3">
+                {item.text}
+              </h3>
+            );
+          }
+
+          const IconComponent = iconMap[item.text];
+
+          return (
+            <a
+              href={
+                base.replace(/\/$/, "") + "/" + item.link!.replace(/^\//, "")
+              }
+              class:list={[
+                "flex items-center gap-3 py-2.5 px-3 rounded-xl transition-all duration-200 group",
+                isLinkActive(item.link)
+                  ? "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 font-semibold shadow-sm border border-cyan-500/20"
+                  : "text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-black/5 dark:hover:bg-white/5",
+              ]}
+            >
+              <span class="sidebar-icon w-5 h-5 flex items-center justify-center text-slate-400 group-hover:text-cyan-500">
+                {IconComponent && <IconComponent class="w-4 h-4" />}
+              </span>
+              <span class="sidebar-text truncate">{item.text}</span>
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <div
+      class="p-4 border-t border-black/5 dark:border-white/5 hidden lg:block"
+    >
+      <button
+        id="theme-toggle"
+        class="flex items-center gap-3 w-full p-2.5 rounded-xl transition-all duration-200 hover:bg-black/5 dark:hover:bg-white/5 text-slate-500 hover:text-slate-900 dark:hover:text-slate-100"
+      >
+        <div class="relative w-5 h-5">
+          <SunIcon class="absolute inset-0 dark:hidden" />
+          <MoonIcon class="absolute inset-0 hidden dark:block" />
+        </div>
+        <span class="sidebar-text">Switch Appearance</span>
+      </button>
+    </div>
+  </div>
+</aside>
+
+<script is:inline>
+  {
+    const sidebar = document.getElementById("sidebar");
+    const sidebarCollapse = document.getElementById("sidebar-collapse");
+
+    // Sidebar Collapse (Desktop)
+    sidebarCollapse?.addEventListener("click", () => {
+      const isCollapsed = sidebar.classList.contains("w-20");
+      if (isCollapsed) {
+        sidebar.classList.remove("w-20");
+        sidebar.classList.add("w-72");
+        sidebar
+          .querySelectorAll(".sidebar-text")
+          .forEach((el) => el.classList.remove("hidden"));
+        sidebar
+          .querySelectorAll(".sidebar-header")
+          .forEach((el) => el.classList.remove("hidden"));
+        sidebar.querySelector(".sidebar-brand span").classList.remove("hidden");
+        sidebarCollapse.querySelector("svg").classList.remove("rotate-180");
+      } else {
+        sidebar.classList.remove("w-72");
+        sidebar.classList.add("w-20");
+        sidebar
+          .querySelectorAll(".sidebar-text")
+          .forEach((el) => el.classList.add("hidden"));
+        sidebar
+          .querySelectorAll(".sidebar-header")
+          .forEach((el) => el.classList.add("hidden"));
+        sidebar.querySelector(".sidebar-brand span").classList.add("hidden");
+        sidebarCollapse.querySelector("svg").classList.add("rotate-180");
+      }
+    });
+  }
+</script>
+
+<style is:global>
+  /* Sidebar Styles */
+  #sidebar {
+    scrollbar-width: thin;
+  }
+  #sidebar.w-20 .sidebar-text,
+  #sidebar.w-20 .sidebar-header,
+  #sidebar.w-20 .sidebar-brand span {
+    display: none;
+  }
+  #sidebar.w-20 .p-6 {
+    justify-content: center;
+  }
+  #sidebar.w-20 nav {
+    align-items: center;
+  }
+  #sidebar.w-20 nav a {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+    width: 44px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #sidebar.w-20 .sidebar-brand {
+    justify-content: center;
+  }
+  #sidebar.w-20 #sidebar-collapse {
+    display: none;
+  }
+  #sidebar.w-20 .border-b {
+    padding: 1.5rem 0.5rem;
+  }
+</style>

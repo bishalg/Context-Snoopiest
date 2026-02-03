@@ -147,6 +147,12 @@ async function generatePDF() {
                     // Inject Print CSS
                     await page.addStyleTag({ content: PRINT_CSS });
 
+                    // SPECIAL HANDLING: Context Rot (wait for animations)
+                    if (item.link?.includes('context-rot')) {
+                        console.log('⏳ Waiting 5s for chart animations to complete...');
+                        await new Promise(r => setTimeout(r, 5000));
+                    }
+
                     // FORCE LIGHT MODE: Remove 'dark' class from html element
                     await page.evaluate(() => {
                         document.documentElement.classList.remove('dark');

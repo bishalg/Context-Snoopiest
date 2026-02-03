@@ -3,87 +3,92 @@
 ---
 
 <div
-    class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 not-prose my-8 sm:my-12"
+  class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 not-prose my-8 sm:my-12"
 >
-    <!-- Old Way -->
-    <div
-        class="bg-white dark:bg-slate-900 p-4 sm:p-8 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-800 opacity-80 hover:opacity-100 transition-all shadow-sm hover:shadow-md group"
+  <!-- Old Way -->
+  <div
+    class="bg-white dark:bg-slate-900 p-4 sm:p-8 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-800 opacity-80 hover:opacity-100 transition-all shadow-sm hover:shadow-md group"
+  >
+    <h3
+      class="font-bold text-slate-500 dark:text-slate-400 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 text-lg sm:text-xl group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors"
     >
-        <h3
-            class="font-bold text-slate-500 dark:text-slate-400 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 text-lg sm:text-xl group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors"
-        >
-            <span
-                class="text-2xl sm:text-3xl grayscale group-hover:grayscale-0 transition-all"
-                >⛓️</span
-            > The Old Linear Pipe
-        </h3>
-        <div class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
-            <div class="flex items-center gap-3">
-                <div class="w-2.5 h-2.5 rounded-full bg-slate-400">
-                </div>Sequential (Slow)
-            </div>
-            <div class="flex items-center gap-3">
-                <div class="w-2.5 h-2.5 rounded-full bg-slate-400"></div>No
-                Feedback Loop
-            </div>
-            <div class="flex items-center gap-3">
-                <div class="w-2.5 h-2.5 rounded-full bg-slate-400"></div>Errors
-                flow to output
-            </div>
-        </div>
+      <span
+        class="text-2xl sm:text-3xl grayscale group-hover:grayscale-0 transition-all"
+        >⛓️</span
+      > The Old Linear Pipe
+    </h3>
+    <div class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+      <div class="flex items-center gap-3">
+        <div class="w-2.5 h-2.5 rounded-full bg-slate-400"></div>Sequential
+        (Slow)
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-2.5 h-2.5 rounded-full bg-slate-400"></div>No Feedback
+        Loop
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-2.5 h-2.5 rounded-full bg-slate-400"></div>Errors flow to
+        output
+      </div>
     </div>
+  </div>
 
-    <!-- New Way -->
+  <!-- New Way -->
+  <div
+    class="bg-white dark:bg-slate-900 p-4 sm:p-8 rounded-xl sm:rounded-2xl border-2 border-sky-500/50 hover:border-sky-500 shadow-xl shadow-sky-500/10 relative overflow-hidden group transition-all"
+  >
     <div
-        class="bg-white dark:bg-slate-900 p-4 sm:p-8 rounded-xl sm:rounded-2xl border-2 border-sky-500/50 hover:border-sky-500 shadow-xl shadow-sky-500/10 relative overflow-hidden group transition-all"
+      class="absolute top-0 right-0 bg-sky-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-bl-xl shadow-md"
     >
-        <div
-            class="absolute top-0 right-0 bg-sky-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-bl-xl shadow-md"
-        >
-            NEW STANDARD
-        </div>
-        <h3
-            class="font-bold text-sky-600 dark:text-sky-400 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 text-lg sm:text-xl"
-        >
-            <span class="text-2xl sm:text-3xl animate-bounce-slow">🐝</span> The Agentic
-            Swarm
-        </h3>
-        <div class="space-y-4 text-sm text-slate-700 dark:text-slate-300">
-            <div class="flex items-center gap-3">
-                <div
-                    class="w-2.5 h-2.5 rounded-full bg-teal-500 shadow-sm shadow-teal-500/50"
-                >
-                </div><strong>Parallel</strong> Asset Generation
-            </div>
-            <div class="flex items-center gap-3">
-                <div
-                    class="w-2.5 h-2.5 rounded-full bg-pink-500 shadow-sm shadow-pink-500/50"
-                >
-                </div><strong>Active Critique</strong> & Self-Correction
-            </div>
-            <div class="flex items-center gap-3">
-                <div
-                    class="w-2.5 h-2.5 rounded-full bg-sky-500 shadow-sm shadow-sky-500/50"
-                >
-                </div><strong>Orchestrator</strong> State Management
-            </div>
-        </div>
+      NEW STANDARD
     </div>
+    <h3
+      class="font-bold text-sky-600 dark:text-sky-400 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 text-lg sm:text-xl"
+    >
+      <span class="text-2xl sm:text-3xl animate-bounce-slow">🐝</span> The Agentic
+      Swarm
+    </h3>
+    <div class="space-y-4 text-sm text-slate-700 dark:text-slate-300">
+      <div class="flex items-center gap-3">
+        <div
+          class="w-2.5 h-2.5 rounded-full bg-teal-500 shadow-sm shadow-teal-500/50"
+        >
+        </div><strong>Parallel</strong> Asset Generation
+      </div>
+      <div class="flex items-center gap-3">
+        <div
+          class="w-2.5 h-2.5 rounded-full bg-pink-500 shadow-sm shadow-pink-500/50"
+        >
+        </div><strong>Active Critique</strong> & Self-Correction
+      </div>
+      <div class="flex items-center gap-3">
+        <div
+          class="w-2.5 h-2.5 rounded-full bg-sky-500 shadow-sm shadow-sky-500/50"
+        >
+        </div><strong>Orchestrator</strong> State Management
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>
-    @keyframes bounce-slow {
-        0%,
-        100% {
-            transform: translateY(-5%);
-            opacity: 0.8;
-        }
-        50% {
-            transform: translateY(5%);
-            opacity: 1;
-        }
+  @keyframes bounce-slow {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
     }
-    .animate-bounce-slow {
-        animation: bounce-slow 3s infinite ease-in-out;
+    25% {
+      transform: translateY(-3px) rotate(-5deg);
     }
+    50% {
+      transform: translateY(0) rotate(0deg);
+    }
+    75% {
+      transform: translateY(3px) rotate(5deg);
+    }
+  }
+  .animate-bounce-slow {
+    animation: bounce-slow 4s infinite ease-in-out;
+    display: inline-block;
+  }
 </style>

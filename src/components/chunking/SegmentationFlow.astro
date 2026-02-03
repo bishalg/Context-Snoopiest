@@ -1,69 +1,189 @@
 ---
 // Segmentation Logic Flowchart
 ---
-<div class="bg-slate-50 dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 md:p-12 my-8 not-prose">
-    <div class="text-center mb-12">
-        <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-2">Segmentation Logic Flow</h3>
-        <p class="text-slate-500 dark:text-slate-400">Decision tree for atomic scene generation</p>
+
+<div
+  class="bg-slate-50 dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 md:p-12 my-8 not-prose"
+>
+  <div class="text-center mb-12">
+    <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-2">
+      Segmentation Logic Flow
+    </h3>
+    <p class="text-slate-500 dark:text-slate-400">
+      Hover over nodes to trace decision paths
+    </p>
+  </div>
+
+  <div class="max-w-3xl mx-auto flex flex-col items-center group/flow">
+    <!-- Step 1: Input -->
+    <div class="mb-2 w-full flex justify-center">
+      <div
+        class="flow-node w-64 text-center border-l-4 border-slate-500 bg-white dark:bg-black border dark:border-slate-700 p-5 rounded-xl shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-slate-400 z-10"
+      >
+        <div
+          class="text-[10px] font-bold text-slate-400 uppercase tracking-wider"
+        >
+          INPUT
+        </div>
+        <div class="font-bold text-slate-800 dark:text-white">
+          Raw Text Block
+        </div>
+      </div>
+    </div>
+    <div
+      class="arrow-down text-slate-300 dark:text-slate-600 text-lg animate-bounce-slow"
+    >
+      ↓
     </div>
 
-    <div class="max-w-3xl mx-auto flex flex-col items-center">
-        <!-- Step 1: Input -->
-        <div class="mb-2">
-            <div class="flow-node w-64 text-center border-l-4 border-slate-500 bg-white dark:bg-black border dark:border-slate-700 p-5 rounded-xl shadow-md">
-                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">INPUT</div>
-                <div class="font-bold text-slate-800 dark:text-white">Raw Text Block</div>
-            </div>
+    <!-- Step 2: Semantic Scan -->
+    <div class="mb-2 w-full flex justify-center">
+      <div
+        class="flow-node w-64 text-center border-l-4 border-sky-500 bg-white dark:bg-black border dark:border-slate-700 p-5 rounded-xl shadow-md transition-all duration-300 hover:scale-105 hover:shadow-sky-500/20 hover:border-sky-400 z-10"
+      >
+        <div
+          class="text-[10px] font-bold text-sky-500 uppercase tracking-wider"
+        >
+          SCANNING
         </div>
-        <div class="arrow-down text-slate-300 dark:text-slate-600 text-lg">↓</div>
-
-        <!-- Step 2: Semantic Scan -->
-        <div class="mb-2">
-            <div class="flow-node w-64 text-center border-l-4 border-sky-500 bg-white dark:bg-black border dark:border-slate-700 p-5 rounded-xl shadow-md">
-                <div class="text-[10px] font-bold text-sky-500 uppercase tracking-wider">SCANNING</div>
-                <div class="font-bold text-slate-800 dark:text-white text-sm">Semantic Boundary Detection</div>
-                <div class="text-xs text-slate-500 mt-1 font-mono">(\n\n, ".", "!")</div>
-            </div>
+        <div class="font-bold text-slate-800 dark:text-white text-sm">
+          Semantic Boundary Detection
         </div>
-        <div class="arrow-down text-slate-300 dark:text-slate-600 text-lg">↓</div>
-
-        <!-- Step 3: Duration Check (Split) -->
-        <div class="grid grid-cols-2 gap-4 relative w-full max-w-lg">
-            <!-- Logic Gate Visual -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-full flex items-center justify-center font-bold text-xs z-20 shadow-sm text-slate-600 dark:text-slate-300">?</div>
-
-            <!-- Left: Keep -->
-            <div class="flow-node text-center border-t-4 border-green-500 bg-white dark:bg-black border dark:border-slate-700 p-5 rounded-xl shadow-md">
-                <div class="text-[10px] font-bold text-green-600 dark:text-green-400 uppercase tracking-wider">&lt; 8 Seconds</div>
-                <div class="font-bold text-slate-800 dark:text-white mt-1 text-sm">Append Next Unit</div>
-            </div>
-
-            <!-- Right: Split -->
-            <div class="flow-node text-center border-t-4 border-amber-500 bg-white dark:bg-black border dark:border-slate-700 p-5 rounded-xl shadow-md">
-                <div class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">&gt; 8 Seconds</div>
-                <div class="font-bold text-slate-800 dark:text-white mt-1 text-sm">Force Split</div>
-                <div class="text-[10px] text-slate-500 mt-1">at Semantic Boundary</div>
-            </div>
+        <div
+          class="text-xs text-slate-500 mt-1 font-mono bg-slate-100 dark:bg-white/5 rounded px-2 py-1 inline-block"
+        >
+          (\n\n, ".", "!")
         </div>
-        <div class="arrow-down text-slate-300 dark:text-slate-600 text-lg">↓</div>
-
-        <!-- Step 4: Coherence -->
-        <div class="w-full max-w-sm">
-            <div class="flow-node text-center border-b-4 border-teal-500 bg-teal-50 dark:bg-teal-900/10 border border-teal-100 dark:border-teal-900/30 p-5 rounded-xl shadow-md">
-                <div class="text-[10px] font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider">SNOOPIEST AGENT CHECK</div>
-                <div class="font-bold text-slate-800 dark:text-white text-sm">Micro-Cliffhanger Heuristic</div>
-                <p class="text-[10px] text-slate-600 dark:text-slate-400 mt-2 leading-snug">
-                    Ensures split happens on "High Entropy" tokens (rising action) to maintain engagement.
-                </p>
-            </div>
-        </div>
+      </div>
     </div>
+    <div
+      class="arrow-down text-slate-300 dark:text-slate-600 text-lg animate-bounce-slow delay-100"
+    >
+      ↓
+    </div>
+
+    <!-- Step 3: Duration Check (Split) -->
+    <div class="grid grid-cols-2 gap-4 relative w-full max-w-lg group/decision">
+      <!-- Logic Gate Visual -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600 rounded-full flex items-center justify-center font-bold text-sm z-30 shadow-lg text-slate-600 dark:text-slate-300 animate-pulse-slow"
+      >
+        ?
+      </div>
+
+      <!-- Left: Keep -->
+      <div
+        class="flow-node text-center border-t-4 border-green-500 bg-white dark:bg-black border dark:border-slate-700 p-5 rounded-xl shadow-md transition-all duration-300 hover:scale-[1.03] hover:-translate-x-1 hover:shadow-green-500/20 opacity-90 hover:opacity-100 cursor-default"
+      >
+        <div
+          class="text-[10px] font-bold text-green-600 dark:text-green-400 uppercase tracking-wider"
+        >
+          &lt; 8 Seconds
+        </div>
+        <div class="font-bold text-slate-800 dark:text-white mt-1 text-sm">
+          Append Next Unit
+        </div>
+      </div>
+
+      <!-- Right: Split -->
+      <div
+        class="flow-node text-center border-t-4 border-amber-500 bg-white dark:bg-black border dark:border-slate-700 p-5 rounded-xl shadow-md transition-all duration-300 hover:scale-[1.03] hover:translate-x-1 hover:shadow-amber-500/20 opacity-90 hover:opacity-100 cursor-default"
+      >
+        <div
+          class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider"
+        >
+          &gt; 8 Seconds
+        </div>
+        <div class="font-bold text-slate-800 dark:text-white mt-1 text-sm">
+          Force Split
+        </div>
+        <div class="text-[10px] text-slate-500 mt-1">at Semantic Boundary</div>
+      </div>
+    </div>
+    <div
+      class="arrow-down text-slate-300 dark:text-slate-600 text-lg animate-bounce-slow delay-200"
+    >
+      ↓
+    </div>
+
+    <!-- Step 4: Coherence -->
+    <div class="w-full max-w-sm flex justify-center">
+      <div
+        class="flow-node w-full text-center border-b-4 border-teal-500 bg-teal-50 dark:bg-teal-900/10 border border-teal-100 dark:border-teal-900/30 p-5 rounded-xl shadow-md transition-all duration-300 hover:scale-105 hover:bg-teal-100 dark:hover:bg-teal-900/20 hover:shadow-teal-500/20"
+      >
+        <div
+          class="text-[10px] font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider flex items-center justify-center gap-2"
+        >
+          <svg
+            class="w-3 h-3"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg
+          >
+          SNOOPIEST AGENT CHECK
+        </div>
+        <div class="font-bold text-slate-800 dark:text-white text-sm mt-1">
+          Micro-Cliffhanger Heuristic
+        </div>
+        <p
+          class="text-[10px] text-slate-600 dark:text-slate-400 mt-2 leading-snug"
+        >
+          Ensures split happens on "High Entropy" tokens (rising action) to
+          maintain engagement.
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>
-    .arrow-down {
-        display: flex;
-        justify-content: center;
-        margin: 0.25rem 0;
+  .arrow-down {
+    display: flex;
+    justify-content: center;
+    margin: 0.25rem 0;
+  }
+
+  @keyframes bounce-slow {
+    0%,
+    100% {
+      transform: translateY(-2px);
+      opacity: 0.6;
     }
+    50% {
+      transform: translateY(2px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes pulse-slow {
+    0%,
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      box-shadow: 0 0 0 0 rgba(226, 232, 240, 0.7);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.05);
+      box-shadow: 0 0 0 6px rgba(226, 232, 240, 0);
+    }
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 3s infinite;
+  }
+
+  .delay-100 {
+    animation-delay: 0.5s;
+  }
+  .delay-200 {
+    animation-delay: 1s;
+  }
 </style>

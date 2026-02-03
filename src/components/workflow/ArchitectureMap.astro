@@ -3,179 +3,184 @@
 ---
 
 <div
-    class="bg-slate-50 dark:bg-black/30 rounded-3xl p-8 md:p-16 border border-slate-200 dark:border-white/5 my-12 relative overflow-hidden not-prose"
+  class="bg-slate-50 dark:bg-black/30 rounded-3xl p-8 md:p-16 border border-slate-200 dark:border-white/5 my-12 relative overflow-hidden not-prose"
 >
+  <div
+    class="absolute inset-0 bg-grid-slate-200/50 dark:bg-grid-slate-800/50 [mask-image:linear-gradient(0deg,transparent,white)] pointer-events-none"
+  >
+  </div>
+
+  <div class="text-center mb-8 sm:mb-12 relative z-10">
+    <h2 class="text-3xl font-bold text-slate-800 dark:text-white mb-2">
+      Swarm Architecture Map
+    </h2>
+    <p class="text-slate-500 dark:text-slate-400">
+      Visualizing the Non-Linear Data Flow
+    </p>
+  </div>
+
+  <div class="max-w-4xl mx-auto relative z-10">
+    <!-- 1. TOP: ORCHESTRATOR -->
+    <div class="mb-16">
+      <div class="flex justify-center mb-6 sm:mb-8 relative">
+        <div
+          class="agent-card border-t-4 border-t-sky-500 w-full sm:w-72 text-center bg-white dark:bg-slate-900 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-xl transition-transform hover:-translate-y-1 dark:border-slate-800"
+        >
+          <div
+            class="inline-block bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider mb-3"
+          >
+            The Brain
+          </div>
+          <h3 class="font-bold text-lg text-slate-800 dark:text-white">
+            The Showrunner
+          </h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">
+            Assigns Jobs, Manages State
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONNECTOR: Split -->
     <div
-        class="absolute inset-0 bg-grid-slate-200/50 dark:bg-grid-slate-800/50 [mask-image:linear-gradient(0deg,transparent,white)] pointer-events-none"
+      class="absolute top-[8rem] left-1/2 -translate-x-1/2 w-[60%] h-10 border-t-2 border-l-2 border-r-2 border-slate-300 dark:border-slate-600 rounded-t-2xl -z-0 animate-pulse-static"
     >
     </div>
 
-    <div class="text-center mb-8 sm:mb-12 relative z-10">
-        <h2 class="text-3xl font-bold text-slate-800 dark:text-white mb-2">
-            Swarm Architecture Map
-        </h2>
-        <p class="text-slate-500 dark:text-slate-400">
-            Visualizing the Non-Linear Data Flow
-        </p>
+    <!-- 2. MIDDLE: PARALLEL WINGS -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 relative">
+      <!-- Left: Art -->
+      <div class="space-y-6">
+        <div class="flex justify-center">
+          <div
+            class="agent-card border-t-4 border-t-amber-500 w-full max-w-xs mx-auto bg-white dark:bg-slate-900 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-transform hover:-translate-y-1 dark:border-slate-800"
+          >
+            <div
+              class="inline-block bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider mb-3"
+            >
+              Visuals
+            </div>
+            <h3 class="font-bold text-lg text-slate-800 dark:text-white">
+              Art Department
+            </h3>
+            <ul
+              class="text-xs text-slate-500 dark:text-slate-400 mt-3 space-y-1.5 text-left pl-4"
+            >
+              <li>• Casting (Face Gen)</li>
+              <li>• Location Scouting</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Writer -->
+      <div class="space-y-6">
+        <div class="flex justify-center">
+          <div
+            class="agent-card border-t-4 border-t-teal-500 w-full max-w-xs mx-auto bg-white dark:bg-slate-900 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-transform hover:-translate-y-1 dark:border-slate-800"
+          >
+            <div
+              class="inline-block bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider mb-3"
+            >
+              Narrative
+            </div>
+            <h3 class="font-bold text-lg text-slate-800 dark:text-white">
+              Writers' Room
+            </h3>
+            <ul
+              class="text-xs text-slate-500 dark:text-slate-400 mt-3 space-y-1.5 text-left pl-4"
+            >
+              <li>• Hierarchical Summary</li>
+              <li>• Context "Snoopiest"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="max-w-4xl mx-auto relative z-10">
-        <!-- 1. TOP: ORCHESTRATOR -->
-        <div class="mb-16">
-            <div class="flex justify-center mb-6 sm:mb-8 relative">
-                <div
-                    class="agent-card border-t-4 border-t-sky-500 w-full sm:w-72 text-center bg-white dark:bg-slate-900 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-xl transition-transform hover:-translate-y-1 dark:border-slate-800"
-                >
-                    <div
-                        class="inline-block bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider mb-3"
-                    >
-                        The Brain
-                    </div>
-                    <h3
-                        class="font-bold text-lg text-slate-800 dark:text-white"
-                    >
-                        The Showrunner
-                    </h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">
-                        Assigns Jobs, Manages State
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- CONNECTOR: Split -->
-        <div
-            class="absolute top-[8rem] left-1/2 -translate-x-1/2 w-[60%] h-10 border-t-2 border-l-2 border-r-2 border-slate-300 dark:border-slate-600 rounded-t-2xl -z-0"
-        >
-        </div>
-
-        <!-- 2. MIDDLE: PARALLEL WINGS -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 relative">
-            <!-- Left: Art -->
-            <div class="space-y-6">
-                <div class="flex justify-center">
-                    <div
-                        class="agent-card border-t-4 border-t-amber-500 w-full max-w-xs mx-auto bg-white dark:bg-slate-900 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-transform hover:-translate-y-1 dark:border-slate-800"
-                    >
-                        <div
-                            class="inline-block bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider mb-3"
-                        >
-                            Visuals
-                        </div>
-                        <h3
-                            class="font-bold text-lg text-slate-800 dark:text-white"
-                        >
-                            Art Department
-                        </h3>
-                        <ul
-                            class="text-xs text-slate-500 dark:text-slate-400 mt-3 space-y-1.5 text-left pl-4"
-                        >
-                            <li>• Casting (Face Gen)</li>
-                            <li>• Location Scouting</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right: Writer -->
-            <div class="space-y-6">
-                <div class="flex justify-center">
-                    <div
-                        class="agent-card border-t-4 border-t-teal-500 w-full max-w-xs mx-auto bg-white dark:bg-slate-900 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-transform hover:-translate-y-1 dark:border-slate-800"
-                    >
-                        <div
-                            class="inline-block bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider mb-3"
-                        >
-                            Narrative
-                        </div>
-                        <h3
-                            class="font-bold text-lg text-slate-800 dark:text-white"
-                        >
-                            Writers' Room
-                        </h3>
-                        <ul
-                            class="text-xs text-slate-500 dark:text-slate-400 mt-3 space-y-1.5 text-left pl-4"
-                        >
-                            <li>• Hierarchical Summary</li>
-                            <li>• Context "Snoopiest"</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CONNECTOR: Merge -->
-        <div
-            class="absolute top-[28rem] left-1/2 -translate-x-1/2 w-[60%] h-10 border-b-2 border-l-2 border-r-2 border-slate-300 dark:border-slate-600 rounded-b-2xl -z-0 hidden md:block"
-        >
-        </div>
-
-        <!-- 3. CENTER: DIRECTOR -->
-        <div class="mb-8 sm:mb-16 relative z-10 pt-4 sm:pt-8">
-            <div class="flex justify-center mb-8">
-                <div
-                    class="agent-card bg-slate-800 dark:bg-black text-white w-full sm:w-72 text-center shadow-2xl p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-700 dark:border-white/10 relative overflow-hidden"
-                >
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"
-                    >
-                    </div>
-                    <div
-                        class="inline-block bg-slate-700 text-white px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider mb-3"
-                    >
-                        Synthesis
-                    </div>
-                    <h3 class="font-bold text-lg relative z-10">
-                        Director Agent
-                    </h3>
-                    <p class="text-xs text-slate-400 mt-2 relative z-10">
-                        Combines Art + Text → Prompt
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 4. BOTTOM: CRITIC LOOP -->
-        <div class="relative z-10">
-            <div class="flex justify-center mb-8">
-                <div class="relative">
-                    <!-- The Loop Line -->
-                    <div
-                        class="absolute top-1/2 -left-16 w-16 h-24 border-l-2 border-b-2 border-dashed border-pink-400 rounded-bl-2xl pointer-events-none -translate-y-[100%] opacity-60"
-                    >
-                    </div>
-                    <div
-                        class="absolute -top-16 -left-20 text-pink-600 dark:text-pink-400 text-[10px] font-bold bg-pink-50 dark:bg-pink-900/20 px-2 py-1 rounded shadow-sm border border-pink-200 dark:border-pink-900/30"
-                    >
-                        RETRY
-                    </div>
-
-                    <div
-                        class="agent-card border-t-4 border-t-pink-500 w-72 text-center bg-pink-50/50 dark:bg-pink-900/10 p-6 rounded-2xl shadow-lg border border-pink-100 dark:border-pink-900/30"
-                    >
-                        <div
-                            class="inline-block bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider mb-3"
-                        >
-                            The Gatekeeper
-                        </div>
-                        <h3
-                            class="font-bold text-lg text-pink-900 dark:text-pink-100"
-                        >
-                            QA Critic
-                        </h3>
-                        <div class="flex justify-center gap-4 mt-4">
-                            <span
-                                class="text-xs font-bold text-red-500 dark:text-red-400 bg-red-100 dark:bg-red-900/20 px-2 py-1 rounded"
-                                >❌ Reject</span
-                            >
-                            <span
-                                class="text-xs font-bold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/20 px-2 py-1 rounded"
-                                >✅ Approve</span
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- CONNECTOR: Merge -->
+    <div
+      class="absolute top-[28rem] left-1/2 -translate-x-1/2 w-[60%] h-10 border-b-2 border-l-2 border-r-2 border-slate-300 dark:border-slate-600 rounded-b-2xl -z-0 hidden md:block animate-pulse-static"
+    >
     </div>
+
+    <!-- 3. CENTER: DIRECTOR -->
+    <div class="mb-8 sm:mb-16 relative z-10 pt-4 sm:pt-8">
+      <div class="flex justify-center mb-8">
+        <div
+          class="agent-card bg-slate-800 dark:bg-black text-white w-full sm:w-72 text-center shadow-2xl p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-700 dark:border-white/10 relative overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"
+          >
+          </div>
+          <div
+            class="inline-block bg-slate-700 text-white px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider mb-3"
+          >
+            Synthesis
+          </div>
+          <h3 class="font-bold text-lg relative z-10">Director Agent</h3>
+          <p class="text-xs text-slate-400 mt-2 relative z-10">
+            Combines Art + Text → Prompt
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. BOTTOM: CRITIC LOOP -->
+    <div class="relative z-10">
+      <div class="flex justify-center mb-8">
+        <div class="relative">
+          <!-- The Loop Line -->
+          <div
+            class="absolute top-1/2 -left-16 w-16 h-24 border-l-2 border-b-2 border-dashed border-pink-400 rounded-bl-2xl pointer-events-none -translate-y-[100%] opacity-60 animate-pulse-static"
+          >
+          </div>
+          <div
+            class="absolute -top-16 -left-20 text-pink-600 dark:text-pink-400 text-[10px] font-bold bg-pink-50 dark:bg-pink-900/20 px-2 py-1 rounded shadow-sm border border-pink-200 dark:border-pink-900/30"
+          >
+            RETRY
+          </div>
+
+          <div
+            class="agent-card border-t-4 border-t-pink-500 w-72 text-center bg-pink-50/50 dark:bg-pink-900/10 p-6 rounded-2xl shadow-lg border border-pink-100 dark:border-pink-900/30"
+          >
+            <div
+              class="inline-block bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider mb-3"
+            >
+              The Gatekeeper
+            </div>
+            <h3 class="font-bold text-lg text-pink-900 dark:text-pink-100">
+              QA Critic
+            </h3>
+            <div class="flex justify-center gap-4 mt-4">
+              <span
+                class="text-xs font-bold text-red-500 dark:text-red-400 bg-red-100 dark:bg-red-900/20 px-2 py-1 rounded"
+                >❌ Reject</span
+              >
+              <span
+                class="text-xs font-bold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/20 px-2 py-1 rounded"
+                >✅ Approve</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<style>
+  @keyframes pulse-static {
+    0%,
+    100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  .animate-pulse-static {
+    animation: pulse-static 4s ease-in-out infinite;
+  }
+</style>
