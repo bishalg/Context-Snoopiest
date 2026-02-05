@@ -28,7 +28,7 @@ if [ $GEN_RESULT -eq 0 ]; then
     if [ $MERGE_RESULT -eq 0 ]; then
         echo "✅ PDFs generated successfully."
         echo "Git Adding PDF files..."
-        git add public/pdf
+        git add public/pdf public/whitepaper.pdf
     else
         echo "❌ PDF Merge failed."
         kill $SERVER_PID
