@@ -1,0 +1,54 @@
+{
+    "glossary": [
+        {
+            "term": "Context Window",
+            "definition": "The maximum number of tokens an LLM can process in a single request.",
+            "topic": "Context Management"
+        },
+        {
+            "term": "Lost-in-the-Middle",
+            "definition": "The tendency of LLMs to ignore or misinterpret information located in the middle of a large context.",
+            "topic": "Context Management"
+        },
+        {
+            "term": "Hierarchical Summarization",
+            "definition": "Multi-level compression where each level summarizes the one below it.",
+            "topic": "Hierarchical Summarization"
+        },
+        {
+            "term": "Narrative Backbone",
+            "definition": "The persistent long-term memory of a story state in the Continuum Flow architecture.",
+            "topic": "Hierarchical Summarization"
+        },
+        {
+            "term": "CCMS",
+            "definition": "Character Consistency Maintenance System; the logic that prevents identity morphing.",
+            "topic": "State Maintenance"
+        },
+        {
+            "term": "Identity Vector",
+            "definition": "A visual/numerical embedding that anchors a character's appearance.",
+            "topic": "State Maintenance"
+        },
+        {
+            "term": "Temporal Constraint",
+            "definition": "The fixed duration limit (e.g., 8s) of generative video models.",
+            "topic": "Semantic Chunking"
+        },
+        {
+            "term": "Time-Cost Algorithm",
+            "definition": "The algorithmic process of estimating visual duration from written text.",
+            "topic": "Semantic Chunking"
+        },
+        {
+            "term": "Narrative AST",
+            "definition": "Abstract Story Tree; a structured representation of the story elements.",
+            "topic": "Narrative Compression"
+        },
+        {
+            "term": "RepoMix Pattern",
+            "definition": "Identifying and retaining only critical definitions while discarding implementation/flavor details.",
+            "topic": "Narrative Compression"
+        }
+    ]
+}
