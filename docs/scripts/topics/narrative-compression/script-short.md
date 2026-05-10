@@ -1,3 +1,11 @@
+---
+title: The RepoMix Pattern for Stories
+format: Video Script (Short Form)
+duration: 90s
+topic: Narrative Semantic Compression
+target_audience: Software Developers
+---
+
 # Video Script: Narrative Semantic Compression (Short - 90s)
 
 **Topic:** Narrative Semantic Compression (RepoMix Pattern)

@@ -1,3 +1,11 @@
+---
+title: Continuum Flow Narrative-to-Video Architecture
+version: 2.0.0
+status: Stable
+last_updated: 2026-05-10
+tags: [Architecture, LLM, Video-Gen, Context-Management]
+---
+
 # **Architectural Documentation: Continuum Flow Narrative-to-Video Generation System**
 
 ## **Executive Summary**
@@ -6,9 +14,24 @@ The convergence of Large Language Models (LLMs) and Generative Video technology 
 
 This document details the comprehensive architecture of **Continuum Flow**, a proprietary agentic framework designed to ingest raw Markdown-formatted story chapters and output high-fidelity, temporally constrained video scene directives. Unlike standard Integrated Development Environment (IDE) assistants like Cursor, which rely on Retrieval-Augmented Generation (RAG) and heuristic context sliding for codebases, Continuum Flow implements a **Hierarchical Recursive Summarization Architecture**. This architecture creates a "living backbone" of narrative state, allowing the system to maintain character arcs, emotional continuity, and environmental consistency across thousands of generated video segments without suffering from context decay.
 
-The project transforms Markdown story files into a sequence of 10-second video segments. This specific temporal constraint necessitates a novel "Content Chunking Strategy" that transcends simple paragraph splitting, instead employing semantic density analysis to align textual pacing with visual timing. By leveraging an agentic loop that actively curates its own context—deciding what to summarize, what to retain in high resolution, and what to discard—Continuum Flow automates the role of a continuity editor, ensuring that the final video output adheres to the logic of the narrative source material.
+### **Core Concept: Hierarchical Memory**
 
-## 
+```mermaid
+graph TD
+    subgraph "Continuum Flow Architecture"
+    L0[Level 0: Working Window<br/>Raw Markdown / High Resolution]
+    L1[Level 1: Scene Summaries<br/>Factual Distillation]
+    L2[Level 2: Chapter Summaries<br/>Structural Synthesis]
+    L3[Level 3: Narrative Backbone<br/>Global World State]
+    
+    L0 -->|Summarize| L1
+    L1 -->|Aggregate| L2
+    L2 -->|Merge| L3
+    L3 -.->|Context Injection| L0
+    end
+```
+
+The project transforms Markdown story files into a sequence of 10-second video segments. This specific temporal constraint necessitates a novel "Content Chunking Strategy" that transcends simple paragraph splitting, instead employing semantic density analysis to align textual pacing with visual timing. By leveraging an agentic loop that actively curates its own context—deciding what to summarize, what to retain in high resolution, and what to discard—Continuum Flow automates the role of a continuity editor, ensuring that the final video output adheres to the logic of the narrative source material.
 
 ## **1\. Project Overview and Operational Scope**
 
@@ -187,7 +210,13 @@ To understand the unique value proposition of Continuum Flow, we must contrast i
 
 ### **4.6 DeepAgent State Architecture**
 
-"DeepAgent State Architecture: Following the principles of [Context Management for DeepAgents](https://www.blog.langchain.com/context-management-for-deepagents/), Continuum Flow abandons the traditional 'Sliding Window' memory model. Instead, we treat the Narrative-to-Video pipeline as a long-horizon state machine. We utilize TOON to maintain a persistent, structured 'World State' that survives across hundreds of generation steps, ensuring that the 100th minute of video is as consistent as the 1st."
+Following the principles of [Context Management for DeepAgents](https://www.blog.langchain.com/context-management-for-deepagents/), Continuum Flow abandons the traditional "Sliding Window" memory model. Instead, we treat the Narrative-to-Video pipeline as a long-horizon state machine. 
+
+> [!IMPORTANT]
+> We implement a **Git-Backed Hypergraph** for state retention (inspired by the Beads architecture). This ensures that every narrative decision is a versioned, immutable node in a dependency tree. By using Git-as-Database, we achieve perfect replayability and branching capabilities for different narrative outcomes.
+
+We utilize TOON to maintain a persistent, structured "World State" that survives across hundreds of generation steps, ensuring that the 100th minute of video is as consistent as the 1st.
+
 
 ## **5. Narrative Semantic Compression: The "RepoMix" Pattern**
 

@@ -1,3 +1,11 @@
+---
+title: "Deep Dive: Context Management"
+format: Video Script (Long Form)
+duration: 4 mins
+topic: Context Windows & Narrative Pacing
+target_audience: Software Developers
+---
+
 # Video Script: Deep Dive into Context Management (Long Form - 4 mins)
 
 **Topic:** Context Windows & Narrative Pacing
@@ -13,6 +21,16 @@
 - **Script:**
   > "Why does an LLM fail when you provide too much data? It's not just about token limits. It's about 'Attention'. In long sequences, the self-attention mechanism becomes diluted. This leads to **Context Rot**—where subtle details, like a character's limp introduced in Chapter 1, get drowned out by Chapter 10. We call this the 'Lost-in-the-Middle' phenomenon. For a video pipeline, this manifests as visual hallucinations: a character suddenly changing clothes or a sword disappearing between shots."
 
+```mermaid
+graph LR
+    subgraph "Lost-in-the-Middle Phenomenon"
+    Start[Start of Context] -->|High Attention| P1[Plot Point A]
+    P1 -->|Diluted Attention| Middle[The 'Blind' Middle Zone]
+    Middle -->|Diluted Attention| P2[Plot Point B]
+    P2 -->|High Attention| End[End of Context]
+    end
+```
+
 ## 2:00 - 3:30 | The Architecture: Continuum Flow & Hierarchical Summarization
 - **Script:**
   > "So, how does Continuum Flow solve this? We implement a **Hierarchical Recursive Summarization Architecture**. Instead of a sliding window that drops old tokens, we actively synthesize the story. 
@@ -23,9 +41,12 @@
   > 
   > Think of it as a 'Telescoping' context. We have high detail for what's happening *now*, and compressed, structural knowledge of everything that happened *before*. This ensures that if a character is wounded in the beginning, the 'Backbone' carries that state forever, regardless of how many tokens pass."
 
+> [!TIP]
+> By treating the novel as a State Machine rather than a text stream, we maintain 100% visual continuity with 70% fewer tokens.
+
 ## 3:30 - 4:00 | Implementation & Developer Insight
 - **Script:**
-  > "By treating the novel as a State Machine rather than a text stream, we maintain 100% visual continuity with 70% fewer tokens. This is the difference between an AI that 'reads' and an AI that 'understands' a story arc. Head over to our `/docs` to explore the Narrative AST implementation."
+  > "This is the difference between an AI that 'reads' and an AI that 'understands' a story arc. Head over to our `/docs` to explore the Narrative AST implementation."
 
 ---
 

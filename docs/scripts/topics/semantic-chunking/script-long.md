@@ -1,3 +1,11 @@
+---
+title: "Architecture: Cinematic Pacing"
+format: Video Script (Long Form)
+duration: 4 mins
+topic: Semantic Content Chunking
+target_audience: Software Developers
+---
+
 # Video Script: The Math of Cinematic Pacing (Long Form - 4 mins)
 
 **Topic:** Semantic Content Chunking
@@ -15,15 +23,33 @@
   > 
   > **Dialogue** is base-line (approx. 2.3 words per second). 
   > **Descriptive Prose** gets a 0.7x multiplier because visuals are processed faster than text. 
-  > **Action** is variable. 'He ran across the field' is faster than 'He waited for the dawn'. 
-  > 
-  > Our Chunking Agent calculates the **Estimated Duration** for every semantic unit. If a block exceeds our 8-second soft limit, we move to the nearest semantic boundary back in time. This creates a predictable 'beat' for the video engine to follow."
+  > **Action** is variable. 'He ran across the field' is faster than 'He waited for the dawn'."
+
+```mermaid
+graph TD
+    subgraph "Time-Cost Algorithm"
+    Input[Text Segment] -->|Classifier| Type{Token Type?}
+    Type -->|Dialogue| D[Weight: 1.0]
+    Type -->|Description| Des[Weight: 0.7]
+    Type -->|Action| A[Weight: 0.5 - 2.0]
+    
+    D --> Sum[Calculate Estimated Duration]
+    Des --> Sum
+    A --> Sum
+    
+    Sum -->|Duration > 8s?| Split[Semantic Split]
+    Sum -->|Duration <= 8s?| Keep[Maintain Chunk]
+    end
+```
 
 ## 2:00 - 3:30 | Atomic Scenes & High-Entropy Cuts
 - **Script:**
   > "A movie isn't just a sequence of clips; it's a flow. To maintain engagement, we use **Micro-Cliffhanger Heuristics**. The chunker avoids ending on a 'dead beat' like a period or a fade-out unless the chapter is over. 
   > 
-  > Instead, it looks for 'High Entropy' tokens—words that imply unresolved action. This mimics a cinematic 'Shot-Reverse-Shot'. When Clip A ends on a point of tension, Clip B resolves it. This 'Atomic Scene' logic bridges the technical 8-second gap, making the viewer forget they're watching a sequence of discrete generated segments."
+  > Instead, it looks for 'High Entropy' tokens—words that imply unresolved action. This mimics a cinematic 'Shot-Reverse-Shot'. When Clip A ends on a point of tension, Clip B resolves it. This 'Atomic Scene' logic bridges the technical 8-second gap."
+
+> [!TIP]
+> By using high-entropy cuts, we make the viewer forget they're watching a sequence of discrete generated segments.
 
 ## 3:30 - 4:00 | Audio-Visual Synchronization
 - **Script:**

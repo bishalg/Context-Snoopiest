@@ -1,3 +1,11 @@
+---
+title: Context Windows & Lost-in-the-Middle
+format: Video Script (Short Form)
+duration: 90s
+topic: Context Windows & Management
+target_audience: Software Developers
+---
+
 # Video Script: Context Windows & The "Lost-in-the-Middle" Phenomenon (Short - 90s)
 
 **Topic:** Context Windows & Management

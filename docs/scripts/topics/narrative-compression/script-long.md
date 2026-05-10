@@ -1,3 +1,11 @@
+---
+title: "Deep Dive: Narrative Compression"
+format: Video Script (Long Form)
+duration: 4 mins
+topic: Narrative Semantic Compression
+target_audience: Software Developers
+---
+
 # Video Script: The RepoMix Pattern for Literature (Long Form - 4 mins)
 
 **Topic:** Narrative Semantic Compression
@@ -17,13 +25,25 @@
   > 
   > Our **Compressor Module** parses the text and discards everything that doesn't result in a visual change. We transition from storing paragraphs to storing `NarrativeNodes`: JSON objects that define entities, their actions, and their state changes."
 
+```mermaid
+graph TD
+    subgraph "The Compressor Funnel"
+    Raw[Raw Markdown Prose] -->|NER & Action Extraction| Nodes[Narrative Nodes]
+    Nodes -->|Discard Flavor Text| AST[Narrative AST]
+    AST -->|RepoMix Pattern| Final[Compressed Visual Script]
+    
+    Final -->|70% Token Reduction| LLM[Video Generation Prompt]
+    end
+```
+
 ## 2:00 - 3:30 | Implementing the Guard rails: State Differential
 - **Script:**
   > "To ensure we don't 'compress' away something vital, we use a **State Differential Check**. We compare the current chunk with our Global Registry. 
   > 
-  > If the story says 'He picked up the rusty dagger,' that dagger is a definition—it's kept. If the story then spends three paragraphs describing the *feeling* of the rust, those paragraphs are discarded. 100% of the visual continuity is preserved, but we reduce the token load by up to 70%. 
-  > 
-  > This is exactly how RepoMix keeps the signature of a function while ditching the 500 lines of implementation code. We keep the **Visual Signature** of the scene."
+  > If the story says 'He picked up the rusty dagger,' that dagger is a definition—it's kept. If the story then spends three paragraphs describing the *feeling* of the rust, those paragraphs are discarded. 100% of the visual continuity is preserved, but we reduce the token load by up to 70%."
+
+> [!TIP]
+> This is exactly how RepoMix keeps the signature of a function while ditching the 500 lines of implementation code. We keep the **Visual Signature** of the scene.
 
 ## 3:30 - 4:00 | Outcome: Horizon-less Generation
 - **Script:**

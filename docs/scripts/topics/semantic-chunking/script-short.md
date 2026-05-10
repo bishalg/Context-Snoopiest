@@ -1,4 +1,12 @@
-# Video Script: Semantic Content Chunking (Short - 90s)
+---
+title: The Math of Cinematic Pacing
+format: Video Script (Short Form)
+duration: 90s
+topic: Semantic Content Chunking
+target_audience: Software Developers
+---
+
+# Video Script: Semantic Chunking & Cinematic Pacing (Short - 90s)
 
 **Topic:** Semantic Content Chunking
 **Target Audience:** Software Developers

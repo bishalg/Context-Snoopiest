@@ -1,4 +1,12 @@
-# Video Script: Character Consistency (Short - 90s)
+---
+title: Engineering Character Consistency
+format: Video Script (Short Form)
+duration: 90s
+topic: State Maintenance & CCMS
+target_audience: Software Developers
+---
+
+# Video Script: State Maintenance & Character Consistency (Short - 90s)
 
 **Topic:** State Maintenance & CCMS
 **Target Audience:** Software Developers

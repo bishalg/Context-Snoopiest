@@ -1,3 +1,11 @@
+---
+title: "Architecture: Character Consistency"
+format: Video Script (Long Form)
+duration: 4 mins
+topic: State Maintenance & CCMS
+target_audience: Software Developers
+---
+
 # Video Script: Engineering Character Consistency (Long Form - 4 mins)
 
 **Topic:** State Maintenance & CCMS
@@ -15,15 +23,31 @@
   > 
   > When we generate a video clip, we use technologies like IP-Adapter or ControlNet. We tell the model: 'Here is the action (text), but here is the IMMUTABLE identity (embedding)'. This decouples the 'What' from the 'Who', ensuring John looks like John, shot after shot."
 
+```mermaid
+graph TD
+    subgraph "CCMS Identity Locking"
+    Text[Narrative Text] -->|Prompt Gen| Prompt[Video Prompt]
+    Ref[Master Reference Image] -->|IP-Adapter| Vector[Identity Vector]
+    
+    Prompt -->|Combine| Model[Diffusion Model]
+    Vector -->|Anchor| Model
+    
+    Model -->|Output| Video[Consistent Character Video]
+    end
+```
+
 ## 2:00 - 3:30 | The Outfit Manager & Implicit Context
 - **Script:**
   > "But consistency isn't just about faces; it's about **State**. If a character loses their sword in Chapter 3, they shouldn't have it in Chapter 4. 
   > 
-  > Human readers handle 'Implicit Context' naturally. We know he's still wounded even if the current sentence doesn't say it. But AI is stateless. Our CCMS includes an **Outfit and Inventory Manager**. It watches the 'Narrative AST' for state-changing beats. If a character dons armor, the 'Global State' is updated. Every generation prompt for that character ID is then programmatically injected with the armor embedding, even if the raw text chunk is just dialogue."
+  > Human readers handle 'Implicit Context' naturally. We know he's still wounded even if the current sentence doesn't say it. But AI is stateless. Our CCMS includes an **Outfit and Inventory Manager**. It watches the 'Narrative AST' for state-changing beats. If a character dons armor, the 'Global State' is updated."
+
+> [!IMPORTANT]
+> Consistency isn't a generative miracle—it's an engineering requirement. Every generation prompt is programmatically injected with the current state embeddings.
 
 ## 3:30 - 4:00 | Architecture for Scale
 - **Script:**
-  > "This architecture allows us to maintain consistency across thousands of shots. By treating characters as 'Database Objects' with immutable visual properties and mutable state variables, we unlock the ability to produce long-form, coherent visual narratives. Consistency isn't a generative miracle—it's an engineering requirement. Dive into the `ccms/` module in our repo to see the code."
+  > "This architecture allows us to maintain consistency across thousands of shots. By treating characters as 'Database Objects' with immutable visual properties and mutable state variables, we unlock the ability to produce long-form, coherent visual narratives. Dive into the `ccms/` module in our repo to see the code."
 
 ---
 

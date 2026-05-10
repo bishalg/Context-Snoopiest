@@ -1,6 +1,14 @@
-# Video Script: Hierarchical Summarization (Short - 90s)
+---
+title: Hierarchical Memory Architecture
+format: Video Script (Short Form)
+duration: 90s
+topic: Hierarchical Recursive Summarization
+target_audience: Software Developers
+---
 
-**Topic:** Hierarchical Summarization
+# Video Script: Hierarchical Summarization & Narrative Memory (Short - 90s)
+
+**Topic:** Hierarchical Recursive Summarization
 **Target Audience:** Software Developers
 
 ---

@@ -1,3 +1,11 @@
+---
+title: "Architecture: Telescoping Memory"
+format: Video Script (Long Form)
+duration: 4 mins
+topic: Hierarchical Recursive Summarization
+target_audience: Software Developers
+---
+
 # Video Script: The Architecture of Telescoping Memory (Long Form - 4 mins)
 
 **Topic:** Hierarchical Recursive Summarization
@@ -18,13 +26,36 @@
   > **Level 2 (The Chapter Batch)** removes transient 'flavor text' and keeps only structural beats. 
   > **Level 3 (The Narrative Backbone)** is the immutable state of the world. 
   > 
-  > By the time we get to the Backbone, we've stripped away 95% of the prose, leaving only the 'Source of Truth'. This is inspired by methods like RAPTOR, but optimized for sequential consistency rather than just random retrieval."
+  > By the time we get to the Backbone, we've stripped away 95% of the prose, leaving only the 'Source of Truth'."
+
+```mermaid
+graph TD
+    subgraph "Recursive Summarization Tree"
+    Root[Narrative Backbone - Level 3]
+    V1[Vol 1 Summary - Level 2]
+    V2[Vol 2 Summary - Level 2]
+    C1[Ch 1 - Level 1]
+    C2[Ch 2 - Level 1]
+    S1[Scene A - Level 0]
+    S2[Scene B - Level 0]
+    
+    Root --> V1
+    Root --> V2
+    V1 --> C1
+    V1 --> C2
+    C1 --> S1
+    C1 --> S2
+    end
+```
 
 ## 2:00 - 3:30 | The Developer Challenge: RAG vs. Hierarchy
 - **Script:**
   > "Why not just use RAG? Retrieval-Augmented Generation is great for finding facts in a library, but it's terrible at following a story. RAG is 'Bag of Words'. Narrative is 'Causal'. 
   > 
-  > If a character finds a key in Chapter 1, RAG might not 'retrieve' that key in Chapter 10 because the semantic similarity between the key and the current door is low. Hierarchical summarization ensures the 'Key = True' state is physically present in the backbone for every single generation turn. It's State Management, not just Search."
+  > If a character finds a key in Chapter 1, RAG might not 'retrieve' that key in Chapter 10 because the semantic similarity between the key and the current door is low. Hierarchical summarization ensures the 'Key = True' state is physically present in the backbone for every single generation turn."
+
+> [!IMPORTANT]
+> Hierarchical summarization is State Management, not just Search. It preserves the causal chain that RAG often loses.
 
 ## 3:30 - 4:00 | Technical Implementation
 - **Script:**

@@ -1,3 +1,9 @@
+---
+title: State Maintenance & CCMS Glossary
+topic: State Maintenance
+last_updated: 2026-05-10
+---
+
 # Technical Terms: State Maintenance & CCMS
 
 | Term | Dev-Friendly Definition | Script Usage |
